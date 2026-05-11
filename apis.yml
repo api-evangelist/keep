@@ -1,0 +1,59 @@
+aid: keep
+name: Keep
+description: >-
+  Keep is an open-source AIOps and alert management platform that unifies
+  alerts from any monitoring tool, providing deduplication, correlation,
+  enrichment, and workflow automation across observability, incident
+  response, ticketing, and CMDB systems. The Keep REST API enables
+  programmatic access to alerts, incidents, workflows, providers, and
+  integrations with FastAPI-generated OpenAPI documentation.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - AIOps
+  - Alerting
+  - Incident Management
+  - Observability
+  - Open Source
+  - SRE
+  - Workflow Automation
+url: https://raw.githubusercontent.com/api-evangelist/keep/refs/heads/main/apis.yml
+created: '2026-05-11'
+modified: '2026-05-11'
+specificationVersion: '0.19'
+apis:
+  - aid: keep:rest-api
+    name: Keep REST API
+    description: >-
+      REST API for managing alerts, incidents, workflows, providers, and
+      integrations within the Keep AIOps platform. Authentication uses API
+      keys or Bearer tokens with auto-generated OpenAPI documentation.
+    humanURL: https://docs.keephq.dev
+    baseURL: https://api.keephq.dev
+    tags:
+      - AIOps
+      - Alerts
+      - Incidents
+      - Workflows
+      - Providers
+    properties:
+      - type: Documentation
+        url: https://docs.keephq.dev/overview/introduction
+      - type: API Reference
+        url: https://api.keephq.dev/docs
+      - type: OpenAPI
+        url: https://api.keephq.dev/openapi.json
+common:
+  - type: Website
+    url: https://www.keephq.dev
+  - type: Documentation
+    url: https://docs.keephq.dev
+  - type: GitHub Organization
+    url: https://github.com/keephq
+  - type: GitHub Repo
+    url: https://github.com/keephq/keep
+  - type: Sign Up
+    url: https://platform.keephq.dev
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

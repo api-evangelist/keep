@@ -39,7 +39,7 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.keephq.dev/overview/introduction
-      - type: API Reference
+      - type: APIReference
         url: https://api.keephq.dev/docs
       - type: OpenAPI
         url: https://api.keephq.dev/openapi.json
@@ -48,11 +48,11 @@ common:
     url: https://www.keephq.dev
   - type: Documentation
     url: https://docs.keephq.dev
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/keephq
   - type: GitHub Repo
     url: https://github.com/keephq/keep
-  - type: Sign Up
+  - type: SignUp
     url: https://platform.keephq.dev
 maintainers:
   - FN: Kin Lane

@@ -44,6 +44,8 @@ apis:
       - type: OpenAPI
         url: https://api.keephq.dev/openapi.json
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/keepalerting
   - type: Website
     url: https://www.keephq.dev
   - type: Documentation

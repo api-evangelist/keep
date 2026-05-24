@@ -56,6 +56,8 @@ common:
     url: https://github.com/keephq/keep
   - type: SignUp
     url: https://platform.keephq.dev
+  - type: LLMsTxt
+    url: https://docs.keephq.dev/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

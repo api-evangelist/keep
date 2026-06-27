@@ -52,11 +52,11 @@ common:
     url: https://docs.keephq.dev
   - type: GitHubOrganization
     url: https://github.com/keephq
-  - type: GitHub Repo
+  - type: GitHubRepo
     url: https://github.com/keephq/keep
-  - type: SignUp
+  - type: Signup
     url: https://platform.keephq.dev
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.keephq.dev/llms.txt
 maintainers:
   - FN: Kin Lane

@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/keep-openapi.json
+docs: https://docs.keephq.dev/deployment/authentication/overview
+note: Keep does not publish OAuth scopes; API access uses API keys/JWT bearer tokens
+  with role-based access control (RBAC) configured per identity provider (Auth0,
+  Keycloak, Azure AD, Okta, OneLogin), per https://docs.keephq.dev/deployment/authentication/overview.
+schemes:
+- name: OAuth2PasswordBearer
+  source: openapi/keep-openapi.json
+  flows:
+  - flow: password
+    tokenUrl: token
+scopes: []

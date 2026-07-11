@@ -1,0 +1,32 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/keep-openapi.json
+summary:
+  types:
+  - apiKey
+  - http
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows:
+  - password
+schemes:
+- name: API Key
+  type: apiKey
+  in: header
+  parameter: X-API-KEY
+  sources:
+  - openapi/keep-openapi.json
+- name: HTTPBasic
+  type: http
+  scheme: basic
+  sources:
+  - openapi/keep-openapi.json
+- name: OAuth2PasswordBearer
+  type: oauth2
+  flows:
+  - flow: password
+    tokenUrl: token
+    scopes: 0
+  sources:
+  - openapi/keep-openapi.json

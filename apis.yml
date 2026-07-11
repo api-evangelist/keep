@@ -44,6 +44,10 @@ apis:
       - type: OpenAPI
         url: https://api.keephq.dev/openapi.json
 common:
+  - type: DomainSecurity
+    url: security/keep-domain-security.yml
+  - type: Authentication
+    url: authentication/keep-authentication.yml
   - type: OAuthScopes
     url: scopes/keep-scopes.yml
   - type: LinkedIn

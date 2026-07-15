@@ -44,6 +44,8 @@ apis:
       - type: OpenAPI
         url: https://api.keephq.dev/openapi.json
 common:
+  - type: AgenticAccess
+    url: agentic-access/keep-agentic-access.yml
   - type: DomainSecurity
     url: security/keep-domain-security.yml
   - type: Authentication

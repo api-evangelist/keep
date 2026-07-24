@@ -1,0 +1,86 @@
+openapi: 3.0.2
+info:
+  title: Keep actions metrics API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: metrics
+paths:
+  /metrics:
+    get:
+      tags:
+      - metrics
+      summary: Get Metrics
+      description: "This endpoint is used by Prometheus to scrape such metrics from the application:\n- alerts_total {incident_name, incident_id} - The total number of alerts per incident.\n- open_incidents_total - The total number of open incidents.\n- workflows_executions_total {status} - The total number of workflow executions.\n\nPlease note that those metrics are per-tenant and are not designed to be used for the monitoring of the application itself.\n\nExample prometheus configuration:\n```\nscrape_configs:\n- job_name: \"scrape_keep\"\n  scrape_interval: 5m  # It's important to scrape not too often to avoid rate limiting.\n  static_configs:\n  - targets: [\"https://api.keephq.dev\"]  # Or your own domain.\n  authorization:\n    type: Bearer\n    credentials: \"{Your API Key}\"\n\n  # Optional, you can add labels to exported incidents. \n  # Label values will be equal to the last incident's alert payload value matching the label.\n  # Attention! Don't add \"flaky\" labels which could change from alert to alert within the same incident.\n  # Good labels: ['labels.department', 'labels.team'], bad labels: ['labels.severity', 'labels.pod_id']\n  # Check Keep -> Feed -> \"extraPayload\" column, it will help in writing labels.\n\n  params:\n    labels: ['labels.service', 'labels.queue']\n  # Will resuld as: \"labels_service\" and \"labels_queue\".\n```"
+      operationId: get_metrics_metrics_get
+      parameters:
+      - required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Labels
+        name: labels
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

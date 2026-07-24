@@ -1,0 +1,251 @@
+openapi: 3.0.2
+info:
+  title: Keep actions maintenance API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: maintenance
+paths:
+  /maintenance:
+    get:
+      tags:
+      - maintenance
+      summary: Get Maintenance Rules
+      description: Get all maintenance rules
+      operationId: get_maintenance_rules_maintenance_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MaintenanceRuleRead'
+                type: array
+                title: Response Get Maintenance Rules Maintenance Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - maintenance
+      summary: Create Maintenance Rule
+      description: Create a new maintenance rule
+      operationId: create_maintenance_rule_maintenance_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MaintenanceRuleCreate'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaintenanceRuleRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /maintenance/{rule_id}:
+    put:
+      tags:
+      - maintenance
+      summary: Update Maintenance Rule
+      description: Update an existing maintenance rule
+      operationId: update_maintenance_rule_maintenance__rule_id__put
+      parameters:
+      - required: true
+        schema:
+          type: integer
+          title: Rule Id
+        name: rule_id
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MaintenanceRuleCreate'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaintenanceRuleRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - maintenance
+      summary: Delete Maintenance Rule
+      description: Delete a maintenance rule
+      operationId: delete_maintenance_rule_maintenance__rule_id__delete
+      parameters:
+      - required: true
+        schema:
+          type: integer
+          title: Rule Id
+        name: rule_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    MaintenanceRuleRead:
+      properties:
+        id:
+          type: integer
+          title: Id
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        created_by:
+          type: string
+          title: Created By
+        cel_query:
+          type: string
+          title: Cel Query
+        start_time:
+          type: string
+          format: date-time
+          title: Start Time
+        end_time:
+          type: string
+          format: date-time
+          title: End Time
+        duration_seconds:
+          type: integer
+          title: Duration Seconds
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+        suppress:
+          type: boolean
+          title: Suppress
+          default: false
+        enabled:
+          type: boolean
+          title: Enabled
+          default: true
+      type: object
+      required:
+      - id
+      - name
+      - created_by
+      - cel_query
+      - start_time
+      - end_time
+      title: MaintenanceRuleRead
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    MaintenanceRuleCreate:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        cel_query:
+          type: string
+          title: Cel Query
+        start_time:
+          type: string
+          format: date-time
+          title: Start Time
+        duration_seconds:
+          type: integer
+          title: Duration Seconds
+        suppress:
+          type: boolean
+          title: Suppress
+          default: false
+        enabled:
+          type: boolean
+          title: Enabled
+          default: true
+      type: object
+      required:
+      - name
+      - cel_query
+      - start_time
+      title: MaintenanceRuleCreate
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

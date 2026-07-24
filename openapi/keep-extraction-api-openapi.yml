@@ -1,0 +1,257 @@
+openapi: 3.0.2
+info:
+  title: Keep actions extraction API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: extraction
+paths:
+  /extraction:
+    get:
+      tags:
+      - extraction
+      summary: Get Extraction Rules
+      description: Get all extraction rules
+      operationId: get_extraction_rules_extraction_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ExtractionRuleDtoOut'
+                type: array
+                title: Response Get Extraction Rules Extraction Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - extraction
+      summary: Create Extraction Rule
+      description: Create a new extraction rule
+      operationId: create_extraction_rule_extraction_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExtractionRuleDtoBase'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtractionRuleDtoOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /extraction/{rule_id}:
+    put:
+      tags:
+      - extraction
+      summary: Update Extraction Rule
+      description: Update an existing extraction rule
+      operationId: update_extraction_rule_extraction__rule_id__put
+      parameters:
+      - required: true
+        schema:
+          type: integer
+          title: Rule Id
+        name: rule_id
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExtractionRuleDtoBase'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtractionRuleDtoOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - extraction
+      summary: Delete Extraction Rule
+      description: Delete an extraction rule
+      operationId: delete_extraction_rule_extraction__rule_id__delete
+      parameters:
+      - required: true
+        schema:
+          type: integer
+          title: Rule Id
+        name: rule_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    ExtractionRuleDtoBase:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        priority:
+          type: integer
+          title: Priority
+          default: 0
+        attribute:
+          type: string
+          title: Attribute
+        condition:
+          type: string
+          title: Condition
+        disabled:
+          type: boolean
+          title: Disabled
+          default: false
+        regex:
+          type: string
+          title: Regex
+        pre:
+          type: boolean
+          title: Pre
+          default: false
+      type: object
+      required:
+      - name
+      - regex
+      title: ExtractionRuleDtoBase
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ExtractionRuleDtoOut:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        priority:
+          type: integer
+          title: Priority
+          default: 0
+        attribute:
+          type: string
+          title: Attribute
+        condition:
+          type: string
+          title: Condition
+        disabled:
+          type: boolean
+          title: Disabled
+          default: false
+        regex:
+          type: string
+          title: Regex
+        pre:
+          type: boolean
+          title: Pre
+          default: false
+        id:
+          type: integer
+          title: Id
+        created_by:
+          type: string
+          title: Created By
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_by:
+          type: string
+          title: Updated By
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - name
+      - regex
+      - id
+      - created_at
+      title: ExtractionRuleDtoOut
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

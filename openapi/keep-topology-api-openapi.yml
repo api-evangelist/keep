@@ -1,0 +1,386 @@
+openapi: 3.0.2
+info:
+  title: Keep actions topology API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: topology
+paths:
+  /topology:
+    get:
+      tags:
+      - topology
+      summary: Get Topology Data
+      description: Get all topology data
+      operationId: get_topology_data_topology_get
+      parameters:
+      - required: false
+        schema:
+          type: string
+          title: Provider Ids
+        name: provider_ids
+        in: query
+      - required: false
+        schema:
+          type: string
+          title: Services
+        name: services
+        in: query
+      - required: false
+        schema:
+          type: string
+          title: Environment
+        name: environment
+        in: query
+      - required: false
+        schema:
+          type: boolean
+          title: Include Empty Deps
+          default: true
+        name: include_empty_deps
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TopologyServiceDtoOut'
+                type: array
+                title: Response Get Topology Data Topology Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /topology/applications:
+    get:
+      tags:
+      - topology
+      summary: Get Applications
+      description: Get all applications
+      operationId: get_applications_topology_applications_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TopologyApplicationDtoOut'
+                type: array
+                title: Response Get Applications Topology Applications Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - topology
+      summary: Create Application
+      description: Create a new application
+      operationId: create_application_topology_applications_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TopologyApplicationDtoIn'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopologyApplicationDtoOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /topology/applications/{application_id}:
+    put:
+      tags:
+      - topology
+      summary: Update Application
+      description: Update an application
+      operationId: update_application_topology_applications__application_id__put
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Application Id
+        name: application_id
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TopologyApplicationDtoIn'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopologyApplicationDtoOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - topology
+      summary: Delete Application
+      description: Delete an application
+      operationId: delete_application_topology_applications__application_id__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Application Id
+        name: application_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    TopologyApplicationServiceDto:
+      properties:
+        id:
+          type: integer
+          title: Id
+        name:
+          type: string
+          title: Name
+        service:
+          type: string
+          title: Service
+      type: object
+      required:
+      - id
+      - name
+      - service
+      title: TopologyApplicationServiceDto
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    TopologyApplicationDtoOut:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        services:
+          items:
+            $ref: '#/components/schemas/TopologyApplicationServiceDto'
+          type: array
+          title: Services
+          default: []
+      type: object
+      required:
+      - id
+      - name
+      title: TopologyApplicationDtoOut
+    TopologyApplicationDtoIn:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        services:
+          items:
+            $ref: '#/components/schemas/TopologyServiceDtoIn'
+          type: array
+          title: Services
+          default: []
+      type: object
+      required:
+      - name
+      title: TopologyApplicationDtoIn
+    TopologyServiceDependencyDto:
+      properties:
+        serviceId:
+          type: integer
+          title: Serviceid
+        serviceName:
+          type: string
+          title: Servicename
+        protocol:
+          type: string
+          title: Protocol
+          default: unknown
+      type: object
+      required:
+      - serviceId
+      - serviceName
+      title: TopologyServiceDependencyDto
+    TopologyServiceDtoIn:
+      properties:
+        id:
+          type: integer
+          title: Id
+      type: object
+      required:
+      - id
+      title: TopologyServiceDtoIn
+    TopologyServiceDtoOut:
+      properties:
+        source_provider_id:
+          type: string
+          title: Source Provider Id
+        repository:
+          type: string
+          title: Repository
+        tags:
+          items:
+            type: string
+          type: array
+          title: Tags
+        service:
+          type: string
+          title: Service
+        display_name:
+          type: string
+          title: Display Name
+        environment:
+          type: string
+          title: Environment
+          default: unknown
+        description:
+          type: string
+          title: Description
+        team:
+          type: string
+          title: Team
+        email:
+          type: string
+          title: Email
+        slack:
+          type: string
+          title: Slack
+        ip_address:
+          type: string
+          title: Ip Address
+        mac_address:
+          type: string
+          title: Mac Address
+        category:
+          type: string
+          title: Category
+        manufacturer:
+          type: string
+          title: Manufacturer
+        id:
+          type: integer
+          title: Id
+        dependencies:
+          items:
+            $ref: '#/components/schemas/TopologyServiceDependencyDto'
+          type: array
+          title: Dependencies
+        application_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Application Ids
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - service
+      - display_name
+      - id
+      - dependencies
+      - application_ids
+      title: TopologyServiceDtoOut
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

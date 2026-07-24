@@ -1,0 +1,686 @@
+openapi: 3.0.2
+info:
+  title: Keep actions auth API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: auth
+paths:
+  /auth/groups:
+    get:
+      tags:
+      - auth
+      summary: Get Groups
+      description: Get all groups
+      operationId: get_groups_auth_groups_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Group'
+                type: array
+                title: Response Get Groups Auth Groups Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - auth
+      summary: Create Group
+      description: Create a group
+      operationId: create_group_auth_groups_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrUpdateGroupRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /auth/groups/{group_name}:
+    put:
+      tags:
+      - auth
+      summary: Update Group
+      description: Update a group
+      operationId: update_group_auth_groups__group_name__put
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Group Name
+        name: group_name
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrUpdateGroupRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - auth
+      summary: Delete Group
+      description: Delete a group
+      operationId: delete_group_auth_groups__group_name__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Group Name
+        name: group_name
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /auth/permissions:
+    get:
+      tags:
+      - auth
+      summary: Get Permissions
+      description: Get resources permissions
+      operationId: get_permissions_auth_permissions_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ResourcePermission'
+                type: array
+                title: Response Get Permissions Auth Permissions Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - auth
+      summary: Create Permissions
+      description: Create permissions for resources
+      operationId: create_permissions_auth_permissions_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/ResourcePermission'
+              type: array
+              title: Resource Permissions
+              description: List of resource permissions
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /auth/permissions/scopes:
+    get:
+      tags:
+      - auth
+      summary: Get Scopes
+      description: Get all resources types
+      operationId: get_scopes_auth_permissions_scopes_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+                title: Response Get Scopes Auth Permissions Scopes Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /auth/roles:
+    get:
+      tags:
+      - auth
+      summary: Get Roles
+      description: Get roles
+      operationId: get_roles_auth_roles_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Role'
+                type: array
+                title: Response Get Roles Auth Roles Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - auth
+      summary: Create Role
+      description: Create role
+      operationId: create_role_auth_roles_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateOrUpdateRole'
+              title: Role
+              description: Role
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /auth/roles/{role_id}:
+    put:
+      tags:
+      - auth
+      summary: Update Role
+      description: Update role
+      operationId: update_role_auth_roles__role_id__put
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Role Id
+        name: role_id
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateOrUpdateRole'
+              title: Role
+              description: Role
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - auth
+      summary: Delete Role
+      description: Delete role
+      operationId: delete_role_auth_roles__role_id__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Role Id
+        name: role_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /auth/users:
+    get:
+      tags:
+      - auth
+      summary: Get Users
+      description: Get all users
+      operationId: get_users_auth_users_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/User'
+                type: array
+                title: Response Get Users Auth Users Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - auth
+      summary: Create User
+      description: Create a user
+      operationId: create_user_auth_users_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /auth/users/{user_email}:
+    put:
+      tags:
+      - auth
+      summary: Update User
+      description: Update a user
+      operationId: update_user_auth_users__user_email__put
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: User Email
+        name: user_email
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - auth
+      summary: Delete User
+      description: Delete a user
+      operationId: delete_user_auth_users__user_email__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: User Email
+        name: user_email
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    User:
+      properties:
+        email:
+          type: string
+          title: Email
+        name:
+          type: string
+          title: Name
+        role:
+          type: string
+          title: Role
+        picture:
+          type: string
+          title: Picture
+        created_at:
+          type: string
+          title: Created At
+        last_login:
+          type: string
+          title: Last Login
+        ldap:
+          type: boolean
+          title: Ldap
+          default: false
+        groups:
+          items:
+            $ref: '#/components/schemas/Group'
+          type: array
+          title: Groups
+          default: []
+      type: object
+      required:
+      - email
+      - name
+      - created_at
+      title: User
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    CreateUserRequest:
+      properties:
+        username:
+          type: string
+          title: Username
+        name:
+          type: string
+          title: Name
+        password:
+          type: string
+          title: Password
+        role:
+          type: string
+          title: Role
+        groups:
+          items:
+            type: string
+          type: array
+          title: Groups
+      type: object
+      required:
+      - username
+      title: CreateUserRequest
+    Role:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        scopes:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+          title: Scopes
+        predefined:
+          type: boolean
+          title: Predefined
+          default: true
+      type: object
+      required:
+      - id
+      - name
+      - description
+      - scopes
+      title: Role
+    UpdateUserRequest:
+      properties:
+        username:
+          type: string
+          title: Username
+        password:
+          type: string
+          title: Password
+        role:
+          type: string
+          title: Role
+        groups:
+          items:
+            type: string
+          type: array
+          title: Groups
+      type: object
+      title: UpdateUserRequest
+    PermissionEntity:
+      properties:
+        id:
+          type: string
+          title: Id
+        type:
+          type: string
+          title: Type
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - id
+      - type
+      title: PermissionEntity
+    Group:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        roles:
+          items:
+            type: string
+          type: array
+          title: Roles
+          default: []
+        members:
+          items:
+            type: string
+          type: array
+          title: Members
+          default: []
+        memberCount:
+          type: integer
+          title: Membercount
+          default: 0
+      type: object
+      required:
+      - id
+      - name
+      title: Group
+    ResourcePermission:
+      properties:
+        resource_id:
+          type: string
+          title: Resource Id
+        resource_name:
+          type: string
+          title: Resource Name
+        resource_type:
+          type: string
+          title: Resource Type
+        permissions:
+          items:
+            $ref: '#/components/schemas/PermissionEntity'
+          type: array
+          title: Permissions
+      type: object
+      required:
+      - resource_id
+      - resource_name
+      - resource_type
+      - permissions
+      title: ResourcePermission
+    CreateOrUpdateRole:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        scopes:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+          title: Scopes
+      type: object
+      title: CreateOrUpdateRole
+    CreateOrUpdateGroupRequest:
+      properties:
+        name:
+          type: string
+          title: Name
+        roles:
+          items:
+            type: string
+          type: array
+          title: Roles
+        members:
+          items:
+            type: string
+          type: array
+          title: Members
+      type: object
+      required:
+      - name
+      - roles
+      - members
+      title: CreateOrUpdateGroupRequest
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

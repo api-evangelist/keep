@@ -1,0 +1,316 @@
+openapi: 3.0.2
+info:
+  title: Keep actions settings API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: settings
+paths:
+  /settings/webhook:
+    get:
+      tags:
+      - settings
+      summary: Webhook Settings
+      description: Get details about the webhook endpoint (e.g. the API url and an API key)
+      operationId: webhook_settings_settings_webhook_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookSettings'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /settings/smtp:
+    get:
+      tags:
+      - settings
+      summary: Get Smtp Settings
+      description: Get SMTP settings
+      operationId: get_smtp_settings_settings_smtp_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - settings
+      summary: Update Smtp Settings
+      description: Install or update SMTP settings
+      operationId: update_smtp_settings_settings_smtp_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SMTPSettings'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - settings
+      summary: Delete Smtp Settings
+      description: Delete SMTP settings
+      operationId: delete_smtp_settings_settings_smtp_delete
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /settings/smtp/test:
+    post:
+      tags:
+      - settings
+      summary: Test Smtp Settings
+      description: Test SMTP settings
+      operationId: test_smtp_settings_settings_smtp_test_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SMTPSettings'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /settings/apikey:
+    put:
+      tags:
+      - settings
+      summary: Update Api Key
+      description: Update API key secret
+      operationId: update_api_key_settings_apikey_put
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - settings
+      summary: Create Key
+      description: Create API key
+      operationId: create_key_settings_apikey_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /settings/apikeys:
+    get:
+      tags:
+      - settings
+      summary: Get Keys
+      description: Get API keys
+      operationId: get_keys_settings_apikeys_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /settings/apikey/{keyId}:
+    delete:
+      tags:
+      - settings
+      summary: Delete Api Key
+      description: Delete API key
+      operationId: delete_api_key_settings_apikey__keyId__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Keyid
+        name: keyId
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /settings/sso:
+    get:
+      tags:
+      - settings
+      summary: Get Sso Settings
+      operationId: get_sso_settings_settings_sso_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    SMTPSettings:
+      properties:
+        host:
+          type: string
+          title: Host
+        port:
+          type: integer
+          title: Port
+        from_email:
+          type: string
+          title: From Email
+        username:
+          type: string
+          title: Username
+        password:
+          type: string
+          format: password
+          title: Password
+          writeOnly: true
+        secure:
+          type: boolean
+          title: Secure
+          default: true
+        to_email:
+          type: string
+          title: To Email
+          default: keep@example.com
+      type: object
+      required:
+      - host
+      - port
+      - from_email
+      title: SMTPSettings
+      example:
+        host: smtp.example.com
+        port: 587
+        username: user@example.com
+        password: password
+        secure: true
+        from_email: noreply@example.com
+        to_email: ''
+    WebhookSettings:
+      properties:
+        webhookApi:
+          type: string
+          title: Webhookapi
+        apiKey:
+          type: string
+          title: Apikey
+        modelSchema:
+          type: object
+          title: Modelschema
+      type: object
+      required:
+      - webhookApi
+      - apiKey
+      - modelSchema
+      title: WebhookSettings
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

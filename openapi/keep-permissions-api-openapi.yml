@@ -1,0 +1,167 @@
+openapi: 3.0.2
+info:
+  title: Keep actions permissions API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: permissions
+paths:
+  /auth/permissions:
+    get:
+      tags:
+      - permissions
+      summary: Get Permissions
+      description: Get resources permissions
+      operationId: get_permissions_auth_permissions_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ResourcePermission'
+                type: array
+                title: Response Get Permissions Auth Permissions Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - permissions
+      summary: Create Permissions
+      description: Create permissions for resources
+      operationId: create_permissions_auth_permissions_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/ResourcePermission'
+              type: array
+              title: Resource Permissions
+              description: List of resource permissions
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /auth/permissions/scopes:
+    get:
+      tags:
+      - permissions
+      summary: Get Scopes
+      description: Get all resources types
+      operationId: get_scopes_auth_permissions_scopes_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+                title: Response Get Scopes Auth Permissions Scopes Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    PermissionEntity:
+      properties:
+        id:
+          type: string
+          title: Id
+        type:
+          type: string
+          title: Type
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - id
+      - type
+      title: PermissionEntity
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ResourcePermission:
+      properties:
+        resource_id:
+          type: string
+          title: Resource Id
+        resource_name:
+          type: string
+          title: Resource Name
+        resource_type:
+          type: string
+          title: Resource Type
+        permissions:
+          items:
+            $ref: '#/components/schemas/PermissionEntity'
+          type: array
+          title: Permissions
+      type: object
+      required:
+      - resource_id
+      - resource_name
+      - resource_type
+      - permissions
+      title: ResourcePermission
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

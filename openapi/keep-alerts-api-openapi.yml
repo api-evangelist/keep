@@ -1,0 +1,1562 @@
+openapi: 3.0.2
+info:
+  title: Keep actions alerts API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: alerts
+paths:
+  /alerts:
+    get:
+      tags:
+      - alerts
+      summary: Get All Alerts
+      description: Get last alerts occurrence
+      operationId: get_all_alerts_alerts_get
+      parameters:
+      - required: false
+        schema:
+          type: integer
+          title: Limit
+          default: 1000
+        name: limit
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AlertDto'
+                type: array
+                title: Response Get All Alerts Alerts Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - alerts
+      summary: Delete Alert
+      description: Delete alert by finerprint and last received time
+      operationId: delete_alert_alerts_delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteRequestBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+                title: Response Delete Alert Alerts Delete
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /alerts/{fingerprint}/history:
+    get:
+      tags:
+      - alerts
+      summary: Get Alert History
+      description: Get alert history
+      operationId: get_alert_history_alerts__fingerprint__history_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Fingerprint
+        name: fingerprint
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AlertDto'
+                type: array
+                title: Response Get Alert History Alerts  Fingerprint  History Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /alerts/{fingerprint}/assign/{last_received}:
+    post:
+      tags:
+      - alerts
+      summary: Assign Alert
+      description: Assign alert to user
+      operationId: assign_alert_alerts__fingerprint__assign__last_received__post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Fingerprint
+        name: fingerprint
+        in: path
+      - required: true
+        schema:
+          type: string
+          title: Last Received
+        name: last_received
+        in: path
+      - required: false
+        schema:
+          type: boolean
+          title: Unassign
+          default: false
+        name: unassign
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+                title: Response Assign Alert Alerts  Fingerprint  Assign  Last Received  Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /alerts/event:
+    post:
+      tags:
+      - alerts
+      summary: Receive Generic Event
+      description: Receive a generic alert event
+      operationId: receive_generic_event_alerts_event_post
+      parameters:
+      - required: false
+        schema:
+          type: string
+          title: Fingerprint
+        name: fingerprint
+        in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              anyOf:
+              - $ref: '#/components/schemas/AlertDto'
+              - items:
+                  $ref: '#/components/schemas/AlertDto'
+                type: array
+              - type: object
+              title: Event
+        required: true
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - $ref: '#/components/schemas/AlertDto'
+                - items:
+                    $ref: '#/components/schemas/AlertDto'
+                  type: array
+                title: Response Receive Generic Event Alerts Event Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /alerts/event/netdata:
+    get:
+      tags:
+      - alerts
+      summary: Webhook Challenge
+      description: Helper function to complete Netdata webhook challenge
+      operationId: webhook_challenge_alerts_event_netdata_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /alerts/event/{provider_type}:
+    post:
+      tags:
+      - alerts
+      summary: Receive Event
+      description: Receive an alert event from a provider
+      operationId: receive_event_alerts_event__provider_type__post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Provider Type
+        name: provider_type
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: Provider Id
+        name: provider_id
+        in: query
+      - required: false
+        schema:
+          type: string
+          title: Fingerprint
+        name: fingerprint
+        in: query
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+                title: Response Receive Event Alerts Event  Provider Type  Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /alerts/{fingerprint}:
+    get:
+      tags:
+      - alerts
+      summary: Get Alert
+      description: Get alert by fingerprint
+      operationId: get_alert_alerts__fingerprint__get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Fingerprint
+        name: fingerprint
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertDto'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /alerts/enrich:
+    post:
+      tags:
+      - alerts
+      summary: Enrich Alert
+      description: Enrich an alert
+      operationId: enrich_alert_alerts_enrich_post
+      parameters:
+      - description: Dispose on new alert
+        required: false
+        schema:
+          type: boolean
+          title: Dispose On New Alert
+          description: Dispose on new alert
+          default: false
+        name: dispose_on_new_alert
+        in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnrichAlertRequestBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+                title: Response Enrich Alert Alerts Enrich Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /alerts/unenrich:
+    post:
+      tags:
+      - alerts
+      summary: Unenrich Alert
+      description: Un-Enrich an alert
+      operationId: unenrich_alert_alerts_unenrich_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnEnrichAlertRequestBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+                title: Response Unenrich Alert Alerts Unenrich Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /alerts/search:
+    post:
+      tags:
+      - alerts
+      summary: Search Alerts
+      description: Search alerts
+      operationId: search_alerts_alerts_search_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchAlertsRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AlertDto'
+                type: array
+                title: Response Search Alerts Alerts Search Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /alerts/audit:
+    post:
+      tags:
+      - alerts
+      summary: Get Multiple Fingerprint Alert Audit
+      description: Get alert timeline audit trail for multiple fingerprints
+      operationId: get_multiple_fingerprint_alert_audit_alerts_audit_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                type: string
+              type: array
+              title: Fingerprints
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AlertAuditDto'
+                type: array
+                title: Response Get Multiple Fingerprint Alert Audit Alerts Audit Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /alerts/{fingerprint}/audit:
+    get:
+      tags:
+      - alerts
+      summary: Get Alert Audit
+      description: Get alert timeline audit trail
+      operationId: get_alert_audit_alerts__fingerprint__audit_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Fingerprint
+        name: fingerprint
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AlertAuditDto'
+                type: array
+                title: Response Get Alert Audit Alerts  Fingerprint  Audit Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /alerts/quality/metrics:
+    get:
+      tags:
+      - alerts
+      summary: Get Alert Quality
+      description: Get alert quality
+      operationId: get_alert_quality_alerts_quality_metrics_get
+      parameters:
+      - required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Fields
+          default: []
+        name: fields
+        in: query
+      - required: false
+        schema:
+          type: string
+          title: Time Stamp
+        name: time_stamp
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows:
+    get:
+      tags:
+      - alerts
+      summary: Get Workflows
+      description: Get workflows
+      operationId: get_workflows_workflows_get
+      parameters:
+      - required: false
+        schema:
+          type: boolean
+          title: Is V2
+          default: false
+        name: is_v2
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - items:
+                    $ref: '#/components/schemas/WorkflowDTO'
+                  type: array
+                - items:
+                    type: object
+                  type: array
+                title: Response Get Workflows Workflows Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - alerts
+      summary: Create Workflow
+      description: Create or update a workflow
+      operationId: create_workflow_workflows_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_workflow_workflows_post'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowCreateOrUpdateDTO'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/export:
+    get:
+      tags:
+      - alerts
+      summary: Export Workflows
+      description: export all workflow Yamls
+      operationId: export_workflows_workflows_export_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+                title: Response Export Workflows Workflows Export Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/{workflow_id}/run:
+    post:
+      tags:
+      - alerts
+      summary: Run Workflow
+      description: Run a workflow
+      operationId: run_workflow_workflows__workflow_id__run_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Workflow Id
+        name: workflow_id
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: Body
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Response Run Workflow Workflows  Workflow Id  Run Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/test:
+    post:
+      tags:
+      - alerts
+      summary: Run Workflow From Definition
+      description: Test run a workflow from a definition
+      operationId: run_workflow_from_definition_workflows_test_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_run_workflow_from_definition_workflows_test_post'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Response Run Workflow From Definition Workflows Test Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/json:
+    post:
+      tags:
+      - alerts
+      summary: Create Workflow From Body
+      description: Create or update a workflow
+      operationId: create_workflow_from_body_workflows_json_post
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowCreateOrUpdateDTO'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/random-templates:
+    get:
+      tags:
+      - alerts
+      summary: Get Random Workflow Templates
+      description: Get random workflow templates
+      operationId: get_random_workflow_templates_workflows_random_templates_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  type: object
+                type: array
+                title: Response Get Random Workflow Templates Workflows Random Templates Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/{workflow_id}:
+    get:
+      tags:
+      - alerts
+      summary: Get Workflow By Id
+      description: Get workflow by ID
+      operationId: get_workflow_by_id_workflows__workflow_id__get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Workflow Id
+        name: workflow_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    put:
+      tags:
+      - alerts
+      summary: Update Workflow By Id
+      description: Update a workflow
+      operationId: update_workflow_by_id_workflows__workflow_id__put
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Workflow Id
+        name: workflow_id
+        in: path
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowCreateOrUpdateDTO'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - alerts
+      summary: Delete Workflow By Id
+      description: Delete workflow
+      operationId: delete_workflow_by_id_workflows__workflow_id__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Workflow Id
+        name: workflow_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/{workflow_id}/raw:
+    get:
+      tags:
+      - alerts
+      summary: Get Raw Workflow By Id
+      description: Get workflow executions by ID
+      operationId: get_raw_workflow_by_id_workflows__workflow_id__raw_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Workflow Id
+        name: workflow_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: string
+                title: Response Get Raw Workflow By Id Workflows  Workflow Id  Raw Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/executions:
+    get:
+      tags:
+      - alerts
+      summary: Get Workflow Executions By Alert Fingerprint
+      description: Get workflow executions by alert fingerprint
+      operationId: get_workflow_executions_by_alert_fingerprint_workflows_executions_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/WorkflowToAlertExecutionDTO'
+                type: array
+                title: Response Get Workflow Executions By Alert Fingerprint Workflows Executions Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/{workflow_id}/runs:
+    get:
+      tags:
+      - alerts
+      summary: Get Workflow By Id
+      description: Get workflow executions by ID
+      operationId: get_workflow_by_id_workflows__workflow_id__runs_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Workflow Id
+        name: workflow_id
+        in: path
+      - required: false
+        schema:
+          type: integer
+          title: Tab
+          default: 1
+        name: tab
+        in: query
+      - required: false
+        schema:
+          type: integer
+          title: Limit
+          default: 25
+        name: limit
+        in: query
+      - required: false
+        schema:
+          type: integer
+          title: Offset
+          default: 0
+        name: offset
+        in: query
+      - required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Status
+        name: status
+        in: query
+      - required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Trigger
+        name: trigger
+        in: query
+      - required: false
+        schema:
+          type: string
+          title: Execution Id
+        name: execution_id
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowExecutionsPaginatedResultsDto'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/{workflow_id}/runs/{workflow_execution_id}:
+    get:
+      tags:
+      - alerts
+      summary: Get Workflow Execution Status
+      description: Get a workflow execution status
+      operationId: get_workflow_execution_status_workflows__workflow_id__runs__workflow_execution_id__get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Workflow Execution Id
+        name: workflow_execution_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowExecutionDTO'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    DeleteRequestBody:
+      properties:
+        fingerprint:
+          type: string
+          title: Fingerprint
+        lastReceived:
+          type: string
+          title: Lastreceived
+        restore:
+          type: boolean
+          title: Restore
+          default: false
+      type: object
+      required:
+      - fingerprint
+      - lastReceived
+      title: DeleteRequestBody
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    WorkflowToAlertExecutionDTO:
+      properties:
+        workflow_id:
+          type: string
+          title: Workflow Id
+        workflow_execution_id:
+          type: string
+          title: Workflow Execution Id
+        alert_fingerprint:
+          type: string
+          title: Alert Fingerprint
+        workflow_status:
+          type: string
+          title: Workflow Status
+        workflow_started:
+          type: string
+          format: date-time
+          title: Workflow Started
+      type: object
+      required:
+      - workflow_id
+      - workflow_execution_id
+      - alert_fingerprint
+      - workflow_status
+      - workflow_started
+      title: WorkflowToAlertExecutionDTO
+    WorkflowExecutionsPaginatedResultsDto:
+      properties:
+        limit:
+          type: integer
+          title: Limit
+          default: 25
+        offset:
+          type: integer
+          title: Offset
+          default: 0
+        count:
+          type: integer
+          title: Count
+        items:
+          items:
+            $ref: '#/components/schemas/WorkflowExecutionDTO'
+          type: array
+          title: Items
+        passCount:
+          type: integer
+          title: Passcount
+          default: 0
+        avgDuration:
+          type: number
+          title: Avgduration
+          default: 0
+        workflow:
+          $ref: '#/components/schemas/WorkflowDTO'
+        failCount:
+          type: integer
+          title: Failcount
+          default: 0
+      type: object
+      required:
+      - count
+      - items
+      title: WorkflowExecutionsPaginatedResultsDto
+    ProviderDTO:
+      properties:
+        type:
+          type: string
+          title: Type
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        installed:
+          type: boolean
+          title: Installed
+      type: object
+      required:
+      - type
+      - name
+      - installed
+      title: ProviderDTO
+    UnEnrichAlertRequestBody:
+      properties:
+        enrichments:
+          items:
+            type: string
+          type: array
+          title: Enrichments
+        fingerprint:
+          type: string
+          title: Fingerprint
+      type: object
+      required:
+      - enrichments
+      - fingerprint
+      title: UnEnrichAlertRequestBody
+    AlertStatus:
+      enum:
+      - firing
+      - resolved
+      - acknowledged
+      - suppressed
+      - pending
+      title: AlertStatus
+      description: An enumeration.
+    AlertActionType:
+      enum:
+      - alert was triggered
+      - alert acknowledged
+      - alert automatically resolved
+      - alert automatically resolved by API
+      - alert manually resolved
+      - alert status manually changed
+      - alert status changed by API
+      - alert status undone
+      - alert enriched by workflow
+      - alert enriched by mapping rule
+      - alert was deduplicated
+      - alert was assigned with ticket
+      - alert was unassigned from ticket
+      - alert ticket was updated
+      - alert enrichments disposed
+      - alert deleted
+      - alert enriched
+      - alert un-enriched
+      - a comment was added to the alert
+      - a comment was removed from the alert
+      - Alert is in maintenance window
+      - A comment was added to the incident
+      title: AlertActionType
+      description: An enumeration.
+    Body_create_workflow_workflows_post:
+      properties:
+        file:
+          type: string
+          format: binary
+          title: File
+      type: object
+      required:
+      - file
+      title: Body_create_workflow_workflows_post
+    WorkflowExecutionDTO:
+      properties:
+        id:
+          type: string
+          title: Id
+        workflow_id:
+          type: string
+          title: Workflow Id
+        started:
+          type: string
+          format: date-time
+          title: Started
+        triggered_by:
+          type: string
+          title: Triggered By
+        status:
+          type: string
+          title: Status
+        workflow_name:
+          type: string
+          title: Workflow Name
+        logs:
+          items:
+            $ref: '#/components/schemas/WorkflowExecutionLogsDTO'
+          type: array
+          title: Logs
+        error:
+          type: string
+          title: Error
+        execution_time:
+          type: number
+          title: Execution Time
+        results:
+          type: object
+          title: Results
+      type: object
+      required:
+      - id
+      - workflow_id
+      - started
+      - triggered_by
+      - status
+      title: WorkflowExecutionDTO
+    PresetSearchQuery:
+      properties:
+        cel_query:
+          type: string
+          minLength: 0
+          title: Cel Query
+        sql_query:
+          type: object
+          title: Sql Query
+        limit:
+          type: integer
+          minimum: 0
+          title: Limit
+          default: 1000
+        timeframe:
+          type: integer
+          minimum: 0
+          title: Timeframe
+          default: 0
+      type: object
+      required:
+      - cel_query
+      - sql_query
+      title: PresetSearchQuery
+    AlertAuditDto:
+      properties:
+        id:
+          type: string
+          title: Id
+        timestamp:
+          type: string
+          format: date-time
+          title: Timestamp
+        fingerprint:
+          type: string
+          title: Fingerprint
+        action:
+          $ref: '#/components/schemas/AlertActionType'
+        user_id:
+          type: string
+          title: User Id
+        description:
+          type: string
+          title: Description
+      type: object
+      required:
+      - id
+      - timestamp
+      - fingerprint
+      - action
+      - user_id
+      - description
+      title: AlertAuditDto
+    AlertSeverity:
+      enum:
+      - critical
+      - high
+      - warning
+      - info
+      - low
+      title: AlertSeverity
+      description: An enumeration.
+    Body_run_workflow_from_definition_workflows_test_post:
+      properties:
+        file:
+          type: string
+          format: binary
+          title: File
+      type: object
+      title: Body_run_workflow_from_definition_workflows_test_post
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    WorkflowDTO:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+          default: Workflow file doesn't contain name
+        description:
+          type: string
+          title: Description
+          default: Workflow file doesn't contain description
+        created_by:
+          type: string
+          title: Created By
+        creation_time:
+          type: string
+          format: date-time
+          title: Creation Time
+        triggers:
+          items:
+            type: object
+          type: array
+          title: Triggers
+        interval:
+          type: integer
+          title: Interval
+        disabled:
+          type: boolean
+          title: Disabled
+          default: false
+        last_execution_time:
+          type: string
+          format: date-time
+          title: Last Execution Time
+        last_execution_status:
+          type: string
+          title: Last Execution Status
+        providers:
+          items:
+            $ref: '#/components/schemas/ProviderDTO'
+          type: array
+          title: Providers
+        workflow_raw:
+          type: string
+          title: Workflow Raw
+        revision:
+          type: integer
+          title: Revision
+          default: 1
+        last_updated:
+          type: string
+          format: date-time
+          title: Last Updated
+        invalid:
+          type: boolean
+          title: Invalid
+          default: false
+        last_executions:
+          items:
+            type: object
+          type: array
+          title: Last Executions
+        last_execution_started:
+          type: string
+          format: date-time
+          title: Last Execution Started
+        provisioned:
+          type: boolean
+          title: Provisioned
+          default: false
+        provisioned_file:
+          type: string
+          title: Provisioned File
+      type: object
+      required:
+      - id
+      - created_by
+      - creation_time
+      - providers
+      - workflow_raw
+      title: WorkflowDTO
+    EnrichAlertRequestBody:
+      properties:
+        enrichments:
+          additionalProperties:
+            type: string
+          type: object
+          title: Enrichments
+        fingerprint:
+          type: string
+          title: Fingerprint
+      type: object
+      required:
+      - enrichments
+      - fingerprint
+      title: EnrichAlertRequestBody
+    AlertDto:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        status:
+          $ref: '#/components/schemas/AlertStatus'
+        severity:
+          $ref: '#/components/schemas/AlertSeverity'
+        lastReceived:
+          type: string
+          title: Lastreceived
+        firingStartTime:
+          type: string
+          title: Firingstarttime
+        environment:
+          type: string
+          title: Environment
+          default: undefined
+        isFullDuplicate:
+          type: boolean
+          title: Isfullduplicate
+          default: false
+        isPartialDuplicate:
+          type: boolean
+          title: Ispartialduplicate
+          default: false
+        duplicateReason:
+          type: string
+          title: Duplicatereason
+        service:
+          type: string
+          title: Service
+        source:
+          items:
+            type: string
+          type: array
+          title: Source
+          default: []
+        apiKeyRef:
+          type: string
+          title: Apikeyref
+        message:
+          type: string
+          title: Message
+        description:
+          type: string
+          title: Description
+        pushed:
+          type: boolean
+          title: Pushed
+          default: false
+        event_id:
+          type: string
+          title: Event Id
+        url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Url
+        labels:
+          type: object
+          title: Labels
+          default: {}
+        fingerprint:
+          type: string
+          title: Fingerprint
+        deleted:
+          type: boolean
+          title: Deleted
+          default: false
+        dismissUntil:
+          type: string
+          title: Dismissuntil
+        dismissed:
+          type: boolean
+          title: Dismissed
+          default: false
+        assignee:
+          type: string
+          title: Assignee
+        providerId:
+          type: string
+          title: Providerid
+        providerType:
+          type: string
+          title: Providertype
+        note:
+          type: string
+          title: Note
+        startedAt:
+          type: string
+          title: Startedat
+        isNoisy:
+          type: boolean
+          title: Isnoisy
+          default: false
+        enriched_fields:
+          items: {}
+          type: array
+          title: Enriched Fields
+          default: []
+        incident:
+          type: string
+          title: Incident
+      type: object
+      required:
+      - name
+      - status
+      - severity
+      - lastReceived
+      title: AlertDto
+      example:
+        id: '1234'
+        name: Pod 'api-service-production' lacks memory
+        status: firing
+        lastReceived: '2021-01-01T00:00:00.000Z'
+        environment: production
+        service: backend
+        source:
+        - prometheus
+        message: The pod 'api-service-production' lacks memory causing high error rate
+        description: Due to the lack of memory, the pod 'api-service-production' is experiencing high error rate
+        severity: critical
+        pushed: true
+        url: https://www.keephq.dev?alertId=1234
+        labels:
+          pod: api-service-production
+          region: us-east-1
+          cpu: '88'
+          memory: 100Mi
+        ticket_url: https://www.keephq.dev?enrichedTicketId=456
+        fingerprint: '1234'
+    SearchAlertsRequest:
+      properties:
+        query:
+          $ref: '#/components/schemas/PresetSearchQuery'
+        timeframe:
+          type: integer
+          title: Timeframe
+      type: object
+      required:
+      - query
+      - timeframe
+      title: SearchAlertsRequest
+    WorkflowExecutionLogsDTO:
+      properties:
+        id:
+          type: integer
+          title: Id
+        timestamp:
+          type: string
+          format: date-time
+          title: Timestamp
+        message:
+          type: string
+          title: Message
+        context:
+          type: object
+          title: Context
+      type: object
+      required:
+      - id
+      - timestamp
+      - message
+      title: WorkflowExecutionLogsDTO
+    WorkflowCreateOrUpdateDTO:
+      properties:
+        workflow_id:
+          type: string
+          title: Workflow Id
+        status:
+          type: string
+          enum:
+          - created
+          - updated
+          title: Status
+        revision:
+          type: integer
+          title: Revision
+          default: 1
+      type: object
+      required:
+      - workflow_id
+      - status
+      title: WorkflowCreateOrUpdateDTO
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

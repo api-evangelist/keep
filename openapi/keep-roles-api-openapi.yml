@@ -1,0 +1,218 @@
+openapi: 3.0.2
+info:
+  title: Keep actions roles API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: roles
+paths:
+  /auth/roles:
+    get:
+      tags:
+      - roles
+      summary: Get Roles
+      description: Get roles
+      operationId: get_roles_auth_roles_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Role'
+                type: array
+                title: Response Get Roles Auth Roles Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - roles
+      summary: Create Role
+      description: Create role
+      operationId: create_role_auth_roles_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateOrUpdateRole'
+              title: Role
+              description: Role
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /auth/roles/{role_id}:
+    put:
+      tags:
+      - roles
+      summary: Update Role
+      description: Update role
+      operationId: update_role_auth_roles__role_id__put
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Role Id
+        name: role_id
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateOrUpdateRole'
+              title: Role
+              description: Role
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - roles
+      summary: Delete Role
+      description: Delete role
+      operationId: delete_role_auth_roles__role_id__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Role Id
+        name: role_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    Role:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        scopes:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+          title: Scopes
+        predefined:
+          type: boolean
+          title: Predefined
+          default: true
+      type: object
+      required:
+      - id
+      - name
+      - description
+      - scopes
+      title: Role
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    CreateOrUpdateRole:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        scopes:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+          title: Scopes
+      type: object
+      title: CreateOrUpdateRole
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

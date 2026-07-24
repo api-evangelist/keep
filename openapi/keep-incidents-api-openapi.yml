@@ -1,0 +1,1665 @@
+openapi: 3.0.2
+info:
+  title: Keep actions incidents API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: incidents
+paths:
+  /incidents:
+    get:
+      tags:
+      - incidents
+      summary: Get All Incidents
+      description: Get last incidents
+      operationId: get_all_incidents_incidents_get
+      parameters:
+      - required: false
+        schema:
+          type: boolean
+          title: Confirmed
+          default: true
+        name: confirmed
+        in: query
+      - required: false
+        schema:
+          type: integer
+          title: Limit
+          default: 25
+        name: limit
+        in: query
+      - required: false
+        schema:
+          type: integer
+          title: Offset
+          default: 0
+        name: offset
+        in: query
+      - required: false
+        schema:
+          allOf:
+          - $ref: '#/components/schemas/IncidentSorting'
+          default: creation_time
+        name: sorting
+        in: query
+      - required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/IncidentStatus'
+          type: array
+        name: status
+        in: query
+      - required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/IncidentSeverity'
+          type: array
+        name: severity
+        in: query
+      - required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Assignees
+        name: assignees
+        in: query
+      - required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Sources
+        name: sources
+        in: query
+      - required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Affected Services
+        name: affected_services
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncidentsPaginatedResultsDto'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - incidents
+      summary: Create Incident
+      description: Create new incident
+      operationId: create_incident_incidents_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IncidentDtoIn'
+        required: true
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncidentDto'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /incidents/meta:
+    get:
+      tags:
+      - incidents
+      summary: Get Incidents Meta
+      description: Get incidents' metadata for filtering
+      operationId: get_incidents_meta_incidents_meta_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncidentListFilterParamsDto'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /incidents/{incident_id}:
+    get:
+      tags:
+      - incidents
+      summary: Get Incident
+      description: Get incident by id
+      operationId: get_incident_incidents__incident_id__get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Incident Id
+        name: incident_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncidentDto'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    put:
+      tags:
+      - incidents
+      summary: Update Incident
+      description: Update incident by id
+      operationId: update_incident_incidents__incident_id__put
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Incident Id
+        name: incident_id
+        in: path
+      - description: Whether the incident update request was generated by AI
+        required: false
+        schema:
+          type: boolean
+          title: Generatedbyai
+          description: Whether the incident update request was generated by AI
+          default: false
+        name: generatedByAi
+        in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IncidentDtoIn'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncidentDto'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - incidents
+      summary: Delete Incident
+      description: Delete incident by incident id
+      operationId: delete_incident_incidents__incident_id__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Incident Id
+        name: incident_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /incidents/merge:
+    post:
+      tags:
+      - incidents
+      summary: Merge Incidents
+      description: Merge incidents
+      operationId: merge_incidents_incidents_merge_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MergeIncidentsRequestDto'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MergeIncidentsResponseDto'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /incidents/{incident_id}/alerts:
+    get:
+      tags:
+      - incidents
+      summary: Get Incident Alerts
+      description: Get incident alerts by incident incident id
+      operationId: get_incident_alerts_incidents__incident_id__alerts_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Incident Id
+        name: incident_id
+        in: path
+      - required: false
+        schema:
+          type: integer
+          title: Limit
+          default: 25
+        name: limit
+        in: query
+      - required: false
+        schema:
+          type: integer
+          title: Offset
+          default: 0
+        name: offset
+        in: query
+      - required: false
+        schema:
+          type: boolean
+          title: Include Unlinked
+          default: false
+        name: include_unlinked
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertWithIncidentLinkMetadataPaginatedResultsDto'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - incidents
+      summary: Add Alerts To Incident
+      description: Add alerts to incident
+      operationId: add_alerts_to_incident_incidents__incident_id__alerts_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Incident Id
+        name: incident_id
+        in: path
+      - required: false
+        schema:
+          type: boolean
+          title: Is Created By Ai
+          default: false
+        name: is_created_by_ai
+        in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                type: string
+                format: uuid
+              type: array
+              title: Alert Ids
+        required: true
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AlertDto'
+                type: array
+                title: Response Add Alerts To Incident Incidents  Incident Id  Alerts Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - incidents
+      summary: Delete Alerts From Incident
+      description: Delete alerts from incident
+      operationId: delete_alerts_from_incident_incidents__incident_id__alerts_delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Incident Id
+        name: incident_id
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                type: string
+                format: uuid
+              type: array
+              title: Alert Ids
+        required: true
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AlertDto'
+                type: array
+                title: Response Delete Alerts From Incident Incidents  Incident Id  Alerts Delete
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /incidents/{incident_id}/future_incidents:
+    get:
+      tags:
+      - incidents
+      summary: Get Future Incidents For An Incident
+      description: Get same incidents linked to this one
+      operationId: get_future_incidents_for_an_incident_incidents__incident_id__future_incidents_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Incident Id
+        name: incident_id
+        in: path
+      - required: false
+        schema:
+          type: integer
+          title: Limit
+          default: 25
+        name: limit
+        in: query
+      - required: false
+        schema:
+          type: integer
+          title: Offset
+          default: 0
+        name: offset
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncidentsPaginatedResultsDto'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /incidents/{incident_id}/workflows:
+    get:
+      tags:
+      - incidents
+      summary: Get Incident Workflows
+      description: Get incident workflows by incident id
+      operationId: get_incident_workflows_incidents__incident_id__workflows_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Incident Id
+        name: incident_id
+        in: path
+      - required: false
+        schema:
+          type: integer
+          title: Limit
+          default: 25
+        name: limit
+        in: query
+      - required: false
+        schema:
+          type: integer
+          title: Offset
+          default: 0
+        name: offset
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowExecutionsPaginatedResultsDto'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /incidents/event/{provider_type}:
+    post:
+      tags:
+      - incidents
+      summary: Receive Event
+      description: Receive an alert event from a provider
+      operationId: receive_event_incidents_event__provider_type__post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Provider Type
+        name: provider_type
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: Provider Id
+        name: provider_id
+        in: query
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+                title: Response Receive Event Incidents Event  Provider Type  Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /incidents/{incident_id}/status:
+    post:
+      tags:
+      - incidents
+      summary: Change Incident Status
+      description: Change incident status
+      operationId: change_incident_status_incidents__incident_id__status_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Incident Id
+        name: incident_id
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IncidentStatusChangeDto'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncidentDto'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /incidents/{incident_id}/comment:
+    post:
+      tags:
+      - incidents
+      summary: Add Comment
+      description: Add incident audit activity
+      operationId: add_comment_incidents__incident_id__comment_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Incident Id
+        name: incident_id
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IncidentStatusChangeDto'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertAudit'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /incidents/ai/suggest:
+    post:
+      tags:
+      - incidents
+      summary: Create With Ai
+      description: Create incident with AI
+      operationId: create_with_ai_incidents_ai_suggest_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                type: string
+              type: array
+              title: Alerts Fingerprints
+        required: true
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncidentsClusteringSuggestion'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /incidents/ai/{suggestion_id}/commit:
+    post:
+      tags:
+      - incidents
+      summary: Commit With Ai
+      description: Commit incidents with AI and user feedback
+      operationId: commit_with_ai_incidents_ai__suggestion_id__commit_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Suggestion Id
+        name: suggestion_id
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/IncidentCommit'
+              type: array
+              title: Incidents With Feedback
+        required: true
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IncidentDto'
+                type: array
+                title: Response Commit With Ai Incidents Ai  Suggestion Id  Commit Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /incidents/{incident_id}/confirm:
+    post:
+      tags:
+      - incidents
+      summary: Confirm Incident
+      description: Confirm predicted incident by id
+      operationId: confirm_incident_incidents__incident_id__confirm_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Incident Id
+        name: incident_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IncidentDto'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    AlertAudit:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        fingerprint:
+          type: string
+          title: Fingerprint
+        tenant_id:
+          type: string
+          title: Tenant Id
+        timestamp:
+          type: string
+          format: date-time
+          title: Timestamp
+        user_id:
+          type: string
+          title: User Id
+        action:
+          type: string
+          title: Action
+        description:
+          type: string
+          title: Description
+      type: object
+      required:
+      - fingerprint
+      - tenant_id
+      - user_id
+      - action
+      - description
+      title: AlertAudit
+    IncidentDto:
+      properties:
+        user_generated_name:
+          type: string
+          title: User Generated Name
+        assignee:
+          type: string
+          title: Assignee
+        user_summary:
+          type: string
+          title: User Summary
+        same_incident_in_the_past_id:
+          type: string
+          format: uuid
+          title: Same Incident In The Past Id
+        id:
+          type: string
+          format: uuid
+          title: Id
+        start_time:
+          type: string
+          format: date-time
+          title: Start Time
+        last_seen_time:
+          type: string
+          format: date-time
+          title: Last Seen Time
+        end_time:
+          type: string
+          format: date-time
+          title: End Time
+        creation_time:
+          type: string
+          format: date-time
+          title: Creation Time
+        alerts_count:
+          type: integer
+          title: Alerts Count
+        alert_sources:
+          items:
+            type: string
+          type: array
+          title: Alert Sources
+        severity:
+          $ref: '#/components/schemas/IncidentSeverity'
+        status:
+          allOf:
+          - $ref: '#/components/schemas/IncidentStatus'
+          default: firing
+        services:
+          items:
+            type: string
+          type: array
+          title: Services
+        is_predicted:
+          type: boolean
+          title: Is Predicted
+        is_confirmed:
+          type: boolean
+          title: Is Confirmed
+        generated_summary:
+          type: string
+          title: Generated Summary
+        ai_generated_name:
+          type: string
+          title: Ai Generated Name
+        rule_fingerprint:
+          type: string
+          title: Rule Fingerprint
+        fingerprint:
+          type: string
+          title: Fingerprint
+        merged_into_incident_id:
+          type: string
+          format: uuid
+          title: Merged Into Incident Id
+        merged_by:
+          type: string
+          title: Merged By
+        merged_at:
+          type: string
+          format: date-time
+          title: Merged At
+      type: object
+      required:
+      - id
+      - alerts_count
+      - alert_sources
+      - severity
+      - services
+      - is_predicted
+      - is_confirmed
+      title: IncidentDto
+      example:
+        id: c2509cb3-6168-4347-b83b-a41da9df2d5b
+        name: Incident name
+        user_summary: 'Keep: Incident description'
+        status: firing
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    MergeIncidentsResponseDto:
+      properties:
+        merged_incident_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Merged Incident Ids
+        skipped_incident_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Skipped Incident Ids
+        failed_incident_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Failed Incident Ids
+        destination_incident_id:
+          type: string
+          format: uuid
+          title: Destination Incident Id
+        message:
+          type: string
+          title: Message
+      type: object
+      required:
+      - merged_incident_ids
+      - skipped_incident_ids
+      - failed_incident_ids
+      - destination_incident_id
+      - message
+      title: MergeIncidentsResponseDto
+    WorkflowExecutionsPaginatedResultsDto:
+      properties:
+        limit:
+          type: integer
+          title: Limit
+          default: 25
+        offset:
+          type: integer
+          title: Offset
+          default: 0
+        count:
+          type: integer
+          title: Count
+        items:
+          items:
+            $ref: '#/components/schemas/WorkflowExecutionDTO'
+          type: array
+          title: Items
+        passCount:
+          type: integer
+          title: Passcount
+          default: 0
+        avgDuration:
+          type: number
+          title: Avgduration
+          default: 0
+        workflow:
+          $ref: '#/components/schemas/WorkflowDTO'
+        failCount:
+          type: integer
+          title: Failcount
+          default: 0
+      type: object
+      required:
+      - count
+      - items
+      title: WorkflowExecutionsPaginatedResultsDto
+    ProviderDTO:
+      properties:
+        type:
+          type: string
+          title: Type
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        installed:
+          type: boolean
+          title: Installed
+      type: object
+      required:
+      - type
+      - name
+      - installed
+      title: ProviderDTO
+    AlertStatus:
+      enum:
+      - firing
+      - resolved
+      - acknowledged
+      - suppressed
+      - pending
+      title: AlertStatus
+      description: An enumeration.
+    IncidentsPaginatedResultsDto:
+      properties:
+        limit:
+          type: integer
+          title: Limit
+          default: 25
+        offset:
+          type: integer
+          title: Offset
+          default: 0
+        count:
+          type: integer
+          title: Count
+        items:
+          items:
+            $ref: '#/components/schemas/IncidentDto'
+          type: array
+          title: Items
+      type: object
+      required:
+      - count
+      - items
+      title: IncidentsPaginatedResultsDto
+    WorkflowExecutionDTO:
+      properties:
+        id:
+          type: string
+          title: Id
+        workflow_id:
+          type: string
+          title: Workflow Id
+        started:
+          type: string
+          format: date-time
+          title: Started
+        triggered_by:
+          type: string
+          title: Triggered By
+        status:
+          type: string
+          title: Status
+        workflow_name:
+          type: string
+          title: Workflow Name
+        logs:
+          items:
+            $ref: '#/components/schemas/WorkflowExecutionLogsDTO'
+          type: array
+          title: Logs
+        error:
+          type: string
+          title: Error
+        execution_time:
+          type: number
+          title: Execution Time
+        results:
+          type: object
+          title: Results
+      type: object
+      required:
+      - id
+      - workflow_id
+      - started
+      - triggered_by
+      - status
+      title: WorkflowExecutionDTO
+    IncidentCommit:
+      properties:
+        accepted:
+          type: boolean
+          title: Accepted
+        original_suggestion:
+          type: object
+          title: Original Suggestion
+        changes:
+          type: object
+          title: Changes
+        incident:
+          $ref: '#/components/schemas/IncidentDto'
+      type: object
+      required:
+      - accepted
+      - original_suggestion
+      - incident
+      title: IncidentCommit
+    AlertSeverity:
+      enum:
+      - critical
+      - high
+      - warning
+      - info
+      - low
+      title: AlertSeverity
+      description: An enumeration.
+    IncidentStatus:
+      enum:
+      - firing
+      - resolved
+      - acknowledged
+      - merged
+      title: IncidentStatus
+      description: An enumeration.
+    IncidentListFilterParamsDto:
+      properties:
+        statuses:
+          items:
+            $ref: '#/components/schemas/IncidentStatus'
+          type: array
+          default:
+          - firing
+          - resolved
+          - acknowledged
+          - merged
+        severities:
+          items:
+            $ref: '#/components/schemas/IncidentSeverity'
+          type: array
+          default:
+          - critical
+          - high
+          - warning
+          - info
+          - low
+        assignees:
+          items:
+            type: string
+          type: array
+          title: Assignees
+        services:
+          items:
+            type: string
+          type: array
+          title: Services
+        sources:
+          items:
+            type: string
+          type: array
+          title: Sources
+      type: object
+      required:
+      - assignees
+      - services
+      - sources
+      title: IncidentListFilterParamsDto
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    WorkflowDTO:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+          default: Workflow file doesn't contain name
+        description:
+          type: string
+          title: Description
+          default: Workflow file doesn't contain description
+        created_by:
+          type: string
+          title: Created By
+        creation_time:
+          type: string
+          format: date-time
+          title: Creation Time
+        triggers:
+          items:
+            type: object
+          type: array
+          title: Triggers
+        interval:
+          type: integer
+          title: Interval
+        disabled:
+          type: boolean
+          title: Disabled
+          default: false
+        last_execution_time:
+          type: string
+          format: date-time
+          title: Last Execution Time
+        last_execution_status:
+          type: string
+          title: Last Execution Status
+        providers:
+          items:
+            $ref: '#/components/schemas/ProviderDTO'
+          type: array
+          title: Providers
+        workflow_raw:
+          type: string
+          title: Workflow Raw
+        revision:
+          type: integer
+          title: Revision
+          default: 1
+        last_updated:
+          type: string
+          format: date-time
+          title: Last Updated
+        invalid:
+          type: boolean
+          title: Invalid
+          default: false
+        last_executions:
+          items:
+            type: object
+          type: array
+          title: Last Executions
+        last_execution_started:
+          type: string
+          format: date-time
+          title: Last Execution Started
+        provisioned:
+          type: boolean
+          title: Provisioned
+          default: false
+        provisioned_file:
+          type: string
+          title: Provisioned File
+      type: object
+      required:
+      - id
+      - created_by
+      - creation_time
+      - providers
+      - workflow_raw
+      title: WorkflowDTO
+    IncidentDtoIn:
+      properties:
+        user_generated_name:
+          type: string
+          title: User Generated Name
+        assignee:
+          type: string
+          title: Assignee
+        user_summary:
+          type: string
+          title: User Summary
+        same_incident_in_the_past_id:
+          type: string
+          format: uuid
+          title: Same Incident In The Past Id
+      type: object
+      title: IncidentDtoIn
+      example:
+        id: c2509cb3-6168-4347-b83b-a41da9df2d5b
+        name: Incident name
+        user_summary: 'Keep: Incident description'
+        status: firing
+    IncidentSorting:
+      enum:
+      - creation_time
+      - start_time
+      - last_seen_time
+      - severity
+      - status
+      - alerts_count
+      - -creation_time
+      - -start_time
+      - -last_seen_time
+      - -severity
+      - -status
+      - -alerts_count
+      title: IncidentSorting
+      description: An enumeration.
+    AlertWithIncidentLinkMetadataPaginatedResultsDto:
+      properties:
+        limit:
+          type: integer
+          title: Limit
+          default: 25
+        offset:
+          type: integer
+          title: Offset
+          default: 0
+        count:
+          type: integer
+          title: Count
+        items:
+          items:
+            $ref: '#/components/schemas/AlertWithIncidentLinkMetadataDto'
+          type: array
+          title: Items
+      type: object
+      required:
+      - count
+      - items
+      title: AlertWithIncidentLinkMetadataPaginatedResultsDto
+    AlertDto:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        status:
+          $ref: '#/components/schemas/AlertStatus'
+        severity:
+          $ref: '#/components/schemas/AlertSeverity'
+        lastReceived:
+          type: string
+          title: Lastreceived
+        firingStartTime:
+          type: string
+          title: Firingstarttime
+        environment:
+          type: string
+          title: Environment
+          default: undefined
+        isFullDuplicate:
+          type: boolean
+          title: Isfullduplicate
+          default: false
+        isPartialDuplicate:
+          type: boolean
+          title: Ispartialduplicate
+          default: false
+        duplicateReason:
+          type: string
+          title: Duplicatereason
+        service:
+          type: string
+          title: Service
+        source:
+          items:
+            type: string
+          type: array
+          title: Source
+          default: []
+        apiKeyRef:
+          type: string
+          title: Apikeyref
+        message:
+          type: string
+          title: Message
+        description:
+          type: string
+          title: Description
+        pushed:
+          type: boolean
+          title: Pushed
+          default: false
+        event_id:
+          type: string
+          title: Event Id
+        url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Url
+        labels:
+          type: object
+          title: Labels
+          default: {}
+        fingerprint:
+          type: string
+          title: Fingerprint
+        deleted:
+          type: boolean
+          title: Deleted
+          default: false
+        dismissUntil:
+          type: string
+          title: Dismissuntil
+        dismissed:
+          type: boolean
+          title: Dismissed
+          default: false
+        assignee:
+          type: string
+          title: Assignee
+        providerId:
+          type: string
+          title: Providerid
+        providerType:
+          type: string
+          title: Providertype
+        note:
+          type: string
+          title: Note
+        startedAt:
+          type: string
+          title: Startedat
+        isNoisy:
+          type: boolean
+          title: Isnoisy
+          default: false
+        enriched_fields:
+          items: {}
+          type: array
+          title: Enriched Fields
+          default: []
+        incident:
+          type: string
+          title: Incident
+      type: object
+      required:
+      - name
+      - status
+      - severity
+      - lastReceived
+      title: AlertDto
+      example:
+        id: '1234'
+        name: Pod 'api-service-production' lacks memory
+        status: firing
+        lastReceived: '2021-01-01T00:00:00.000Z'
+        environment: production
+        service: backend
+        source:
+        - prometheus
+        message: The pod 'api-service-production' lacks memory causing high error rate
+        description: Due to the lack of memory, the pod 'api-service-production' is experiencing high error rate
+        severity: critical
+        pushed: true
+        url: https://www.keephq.dev?alertId=1234
+        labels:
+          pod: api-service-production
+          region: us-east-1
+          cpu: '88'
+          memory: 100Mi
+        ticket_url: https://www.keephq.dev?enrichedTicketId=456
+        fingerprint: '1234'
+    IncidentSeverity:
+      enum:
+      - critical
+      - high
+      - warning
+      - info
+      - low
+      title: IncidentSeverity
+      description: An enumeration.
+    MergeIncidentsRequestDto:
+      properties:
+        source_incident_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Source Incident Ids
+        destination_incident_id:
+          type: string
+          format: uuid
+          title: Destination Incident Id
+      type: object
+      required:
+      - source_incident_ids
+      - destination_incident_id
+      title: MergeIncidentsRequestDto
+    IncidentStatusChangeDto:
+      properties:
+        status:
+          $ref: '#/components/schemas/IncidentStatus'
+        comment:
+          type: string
+          title: Comment
+      type: object
+      required:
+      - status
+      title: IncidentStatusChangeDto
+    WorkflowExecutionLogsDTO:
+      properties:
+        id:
+          type: integer
+          title: Id
+        timestamp:
+          type: string
+          format: date-time
+          title: Timestamp
+        message:
+          type: string
+          title: Message
+        context:
+          type: object
+          title: Context
+      type: object
+      required:
+      - id
+      - timestamp
+      - message
+      title: WorkflowExecutionLogsDTO
+    AlertWithIncidentLinkMetadataDto:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        status:
+          $ref: '#/components/schemas/AlertStatus'
+        severity:
+          $ref: '#/components/schemas/AlertSeverity'
+        lastReceived:
+          type: string
+          title: Lastreceived
+        firingStartTime:
+          type: string
+          title: Firingstarttime
+        environment:
+          type: string
+          title: Environment
+          default: undefined
+        isFullDuplicate:
+          type: boolean
+          title: Isfullduplicate
+          default: false
+        isPartialDuplicate:
+          type: boolean
+          title: Ispartialduplicate
+          default: false
+        duplicateReason:
+          type: string
+          title: Duplicatereason
+        service:
+          type: string
+          title: Service
+        source:
+          items:
+            type: string
+          type: array
+          title: Source
+          default: []
+        apiKeyRef:
+          type: string
+          title: Apikeyref
+        message:
+          type: string
+          title: Message
+        description:
+          type: string
+          title: Description
+        pushed:
+          type: boolean
+          title: Pushed
+          default: false
+        event_id:
+          type: string
+          title: Event Id
+        url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Url
+        labels:
+          type: object
+          title: Labels
+          default: {}
+        fingerprint:
+          type: string
+          title: Fingerprint
+        deleted:
+          type: boolean
+          title: Deleted
+          default: false
+        dismissUntil:
+          type: string
+          title: Dismissuntil
+        dismissed:
+          type: boolean
+          title: Dismissed
+          default: false
+        assignee:
+          type: string
+          title: Assignee
+        providerId:
+          type: string
+          title: Providerid
+        providerType:
+          type: string
+          title: Providertype
+        note:
+          type: string
+          title: Note
+        startedAt:
+          type: string
+          title: Startedat
+        isNoisy:
+          type: boolean
+          title: Isnoisy
+          default: false
+        enriched_fields:
+          items: {}
+          type: array
+          title: Enriched Fields
+          default: []
+        incident:
+          type: string
+          title: Incident
+        is_created_by_ai:
+          type: boolean
+          title: Is Created By Ai
+          default: false
+      type: object
+      required:
+      - name
+      - status
+      - severity
+      - lastReceived
+      title: AlertWithIncidentLinkMetadataDto
+      example:
+        id: '1234'
+        name: Pod 'api-service-production' lacks memory
+        status: firing
+        lastReceived: '2021-01-01T00:00:00.000Z'
+        environment: production
+        service: backend
+        source:
+        - prometheus
+        message: The pod 'api-service-production' lacks memory causing high error rate
+        description: Due to the lack of memory, the pod 'api-service-production' is experiencing high error rate
+        severity: critical
+        pushed: true
+        url: https://www.keephq.dev?alertId=1234
+        labels:
+          pod: api-service-production
+          region: us-east-1
+          cpu: '88'
+          memory: 100Mi
+        ticket_url: https://www.keephq.dev?enrichedTicketId=456
+        fingerprint: '1234'
+    IncidentsClusteringSuggestion:
+      properties:
+        incident_suggestion:
+          items:
+            $ref: '#/components/schemas/IncidentDto'
+          type: array
+          title: Incident Suggestion
+        suggestion_id:
+          type: string
+          title: Suggestion Id
+      type: object
+      required:
+      - incident_suggestion
+      - suggestion_id
+      title: IncidentsClusteringSuggestion
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

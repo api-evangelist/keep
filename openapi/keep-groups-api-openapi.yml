@@ -1,0 +1,218 @@
+openapi: 3.0.2
+info:
+  title: Keep actions groups API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: groups
+paths:
+  /auth/groups:
+    get:
+      tags:
+      - groups
+      summary: Get Groups
+      description: Get all groups
+      operationId: get_groups_auth_groups_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Group'
+                type: array
+                title: Response Get Groups Auth Groups Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - groups
+      summary: Create Group
+      description: Create a group
+      operationId: create_group_auth_groups_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrUpdateGroupRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /auth/groups/{group_name}:
+    put:
+      tags:
+      - groups
+      summary: Update Group
+      description: Update a group
+      operationId: update_group_auth_groups__group_name__put
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Group Name
+        name: group_name
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrUpdateGroupRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - groups
+      summary: Delete Group
+      description: Delete a group
+      operationId: delete_group_auth_groups__group_name__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Group Name
+        name: group_name
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    Group:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        roles:
+          items:
+            type: string
+          type: array
+          title: Roles
+          default: []
+        members:
+          items:
+            type: string
+          type: array
+          title: Members
+          default: []
+        memberCount:
+          type: integer
+          title: Membercount
+          default: 0
+      type: object
+      required:
+      - id
+      - name
+      title: Group
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    CreateOrUpdateGroupRequest:
+      properties:
+        name:
+          type: string
+          title: Name
+        roles:
+          items:
+            type: string
+          type: array
+          title: Roles
+        members:
+          items:
+            type: string
+          type: array
+          title: Members
+      type: object
+      required:
+      - name
+      - roles
+      - members
+      title: CreateOrUpdateGroupRequest
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

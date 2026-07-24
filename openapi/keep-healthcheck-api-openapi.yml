@@ -1,0 +1,38 @@
+openapi: 3.0.2
+info:
+  title: Keep actions healthcheck API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: healthcheck
+paths:
+  /healthcheck:
+    get:
+      tags:
+      - healthcheck
+      summary: Healthcheck
+      description: simple healthcheck endpoint
+      operationId: healthcheck_healthcheck_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Response Healthcheck Healthcheck Get
+components:
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

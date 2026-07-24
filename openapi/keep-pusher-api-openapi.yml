@@ -1,0 +1,96 @@
+openapi: 3.0.2
+info:
+  title: Keep actions pusher API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: pusher
+paths:
+  /pusher/auth:
+    post:
+      tags:
+      - pusher
+      summary: Pusher Authentication
+      description: "Authenticate a user to a private channel\n\nArgs:\n    request (Request): The request object\n    tenant_id (str, optional): The tenant ID. Defaults to Depends(verify_bearer_token).\n    pusher_client (Pusher, optional): Pusher client. Defaults to Depends(get_pusher_client).\n\nRaises:\n    HTTPException: 403 if the user is not allowed to access the channel.\n\nReturns:\n    dict: The authentication response."
+      operationId: pusher_authentication_pusher_auth_post
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Body_pusher_authentication_pusher_auth_post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Response Pusher Authentication Pusher Auth Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    Body_pusher_authentication_pusher_auth_post:
+      properties:
+        channel_name:
+          title: Channel Name
+        socket_id:
+          title: Socket Id
+      type: object
+      required:
+      - channel_name
+      - socket_id
+      title: Body_pusher_authentication_pusher_auth_post
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

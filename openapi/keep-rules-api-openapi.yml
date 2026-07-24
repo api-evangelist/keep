@@ -1,0 +1,199 @@
+openapi: 3.0.2
+info:
+  title: Keep actions rules API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: rules
+paths:
+  /rules:
+    get:
+      tags:
+      - rules
+      summary: Get Rules
+      description: Get Rules
+      operationId: get_rules_rules_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - rules
+      summary: Create Rule
+      description: Create Rule
+      operationId: create_rule_rules_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RuleCreateDto'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /rules/{rule_id}:
+    put:
+      tags:
+      - rules
+      summary: Update Rule
+      description: Update Rule
+      operationId: update_rule_rules__rule_id__put
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Rule Id
+        name: rule_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - rules
+      summary: Delete Rule
+      description: Delete Rule
+      operationId: delete_rule_rules__rule_id__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Rule Id
+        name: rule_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    RuleCreateDto:
+      properties:
+        ruleName:
+          type: string
+          title: Rulename
+        sqlQuery:
+          type: object
+          title: Sqlquery
+        celQuery:
+          type: string
+          title: Celquery
+        timeframeInSeconds:
+          type: integer
+          title: Timeframeinseconds
+        timeUnit:
+          type: string
+          title: Timeunit
+        groupingCriteria:
+          items: {}
+          type: array
+          title: Groupingcriteria
+          default: []
+        groupDescription:
+          type: string
+          title: Groupdescription
+        requireApprove:
+          type: boolean
+          title: Requireapprove
+          default: false
+        resolveOn:
+          type: string
+          title: Resolveon
+          default: never
+      type: object
+      required:
+      - ruleName
+      - sqlQuery
+      - celQuery
+      - timeframeInSeconds
+      - timeUnit
+      title: RuleCreateDto
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

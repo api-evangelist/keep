@@ -1,0 +1,611 @@
+openapi: 3.0.2
+info:
+  title: Keep actions providers API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: providers
+paths:
+  /providers:
+    get:
+      tags:
+      - providers
+      summary: Get Providers
+      operationId: get_providers_providers_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /providers/export:
+    get:
+      tags:
+      - providers
+      summary: Get Installed Providers
+      description: export all installed providers
+      operationId: get_installed_providers_providers_export_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /providers/{provider_type}/{provider_id}/configured-alerts:
+    get:
+      tags:
+      - providers
+      summary: Get Alerts Configuration
+      description: Get alerts configuration from a provider
+      operationId: get_alerts_configuration_providers__provider_type___provider_id__configured_alerts_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Provider Type
+        name: provider_type
+        in: path
+      - required: true
+        schema:
+          type: string
+          title: Provider Id
+        name: provider_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items: {}
+                type: array
+                title: Response Get Alerts Configuration Providers  Provider Type   Provider Id  Configured Alerts Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /providers/{provider_type}/{provider_id}/logs:
+    get:
+      tags:
+      - providers
+      summary: Get Logs
+      description: Get logs from a provider
+      operationId: get_logs_providers__provider_type___provider_id__logs_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Provider Type
+        name: provider_type
+        in: path
+      - required: true
+        schema:
+          type: string
+          title: Provider Id
+        name: provider_id
+        in: path
+      - required: false
+        schema:
+          type: integer
+          title: Limit
+          default: 5
+        name: limit
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items: {}
+                type: array
+                title: Response Get Logs Providers  Provider Type   Provider Id  Logs Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /providers/{provider_type}/schema:
+    get:
+      tags:
+      - providers
+      summary: Get Alerts Schema
+      description: Get the provider's API schema used to push alerts configuration
+      operationId: get_alerts_schema_providers__provider_type__schema_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Provider Type
+        name: provider_type
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Response Get Alerts Schema Providers  Provider Type  Schema Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /providers/{provider_type}/{provider_id}/alerts/count:
+    get:
+      tags:
+      - providers
+      summary: Get Alert Count
+      description: Get number of alerts a specific provider has received (in a specific time time period or ever)
+      operationId: get_alert_count_providers__provider_type___provider_id__alerts_count_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Provider Type
+        name: provider_type
+        in: path
+      - required: true
+        schema:
+          type: string
+          title: Provider Id
+        name: provider_id
+        in: path
+      - required: true
+        schema:
+          type: boolean
+          title: Ever
+        name: ever
+        in: query
+      - required: false
+        schema:
+          type: string
+          format: date-time
+          title: Start Time
+        name: start_time
+        in: query
+      - required: false
+        schema:
+          type: string
+          format: date-time
+          title: End Time
+        name: end_time
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /providers/{provider_type}/{provider_id}/alerts:
+    post:
+      tags:
+      - providers
+      summary: Add Alert
+      description: Push new alerts to the provider
+      operationId: add_alert_providers__provider_type___provider_id__alerts_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Provider Type
+        name: provider_type
+        in: path
+      - required: true
+        schema:
+          type: string
+          title: Provider Id
+        name: provider_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: Alert Id
+        name: alert_id
+        in: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: Alert
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /providers/test:
+    post:
+      tags:
+      - providers
+      summary: Test Provider
+      description: Test a provider's alert retrieval
+      operationId: test_provider_providers_test_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: Provider Info
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /providers/{provider_type}/{provider_id}:
+    delete:
+      tags:
+      - providers
+      summary: Delete Provider
+      operationId: delete_provider_providers__provider_type___provider_id__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Provider Type
+        name: provider_type
+        in: path
+      - required: true
+        schema:
+          type: string
+          title: Provider Id
+        name: provider_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /providers/{provider_id}/scopes:
+    post:
+      tags:
+      - providers
+      summary: Validate Provider Scopes
+      description: Validate provider scopes
+      operationId: validate_provider_scopes_providers__provider_id__scopes_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Provider Id
+        name: provider_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  anyOf:
+                  - type: boolean
+                  - type: string
+                type: object
+                title: Response Validate Provider Scopes Providers  Provider Id  Scopes Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /providers/{provider_id}:
+    put:
+      tags:
+      - providers
+      summary: Update Provider
+      description: Update provider
+      operationId: update_provider_providers__provider_id__put
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Provider Id
+        name: provider_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /providers/install:
+    post:
+      tags:
+      - providers
+      summary: Install Provider
+      operationId: install_provider_providers_install_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /providers/install/oauth2/{provider_type}:
+    post:
+      tags:
+      - providers
+      summary: Install Provider Oauth2
+      operationId: install_provider_oauth2_providers_install_oauth2__provider_type__post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Provider Type
+        name: provider_type
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: Provider Info
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /providers/{provider_id}/invoke/{method}:
+    post:
+      tags:
+      - providers
+      summary: Invoke Provider Method
+      description: Invoke provider special method
+      operationId: invoke_provider_method_providers__provider_id__invoke__method__post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Provider Id
+        name: provider_id
+        in: path
+      - required: true
+        schema:
+          type: string
+          title: Method
+        name: method
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: Method Params
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /providers/install/webhook/{provider_type}/{provider_id}:
+    post:
+      tags:
+      - providers
+      summary: Install Provider Webhook
+      operationId: install_provider_webhook_providers_install_webhook__provider_type___provider_id__post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Provider Type
+        name: provider_type
+        in: path
+      - required: true
+        schema:
+          type: string
+          title: Provider Id
+        name: provider_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /providers/{provider_type}/webhook:
+    get:
+      tags:
+      - providers
+      summary: Get Webhook Settings
+      operationId: get_webhook_settings_providers__provider_type__webhook_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Provider Type
+        name: provider_type
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderWebhookSettings'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ProviderWebhookSettings:
+      properties:
+        webhookDescription:
+          type: string
+          title: Webhookdescription
+        webhookTemplate:
+          type: string
+          title: Webhooktemplate
+        webhookMarkdown:
+          type: string
+          title: Webhookmarkdown
+      type: object
+      required:
+      - webhookTemplate
+      title: ProviderWebhookSettings
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

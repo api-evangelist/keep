@@ -1,0 +1,337 @@
+openapi: 3.0.2
+info:
+  title: Keep actions mapping API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: mapping
+paths:
+  /mapping:
+    get:
+      tags:
+      - mapping
+      summary: Get Rules
+      description: Get all mapping rules
+      operationId: get_rules_mapping_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MappingRuleDtoOut'
+                type: array
+                title: Response Get Rules Mapping Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - mapping
+      summary: Create Rule
+      description: Create a new mapping rule
+      operationId: create_rule_mapping_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MappingRuleDtoIn'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MappingRule'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /mapping/{rule_id}:
+    put:
+      tags:
+      - mapping
+      summary: Update Rule
+      description: Update an existing rule
+      operationId: update_rule_mapping__rule_id__put
+      parameters:
+      - required: true
+        schema:
+          type: integer
+          title: Rule Id
+        name: rule_id
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MappingRuleDtoIn'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MappingRuleDtoOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - mapping
+      summary: Delete Rule
+      description: Delete a mapping rule
+      operationId: delete_rule_mapping__rule_id__delete
+      parameters:
+      - required: true
+        schema:
+          type: integer
+          title: Rule Id
+        name: rule_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    MappingRuleDtoOut:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        file_name:
+          type: string
+          title: File Name
+        priority:
+          type: integer
+          title: Priority
+          default: 0
+        matchers:
+          items:
+            type: string
+          type: array
+          title: Matchers
+        type:
+          type: string
+          enum:
+          - csv
+          - topology
+          title: Type
+          default: csv
+        id:
+          type: integer
+          title: Id
+        created_by:
+          type: string
+          title: Created By
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        attributes:
+          items:
+            type: string
+          type: array
+          title: Attributes
+          default: []
+        updated_by:
+          type: string
+          title: Updated By
+        last_updated_at:
+          type: string
+          format: date-time
+          title: Last Updated At
+      type: object
+      required:
+      - name
+      - matchers
+      - id
+      - created_at
+      title: MappingRuleDtoOut
+    MappingRule:
+      properties:
+        id:
+          type: integer
+          title: Id
+        tenant_id:
+          type: string
+          title: Tenant Id
+        priority:
+          type: integer
+          title: Priority
+          default: 0
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+        description:
+          type: string
+          maxLength: 2048
+          title: Description
+        file_name:
+          type: string
+          maxLength: 255
+          title: File Name
+        created_by:
+          type: string
+          maxLength: 255
+          title: Created By
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        disabled:
+          type: boolean
+          title: Disabled
+          default: false
+        override:
+          type: boolean
+          title: Override
+          default: true
+        condition:
+          type: string
+          maxLength: 2000
+          title: Condition
+        type:
+          type: string
+          maxLength: 255
+          title: Type
+        matchers:
+          items:
+            type: string
+          type: array
+          title: Matchers
+        rows:
+          items:
+            type: object
+          type: array
+          title: Rows
+        updated_by:
+          type: string
+          maxLength: 255
+          title: Updated By
+        last_updated_at:
+          type: string
+          format: date-time
+          title: Last Updated At
+      type: object
+      required:
+      - tenant_id
+      - name
+      - type
+      - matchers
+      title: MappingRule
+    MappingRuleDtoIn:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        file_name:
+          type: string
+          title: File Name
+        priority:
+          type: integer
+          title: Priority
+          default: 0
+        matchers:
+          items:
+            type: string
+          type: array
+          title: Matchers
+        type:
+          type: string
+          enum:
+          - csv
+          - topology
+          title: Type
+          default: csv
+        rows:
+          items:
+            type: object
+          type: array
+          title: Rows
+      type: object
+      required:
+      - name
+      - matchers
+      title: MappingRuleDtoIn
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

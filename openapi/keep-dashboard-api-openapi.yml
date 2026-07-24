@@ -1,0 +1,273 @@
+openapi: 3.0.2
+info:
+  title: Keep actions dashboard API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: dashboard
+paths:
+  /dashboard:
+    get:
+      tags:
+      - dashboard
+      summary: Read Dashboards
+      operationId: read_dashboards_dashboard_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DashboardResponseDTO'
+                type: array
+                title: Response Read Dashboards Dashboard Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - dashboard
+      summary: Create Dashboard
+      operationId: create_dashboard_dashboard_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DashboardCreateDTO'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardResponseDTO'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /dashboard/{dashboard_id}:
+    put:
+      tags:
+      - dashboard
+      summary: Update Dashboard
+      operationId: update_dashboard_dashboard__dashboard_id__put
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Dashboard Id
+        name: dashboard_id
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DashboardUpdateDTO'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardResponseDTO'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - dashboard
+      summary: Delete Dashboard
+      operationId: delete_dashboard_dashboard__dashboard_id__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Dashboard Id
+        name: dashboard_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /dashboard/metric-widgets:
+    get:
+      tags:
+      - dashboard
+      summary: Get Metric Widgets
+      operationId: get_metric_widgets_dashboard_metric_widgets_get
+      parameters:
+      - required: false
+        schema:
+          type: boolean
+          title: Mttr
+          default: true
+        name: mttr
+        in: query
+      - required: false
+        schema:
+          type: boolean
+          title: Apd
+          default: true
+        name: apd
+        in: query
+      - required: false
+        schema:
+          type: boolean
+          title: Ipd
+          default: true
+        name: ipd
+        in: query
+      - required: false
+        schema:
+          type: boolean
+          title: Wpd
+          default: true
+        name: wpd
+        in: query
+      - required: false
+        schema:
+          type: string
+          title: Time Stamp
+        name: time_stamp
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    DashboardResponseDTO:
+      properties:
+        id:
+          type: string
+          title: Id
+        dashboard_name:
+          type: string
+          title: Dashboard Name
+        dashboard_config:
+          type: object
+          title: Dashboard Config
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - dashboard_name
+      - dashboard_config
+      - created_at
+      - updated_at
+      title: DashboardResponseDTO
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    DashboardUpdateDTO:
+      properties:
+        dashboard_config:
+          type: object
+          title: Dashboard Config
+        dashboard_name:
+          type: string
+          title: Dashboard Name
+      type: object
+      title: DashboardUpdateDTO
+    DashboardCreateDTO:
+      properties:
+        dashboard_name:
+          type: string
+          title: Dashboard Name
+        dashboard_config:
+          type: object
+          title: Dashboard Config
+      type: object
+      required:
+      - dashboard_name
+      - dashboard_config
+      title: DashboardCreateDTO
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

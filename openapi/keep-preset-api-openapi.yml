@@ -1,0 +1,404 @@
+openapi: 3.0.2
+info:
+  title: Keep actions preset API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: preset
+paths:
+  /preset:
+    get:
+      tags:
+      - preset
+      summary: Get Presets
+      description: Get all presets for tenant
+      operationId: get_presets_preset_get
+      parameters:
+      - required: false
+        schema:
+          type: string
+          title: Time Stamp
+        name: time_stamp
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PresetDto'
+                type: array
+                title: Response Get Presets Preset Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - preset
+      summary: Create Preset
+      description: Create a preset for tenant
+      operationId: create_preset_preset_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrUpdatePresetDto'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PresetDto'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /preset/{uuid}:
+    put:
+      tags:
+      - preset
+      summary: Update Preset
+      description: Update a preset for tenant
+      operationId: update_preset_preset__uuid__put
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Uuid
+        name: uuid
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrUpdatePresetDto'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PresetDto'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - preset
+      summary: Delete Preset
+      description: Delete a preset for tenant
+      operationId: delete_preset_preset__uuid__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Uuid
+        name: uuid
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /preset/{preset_name}/alerts:
+    get:
+      tags:
+      - preset
+      summary: Get Preset Alerts
+      description: Get the alerts of a preset
+      operationId: get_preset_alerts_preset__preset_name__alerts_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Preset Name
+        name: preset_name
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items: {}
+                type: array
+                title: Response Get Preset Alerts Preset  Preset Name  Alerts Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /preset/{preset_id}/tab:
+    post:
+      tags:
+      - preset
+      summary: Create Preset Tab
+      description: Create a tab for a preset
+      operationId: create_preset_tab_preset__preset_id__tab_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Preset Id
+        name: preset_id
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePresetTab'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /preset/{preset_id}/tab/{tab_id}:
+    delete:
+      tags:
+      - preset
+      summary: Delete Tab
+      description: Delete a tab from a preset
+      operationId: delete_tab_preset__preset_id__tab__tab_id__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Preset Id
+        name: preset_id
+        in: path
+      - required: true
+        schema:
+          type: string
+          title: Tab Id
+        name: tab_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    CreatePresetTab:
+      properties:
+        name:
+          type: string
+          title: Name
+        filter:
+          type: string
+          title: Filter
+      type: object
+      required:
+      - name
+      - filter
+      title: CreatePresetTab
+    CreateOrUpdatePresetDto:
+      properties:
+        name:
+          type: string
+          title: Name
+        options:
+          items:
+            $ref: '#/components/schemas/PresetOption'
+          type: array
+          title: Options
+        is_private:
+          type: boolean
+          title: Is Private
+          default: false
+        is_noisy:
+          type: boolean
+          title: Is Noisy
+          default: false
+        tags:
+          items:
+            $ref: '#/components/schemas/TagDto'
+          type: array
+          title: Tags
+          default: []
+      type: object
+      required:
+      - options
+      title: CreateOrUpdatePresetDto
+    TagDto:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: TagDto
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    PresetDto:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        options:
+          items: {}
+          type: array
+          title: Options
+          default: []
+        created_by:
+          type: string
+          title: Created By
+        is_private:
+          type: boolean
+          title: Is Private
+          default: false
+        is_noisy:
+          type: boolean
+          title: Is Noisy
+          default: false
+        should_do_noise_now:
+          type: boolean
+          title: Should Do Noise Now
+          default: false
+        alerts_count:
+          type: integer
+          title: Alerts Count
+          default: 0
+        static:
+          type: boolean
+          title: Static
+          default: false
+        tags:
+          items:
+            $ref: '#/components/schemas/TagDto'
+          type: array
+          title: Tags
+          default: []
+      type: object
+      required:
+      - id
+      - name
+      title: PresetDto
+    PresetOption:
+      properties:
+        label:
+          type: string
+          title: Label
+        value:
+          anyOf:
+          - type: string
+          - type: object
+          title: Value
+      type: object
+      required:
+      - label
+      - value
+      title: PresetOption
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

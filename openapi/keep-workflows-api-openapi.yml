@@ -1,0 +1,765 @@
+openapi: 3.0.2
+info:
+  title: Keep actions workflows API
+  description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
+  version: 0.24.5
+tags:
+- name: workflows
+paths:
+  /workflows:
+    get:
+      tags:
+      - workflows
+      summary: Get Workflows
+      description: Get workflows
+      operationId: get_workflows_workflows_get
+      parameters:
+      - required: false
+        schema:
+          type: boolean
+          title: Is V2
+          default: false
+        name: is_v2
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - items:
+                    $ref: '#/components/schemas/WorkflowDTO'
+                  type: array
+                - items:
+                    type: object
+                  type: array
+                title: Response Get Workflows Workflows Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    post:
+      tags:
+      - workflows
+      summary: Create Workflow
+      description: Create or update a workflow
+      operationId: create_workflow_workflows_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_workflow_workflows_post'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowCreateOrUpdateDTO'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/export:
+    get:
+      tags:
+      - workflows
+      summary: Export Workflows
+      description: export all workflow Yamls
+      operationId: export_workflows_workflows_export_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+                title: Response Export Workflows Workflows Export Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/{workflow_id}/run:
+    post:
+      tags:
+      - workflows
+      summary: Run Workflow
+      description: Run a workflow
+      operationId: run_workflow_workflows__workflow_id__run_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Workflow Id
+        name: workflow_id
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: Body
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Response Run Workflow Workflows  Workflow Id  Run Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/test:
+    post:
+      tags:
+      - workflows
+      summary: Run Workflow From Definition
+      description: Test run a workflow from a definition
+      operationId: run_workflow_from_definition_workflows_test_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_run_workflow_from_definition_workflows_test_post'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Response Run Workflow From Definition Workflows Test Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/json:
+    post:
+      tags:
+      - workflows
+      summary: Create Workflow From Body
+      description: Create or update a workflow
+      operationId: create_workflow_from_body_workflows_json_post
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowCreateOrUpdateDTO'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/random-templates:
+    get:
+      tags:
+      - workflows
+      summary: Get Random Workflow Templates
+      description: Get random workflow templates
+      operationId: get_random_workflow_templates_workflows_random_templates_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  type: object
+                type: array
+                title: Response Get Random Workflow Templates Workflows Random Templates Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/{workflow_id}:
+    get:
+      tags:
+      - workflows
+      summary: Get Workflow By Id
+      description: Get workflow by ID
+      operationId: get_workflow_by_id_workflows__workflow_id__get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Workflow Id
+        name: workflow_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    put:
+      tags:
+      - workflows
+      summary: Update Workflow By Id
+      description: Update a workflow
+      operationId: update_workflow_by_id_workflows__workflow_id__put
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Workflow Id
+        name: workflow_id
+        in: path
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowCreateOrUpdateDTO'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+    delete:
+      tags:
+      - workflows
+      summary: Delete Workflow By Id
+      description: Delete workflow
+      operationId: delete_workflow_by_id_workflows__workflow_id__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Workflow Id
+        name: workflow_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/{workflow_id}/raw:
+    get:
+      tags:
+      - workflows
+      summary: Get Raw Workflow By Id
+      description: Get workflow executions by ID
+      operationId: get_raw_workflow_by_id_workflows__workflow_id__raw_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Workflow Id
+        name: workflow_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: string
+                title: Response Get Raw Workflow By Id Workflows  Workflow Id  Raw Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/executions:
+    get:
+      tags:
+      - workflows
+      summary: Get Workflow Executions By Alert Fingerprint
+      description: Get workflow executions by alert fingerprint
+      operationId: get_workflow_executions_by_alert_fingerprint_workflows_executions_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/WorkflowToAlertExecutionDTO'
+                type: array
+                title: Response Get Workflow Executions By Alert Fingerprint Workflows Executions Get
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/{workflow_id}/runs:
+    get:
+      tags:
+      - workflows
+      summary: Get Workflow By Id
+      description: Get workflow executions by ID
+      operationId: get_workflow_by_id_workflows__workflow_id__runs_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Workflow Id
+        name: workflow_id
+        in: path
+      - required: false
+        schema:
+          type: integer
+          title: Tab
+          default: 1
+        name: tab
+        in: query
+      - required: false
+        schema:
+          type: integer
+          title: Limit
+          default: 25
+        name: limit
+        in: query
+      - required: false
+        schema:
+          type: integer
+          title: Offset
+          default: 0
+        name: offset
+        in: query
+      - required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Status
+        name: status
+        in: query
+      - required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Trigger
+        name: trigger
+        in: query
+      - required: false
+        schema:
+          type: string
+          title: Execution Id
+        name: execution_id
+        in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowExecutionsPaginatedResultsDto'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+  /workflows/{workflow_id}/runs/{workflow_execution_id}:
+    get:
+      tags:
+      - workflows
+      summary: Get Workflow Execution Status
+      description: Get a workflow execution status
+      operationId: get_workflow_execution_status_workflows__workflow_id__runs__workflow_execution_id__get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Workflow Execution Id
+        name: workflow_execution_id
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowExecutionDTO'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - API Key: []
+      - HTTPBasic: []
+      - OAuth2PasswordBearer: []
+components:
+  schemas:
+    Body_run_workflow_from_definition_workflows_test_post:
+      properties:
+        file:
+          type: string
+          format: binary
+          title: File
+      type: object
+      title: Body_run_workflow_from_definition_workflows_test_post
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    WorkflowDTO:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+          default: Workflow file doesn't contain name
+        description:
+          type: string
+          title: Description
+          default: Workflow file doesn't contain description
+        created_by:
+          type: string
+          title: Created By
+        creation_time:
+          type: string
+          format: date-time
+          title: Creation Time
+        triggers:
+          items:
+            type: object
+          type: array
+          title: Triggers
+        interval:
+          type: integer
+          title: Interval
+        disabled:
+          type: boolean
+          title: Disabled
+          default: false
+        last_execution_time:
+          type: string
+          format: date-time
+          title: Last Execution Time
+        last_execution_status:
+          type: string
+          title: Last Execution Status
+        providers:
+          items:
+            $ref: '#/components/schemas/ProviderDTO'
+          type: array
+          title: Providers
+        workflow_raw:
+          type: string
+          title: Workflow Raw
+        revision:
+          type: integer
+          title: Revision
+          default: 1
+        last_updated:
+          type: string
+          format: date-time
+          title: Last Updated
+        invalid:
+          type: boolean
+          title: Invalid
+          default: false
+        last_executions:
+          items:
+            type: object
+          type: array
+          title: Last Executions
+        last_execution_started:
+          type: string
+          format: date-time
+          title: Last Execution Started
+        provisioned:
+          type: boolean
+          title: Provisioned
+          default: false
+        provisioned_file:
+          type: string
+          title: Provisioned File
+      type: object
+      required:
+      - id
+      - created_by
+      - creation_time
+      - providers
+      - workflow_raw
+      title: WorkflowDTO
+    Body_create_workflow_workflows_post:
+      properties:
+        file:
+          type: string
+          format: binary
+          title: File
+      type: object
+      required:
+      - file
+      title: Body_create_workflow_workflows_post
+    WorkflowExecutionDTO:
+      properties:
+        id:
+          type: string
+          title: Id
+        workflow_id:
+          type: string
+          title: Workflow Id
+        started:
+          type: string
+          format: date-time
+          title: Started
+        triggered_by:
+          type: string
+          title: Triggered By
+        status:
+          type: string
+          title: Status
+        workflow_name:
+          type: string
+          title: Workflow Name
+        logs:
+          items:
+            $ref: '#/components/schemas/WorkflowExecutionLogsDTO'
+          type: array
+          title: Logs
+        error:
+          type: string
+          title: Error
+        execution_time:
+          type: number
+          title: Execution Time
+        results:
+          type: object
+          title: Results
+      type: object
+      required:
+      - id
+      - workflow_id
+      - started
+      - triggered_by
+      - status
+      title: WorkflowExecutionDTO
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    WorkflowToAlertExecutionDTO:
+      properties:
+        workflow_id:
+          type: string
+          title: Workflow Id
+        workflow_execution_id:
+          type: string
+          title: Workflow Execution Id
+        alert_fingerprint:
+          type: string
+          title: Alert Fingerprint
+        workflow_status:
+          type: string
+          title: Workflow Status
+        workflow_started:
+          type: string
+          format: date-time
+          title: Workflow Started
+      type: object
+      required:
+      - workflow_id
+      - workflow_execution_id
+      - alert_fingerprint
+      - workflow_status
+      - workflow_started
+      title: WorkflowToAlertExecutionDTO
+    WorkflowExecutionsPaginatedResultsDto:
+      properties:
+        limit:
+          type: integer
+          title: Limit
+          default: 25
+        offset:
+          type: integer
+          title: Offset
+          default: 0
+        count:
+          type: integer
+          title: Count
+        items:
+          items:
+            $ref: '#/components/schemas/WorkflowExecutionDTO'
+          type: array
+          title: Items
+        passCount:
+          type: integer
+          title: Passcount
+          default: 0
+        avgDuration:
+          type: number
+          title: Avgduration
+          default: 0
+        workflow:
+          $ref: '#/components/schemas/WorkflowDTO'
+        failCount:
+          type: integer
+          title: Failcount
+          default: 0
+      type: object
+      required:
+      - count
+      - items
+      title: WorkflowExecutionsPaginatedResultsDto
+    ProviderDTO:
+      properties:
+        type:
+          type: string
+          title: Type
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        installed:
+          type: boolean
+          title: Installed
+      type: object
+      required:
+      - type
+      - name
+      - installed
+      title: ProviderDTO
+    WorkflowExecutionLogsDTO:
+      properties:
+        id:
+          type: integer
+          title: Id
+        timestamp:
+          type: string
+          format: date-time
+          title: Timestamp
+        message:
+          type: string
+          title: Message
+        context:
+          type: object
+          title: Context
+      type: object
+      required:
+      - id
+      - timestamp
+      - message
+      title: WorkflowExecutionLogsDTO
+    WorkflowCreateOrUpdateDTO:
+      properties:
+        workflow_id:
+          type: string
+          title: Workflow Id
+        status:
+          type: string
+          enum:
+          - created
+          - updated
+          title: Status
+        revision:
+          type: integer
+          title: Revision
+          default: 1
+      type: object
+      required:
+      - workflow_id
+      - status
+      title: WorkflowCreateOrUpdateDTO
+  securitySchemes:
+    API Key:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    HTTPBasic:
+      type: http
+      scheme: basic
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: token

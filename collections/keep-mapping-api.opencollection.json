@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions mapping API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "mapping",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/mapping",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all mapping rules"
+        },
+        {
+          "info": {
+            "name": "Create Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mapping",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new mapping rule"
+        },
+        {
+          "info": {
+            "name": "Update Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/mapping/:rule_id",
+            "params": [
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update an existing rule"
+        },
+        {
+          "info": {
+            "name": "Delete Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/mapping/:rule_id",
+            "params": [
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a mapping rule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

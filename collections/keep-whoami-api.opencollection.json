@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions whoami API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "whoami",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Tenant Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/whoami",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get tenant id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

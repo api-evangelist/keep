@@ -1,0 +1,354 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions workflows API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "workflows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Workflows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workflows",
+            "params": [
+              {
+                "name": "is_v2",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get workflows"
+        },
+        {
+          "info": {
+            "name": "Create Workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/workflows",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create or update a workflow"
+        },
+        {
+          "info": {
+            "name": "Export Workflows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workflows/export",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "export all workflow Yamls"
+        },
+        {
+          "info": {
+            "name": "Run Workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/workflows/:workflow_id/run",
+            "params": [
+              {
+                "name": "workflow_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Run a workflow"
+        },
+        {
+          "info": {
+            "name": "Run Workflow From Definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/workflows/test",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Test run a workflow from a definition"
+        },
+        {
+          "info": {
+            "name": "Create Workflow From Body",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/workflows/json",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create or update a workflow"
+        },
+        {
+          "info": {
+            "name": "Get Random Workflow Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workflows/random-templates",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get random workflow templates"
+        },
+        {
+          "info": {
+            "name": "Get Workflow By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workflows/:workflow_id",
+            "params": [
+              {
+                "name": "workflow_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get workflow by ID"
+        },
+        {
+          "info": {
+            "name": "Update Workflow By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/workflows/:workflow_id",
+            "params": [
+              {
+                "name": "workflow_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a workflow"
+        },
+        {
+          "info": {
+            "name": "Delete Workflow By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/workflows/:workflow_id",
+            "params": [
+              {
+                "name": "workflow_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete workflow"
+        },
+        {
+          "info": {
+            "name": "Get Raw Workflow By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workflows/:workflow_id/raw",
+            "params": [
+              {
+                "name": "workflow_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get workflow executions by ID"
+        },
+        {
+          "info": {
+            "name": "Get Workflow Executions By Alert Fingerprint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workflows/executions",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get workflow executions by alert fingerprint"
+        },
+        {
+          "info": {
+            "name": "Get Workflow By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workflows/:workflow_id/runs",
+            "params": [
+              {
+                "name": "workflow_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tab",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "trigger",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "execution_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get workflow executions by ID"
+        },
+        {
+          "info": {
+            "name": "Get Workflow Execution Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workflows/:workflow_id/runs/:workflow_execution_id",
+            "params": [
+              {
+                "name": "workflow_execution_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a workflow execution status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions users API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/auth/users",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all users"
+        },
+        {
+          "info": {
+            "name": "Create User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/auth/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a user"
+        },
+        {
+          "info": {
+            "name": "Update User",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/auth/users/:user_email",
+            "params": [
+              {
+                "name": "user_email",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a user"
+        },
+        {
+          "info": {
+            "name": "Delete User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/auth/users/:user_email",
+            "params": [
+              {
+                "name": "user_email",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

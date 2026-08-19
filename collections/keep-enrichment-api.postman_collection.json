@@ -1,0 +1,1266 @@
+{
+  "item": [
+    {
+      "id": "ef7abfd8-11c1-48a3-b1f6-fc61b4a3eafc",
+      "name": "enrichment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "14546c6a-1aaa-4549-963c-b507a92bcc12",
+          "name": "Get Rules",
+          "request": {
+            "name": "Get Rules",
+            "description": {
+              "content": "Get all mapping rules",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mapping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b82eca49-a716-4054-93fb-a6acc2a44aab",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mapping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"matchers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"id\": 4478,\n    \"created_at\": \"1980-12-27T05:32:57.959Z\",\n    \"description\": \"string\",\n    \"file_name\": \"string\",\n    \"priority\": 0,\n    \"type\": \"csv\",\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"last_updated_at\": \"1952-04-16T17:44:53.155Z\"\n  },\n  {\n    \"name\": \"string\",\n    \"matchers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"id\": 9911,\n    \"created_at\": \"1971-08-30T11:55:39.503Z\",\n    \"description\": \"string\",\n    \"file_name\": \"string\",\n    \"priority\": 0,\n    \"type\": \"csv\",\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"last_updated_at\": \"1991-10-19T12:46:02.181Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f770de7-00e8-445e-b073-f3ea60527a9c",
+          "name": "Create Rule",
+          "request": {
+            "name": "Create Rule",
+            "description": {
+              "content": "Create a new mapping rule",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mapping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"file_name\": \"<string>\",\n  \"priority\": 0,\n  \"type\": \"csv\",\n  \"rows\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1d783e2e-a2b9-4cc4-9b51-6fae7904e74e",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mapping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"file_name\": \"<string>\",\n  \"priority\": 0,\n  \"type\": \"csv\",\n  \"rows\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tenant_id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"matchers\": [\n    \"string\",\n    \"string\"\n  ],\n  \"id\": 5355,\n  \"priority\": 0,\n  \"description\": \"string\",\n  \"file_name\": \"string\",\n  \"created_by\": \"string\",\n  \"created_at\": \"1996-05-28T17:51:08.805Z\",\n  \"disabled\": false,\n  \"override\": true,\n  \"condition\": \"string\",\n  \"updated_by\": \"string\",\n  \"last_updated_at\": \"1987-11-18T05:53:08.543Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66155b58-550a-4032-b413-4f983f5f5ba4",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mapping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"file_name\": \"<string>\",\n  \"priority\": 0,\n  \"type\": \"csv\",\n  \"rows\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b8bd4a6-a099-445e-893e-f021e02bdbd6",
+          "name": "Update Rule",
+          "request": {
+            "name": "Update Rule",
+            "description": {
+              "content": "Update an existing rule",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mapping",
+                ":rule_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "rule_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"file_name\": \"<string>\",\n  \"priority\": 0,\n  \"type\": \"csv\",\n  \"rows\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "639e8a56-5345-4c41-9a9a-d3c6dedb5289",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mapping",
+                    ":rule_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "rule_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"file_name\": \"<string>\",\n  \"priority\": 0,\n  \"type\": \"csv\",\n  \"rows\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"matchers\": [\n    \"string\",\n    \"string\"\n  ],\n  \"id\": 1776,\n  \"created_at\": \"1973-05-03T03:27:00.142Z\",\n  \"description\": \"string\",\n  \"file_name\": \"string\",\n  \"priority\": 0,\n  \"type\": \"csv\",\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"last_updated_at\": \"2024-12-20T05:08:18.362Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0fc06401-7fdc-43c9-8bcc-8413809a52a4",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mapping",
+                    ":rule_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "rule_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"file_name\": \"<string>\",\n  \"priority\": 0,\n  \"type\": \"csv\",\n  \"rows\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0fbb0e8f-7736-4e5f-8cef-50f0fd0cc6fd",
+          "name": "Delete Rule",
+          "request": {
+            "name": "Delete Rule",
+            "description": {
+              "content": "Delete a mapping rule",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mapping",
+                ":rule_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "rule_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bc42114e-7024-4c25-8051-83b9b1f58212",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mapping",
+                    ":rule_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "rule_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e731412-b2e8-446a-9eb7-610cd105fa27",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mapping",
+                    ":rule_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "rule_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "465daa0e-4288-492f-9057-0cb8ba641f9c",
+          "name": "Get Extraction Rules",
+          "request": {
+            "name": "Get Extraction Rules",
+            "description": {
+              "content": "Get all extraction rules",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "extraction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b1f11607-23b1-43d7-b24b-32568fd768ab",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "extraction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"regex\": \"string\",\n    \"id\": 6114,\n    \"created_at\": \"2016-12-31T04:53:30.777Z\",\n    \"description\": \"string\",\n    \"priority\": 0,\n    \"attribute\": \"string\",\n    \"condition\": \"string\",\n    \"disabled\": false,\n    \"pre\": false,\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"updated_at\": \"1998-07-07T02:15:36.868Z\"\n  },\n  {\n    \"name\": \"string\",\n    \"regex\": \"string\",\n    \"id\": 1798,\n    \"created_at\": \"1965-03-18T01:52:03.192Z\",\n    \"description\": \"string\",\n    \"priority\": 0,\n    \"attribute\": \"string\",\n    \"condition\": \"string\",\n    \"disabled\": false,\n    \"pre\": false,\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"updated_at\": \"2001-06-19T08:54:50.682Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60f72f87-d1b1-4c08-9ec4-1f01971b8af4",
+          "name": "Create Extraction Rule",
+          "request": {
+            "name": "Create Extraction Rule",
+            "description": {
+              "content": "Create a new extraction rule",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "extraction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"regex\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": 0,\n  \"attribute\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"disabled\": false,\n  \"pre\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b02d97d-7d21-4b54-b611-ae56de401e0d",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "extraction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"regex\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": 0,\n  \"attribute\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"disabled\": false,\n  \"pre\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"regex\": \"string\",\n  \"id\": 1874,\n  \"created_at\": \"2001-06-20T14:46:05.607Z\",\n  \"description\": \"string\",\n  \"priority\": 0,\n  \"attribute\": \"string\",\n  \"condition\": \"string\",\n  \"disabled\": false,\n  \"pre\": false,\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"updated_at\": \"1955-08-08T21:14:01.514Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "922efe46-b952-472b-a255-b0c9073402e6",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "extraction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"regex\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": 0,\n  \"attribute\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"disabled\": false,\n  \"pre\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3ea1e63-6827-42c5-b062-13f82988c3df",
+          "name": "Update Extraction Rule",
+          "request": {
+            "name": "Update Extraction Rule",
+            "description": {
+              "content": "Update an existing extraction rule",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "extraction",
+                ":rule_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "rule_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"regex\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": 0,\n  \"attribute\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"disabled\": false,\n  \"pre\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "37b2ebdc-afba-44a5-a73a-dfb103777530",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "extraction",
+                    ":rule_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "rule_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"regex\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": 0,\n  \"attribute\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"disabled\": false,\n  \"pre\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"regex\": \"string\",\n  \"id\": 1874,\n  \"created_at\": \"2001-06-20T14:46:05.607Z\",\n  \"description\": \"string\",\n  \"priority\": 0,\n  \"attribute\": \"string\",\n  \"condition\": \"string\",\n  \"disabled\": false,\n  \"pre\": false,\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"updated_at\": \"1955-08-08T21:14:01.514Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "633dc2b9-a25c-454a-be77-0cfd9610ad93",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "extraction",
+                    ":rule_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "rule_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"regex\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": 0,\n  \"attribute\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"disabled\": false,\n  \"pre\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3a6c65d-13a6-40a7-89bb-f57eb3f760bc",
+          "name": "Delete Extraction Rule",
+          "request": {
+            "name": "Delete Extraction Rule",
+            "description": {
+              "content": "Delete an extraction rule",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "extraction",
+                ":rule_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "rule_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8fd731a8-f3c4-4ede-a0df-bb71787bc601",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "extraction",
+                    ":rule_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "rule_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed5048fa-c835-4f44-945d-d10e51795506",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "extraction",
+                    ":rule_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "rule_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bc59c3f3-f290-4808-835e-74417c849472",
+    "name": "Keep actions enrichment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Rest API powering https://platform.keephq.dev and friends 🏄‍♀️",
+      "type": "text/plain"
+    }
+  }
+}

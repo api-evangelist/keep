@@ -1,0 +1,203 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions settings API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webhook Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/settings/webhook",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get details about the webhook endpoint (e.g. the API url and an API key)"
+        },
+        {
+          "info": {
+            "name": "Get Smtp Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/settings/smtp",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get SMTP settings"
+        },
+        {
+          "info": {
+            "name": "Update Smtp Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/settings/smtp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Install or update SMTP settings"
+        },
+        {
+          "info": {
+            "name": "Delete Smtp Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/settings/smtp",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete SMTP settings"
+        },
+        {
+          "info": {
+            "name": "Test Smtp Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/settings/smtp/test",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Test SMTP settings"
+        },
+        {
+          "info": {
+            "name": "Create Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/settings/apikey",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create API key"
+        },
+        {
+          "info": {
+            "name": "Update Api Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/settings/apikey",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update API key secret"
+        },
+        {
+          "info": {
+            "name": "Get Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/settings/apikeys",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get API keys"
+        },
+        {
+          "info": {
+            "name": "Delete Api Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/settings/apikey/:keyId",
+            "params": [
+              {
+                "name": "keyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete API key"
+        },
+        {
+          "info": {
+            "name": "Get Sso Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/settings/sso",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Sso Settings"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

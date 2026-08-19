@@ -1,0 +1,395 @@
+{
+  "item": [
+    {
+      "id": "c5c2f42f-6a7d-45f8-82db-6ad798766771",
+      "name": "permissions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "08136b3c-1832-4fbe-ab14-442943099531",
+          "name": "Get Permissions",
+          "request": {
+            "name": "Get Permissions",
+            "description": {
+              "content": "Get resources permissions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "auth",
+                "permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "777a297a-af46-4aff-940f-856737fd07b9",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"resource_id\": \"string\",\n    \"resource_name\": \"string\",\n    \"resource_type\": \"string\",\n    \"permissions\": [\n      {\n        \"id\": \"string\",\n        \"type\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"type\": \"string\",\n        \"name\": \"string\"\n      }\n    ]\n  },\n  {\n    \"resource_id\": \"string\",\n    \"resource_name\": \"string\",\n    \"resource_type\": \"string\",\n    \"permissions\": [\n      {\n        \"id\": \"string\",\n        \"type\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"type\": \"string\",\n        \"name\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce4707ef-2cc8-4cac-a4c3-058f37d3852a",
+          "name": "Create Permissions",
+          "request": {
+            "name": "Create Permissions",
+            "description": {
+              "content": "Create permissions for resources",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "auth",
+                "permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"resource_id\": \"<string>\",\n    \"resource_name\": \"<string>\",\n    \"resource_type\": \"<string>\",\n    \"permissions\": [\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"resource_id\": \"<string>\",\n    \"resource_name\": \"<string>\",\n    \"resource_type\": \"<string>\",\n    \"permissions\": [\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "54a9cd25-2cdd-473a-aa12-48c081ad4802",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"resource_id\": \"<string>\",\n    \"resource_name\": \"<string>\",\n    \"resource_type\": \"<string>\",\n    \"permissions\": [\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"resource_id\": \"<string>\",\n    \"resource_name\": \"<string>\",\n    \"resource_type\": \"<string>\",\n    \"permissions\": [\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "966bd562-adfb-4f17-acfb-2b8ba02e888f",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"resource_id\": \"<string>\",\n    \"resource_name\": \"<string>\",\n    \"resource_type\": \"<string>\",\n    \"permissions\": [\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"resource_id\": \"<string>\",\n    \"resource_name\": \"<string>\",\n    \"resource_type\": \"<string>\",\n    \"permissions\": [\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2617a06-ae8e-401f-97fe-c65a3ae3b565",
+          "name": "Get Scopes",
+          "request": {
+            "name": "Get Scopes",
+            "description": {
+              "content": "Get all resources types",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "auth",
+                "permissions",
+                "scopes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "61755298-3535-4a20-972c-0eac0d7cb788",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auth",
+                    "permissions",
+                    "scopes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fdba93f0-1479-4cdc-8f9a-101cc7c4839e",
+    "name": "Keep actions permissions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Rest API powering https://platform.keephq.dev and friends 🏄‍♀️",
+      "type": "text/plain"
+    }
+  }
+}

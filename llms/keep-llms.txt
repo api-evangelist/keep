@@ -1,0 +1,247 @@
+# Keep
+
+## Docs
+
+- [Introduction](https://docs.keephq.dev/overview/introduction.md): Keep is an open-source alert management and AIOps platform that is a swiss-knife for alerting, automation, and noise reduction.
+- [Playground](https://docs.keephq.dev/overview/playground.md): Dive into Keep's [sandbox environment](https://playground.keephq.dev) to experience the full range of its AIOps capabilities.
+- [Use Cases](https://docs.keephq.dev/overview/usecases.md)
+- [Glossary](https://docs.keephq.dev/overview/glossary.md)
+- [Common Expression Language (CEL)](https://docs.keephq.dev/overview/cel.md)
+- [Fingerprints](https://docs.keephq.dev/overview/fingerprints.md): Fingerprints are unique identifiers associated with alert instances in Keep. Every provider declares the fields fingerprints are calculated upon
+- [Alerts Severity and Status](https://docs.keephq.dev/overview/alertseverityandstatus.md)
+- [Push vs Pull alerts](https://docs.keephq.dev/overview/howdoeskeepgetmyalerts.md)
+- [Comparison](https://docs.keephq.dev/overview/comparisons.md)
+- [Support](https://docs.keephq.dev/overview/support.md)
+- [FAQ](https://docs.keephq.dev/overview/faq.md)
+- [AI Incident Assistant](https://docs.keephq.dev/overview/ai-incident-assistant.md)
+- [AI Workflow Builder Assistant](https://docs.keephq.dev/overview/ai-workflow-assistant.md)
+- [AI Semi Automatic Correlation](https://docs.keephq.dev/overview/ai-semi-automatic-correlation.md)
+- [AI in Workflows](https://docs.keephq.dev/overview/ai-in-workflows.md)
+- [AI Correlation](https://docs.keephq.dev/overview/ai-correlation.md)
+- [Manual Correlation Rules](https://docs.keephq.dev/overview/correlation-rules.md)
+- [Topology Correlation](https://docs.keephq.dev/overview/correlation-topology.md)
+- [Deduplication](https://docs.keephq.dev/overview/deduplication.md)
+- [Extraction](https://docs.keephq.dev/overview/enrichment/extraction.md)
+- [Mapping](https://docs.keephq.dev/overview/enrichment/mapping.md)
+- [Maintenance Windows](https://docs.keephq.dev/overview/maintenance-windows.md)
+- [Service Topology](https://docs.keephq.dev/overview/servicetopology.md)
+- [Workflows](https://docs.keephq.dev/overview/workflow-automation.md)
+- [Overview](https://docs.keephq.dev/alerts/overview.md)
+- [Alert Table](https://docs.keephq.dev/alerts/table.md)
+- [Action Menu](https://docs.keephq.dev/alerts/actionmenu.md)
+- [Alert Sidebar](https://docs.keephq.dev/alerts/sidebar.md)
+- [Customized Presets](https://docs.keephq.dev/alerts/presets.md)
+- [Sound Notifications](https://docs.keephq.dev/alerts/sound.md)
+- [Overview](https://docs.keephq.dev/incidents/overview.md)
+- [Facets](https://docs.keephq.dev/incidents/facets.md)
+- [Overview](https://docs.keephq.dev/workflows/overview.md)
+- [Triggers](https://docs.keephq.dev/workflows/syntax/triggers.md)
+- [Permissions](https://docs.keephq.dev/workflows/syntax/permissions.md)
+- [Steps and Actions](https://docs.keephq.dev/workflows/syntax/steps-and-actions.md)
+- [Conditions](https://docs.keephq.dev/workflows/syntax/conditions.md)
+- [Functions](https://docs.keephq.dev/workflows/syntax/functions.md)
+- [Context](https://docs.keephq.dev/workflows/syntax/context.md)
+- [Providers](https://docs.keephq.dev/workflows/syntax/providers.md)
+- [Foreach](https://docs.keephq.dev/workflows/syntax/foreach.md)
+- [Enrichment](https://docs.keephq.dev/workflows/syntax/enrichment.md)
+- [Suppressing Alerts Automatically](https://docs.keephq.dev/workflows/examples/autosupress.md)
+- [Executing Actions During Business Hours](https://docs.keephq.dev/workflows/examples/buisnesshours.md)
+- [Continue on Error](https://docs.keephq.dev/workflows/examples/continue-on-error.md)
+- [Creating ServiceNow Tickets for Alerts](https://docs.keephq.dev/workflows/examples/create-servicenow-tickets.md)
+- [Handling High-Severity Sentry Alerts](https://docs.keephq.dev/workflows/examples/highsev.md)
+- [Update ServiceNow Tickets](https://docs.keephq.dev/workflows/examples/update-servicenow-tickets.md)
+- [Overview](https://docs.keephq.dev/alertevaluation/overview.md)
+- [VictoriaMetrics Single Alert Example](https://docs.keephq.dev/alertevaluation/examples/victoriametricssingle.md)
+- [VictoriaMetrics Multi Alert Example](https://docs.keephq.dev/alertevaluation/examples/victoriametricsmulti.md)
+- [Overview](https://docs.keephq.dev/providers/overview.md): A Provider is a component of Keep that enables it to interact with third-party products. It is implemented as extensible Python code, making it easy to enhance and customize.
+- [Linked providers](https://docs.keephq.dev/providers/linked-providers.md): Understanding linked vs connected providers in Keep
+- [Provider methods](https://docs.keephq.dev/providers/provider-methods.md)
+- [Airflow](https://docs.keephq.dev/providers/documentation/airflow-provider.md): The Airflow provider integration allows you to send alerts (e.g. DAG failures) from Airflow to Keep via webhooks.
+- [Azure AKS](https://docs.keephq.dev/providers/documentation/aks-provider.md): Azure AKS provider to view kubernetes resources.
+- [AmazonSQS Provider](https://docs.keephq.dev/providers/documentation/amazonsqs-provider.md): The AmazonSQS provider enables you to pull & push alerts to the Amazon SQS Queue.
+- [Anthropic Provider](https://docs.keephq.dev/providers/documentation/anthropic-provider.md): The Anthropic Provider allows for integrating Anthropic's Claude language models into Keep.
+- [AppDynamics](https://docs.keephq.dev/providers/documentation/appdynamics-provider.md): AppDynamics provider allows you to get AppDynamics `alerts/actions` via webhook installation
+- [Asana](https://docs.keephq.dev/providers/documentation/asana-provider.md): Asana Provider allows you to create and update tasks in Asana
+- [AWS S3](https://docs.keephq.dev/providers/documentation/s3-provider.md): AWS S3 provider to query S3 buckets
+- [ArgoCD Provider](https://docs.keephq.dev/providers/documentation/argocd-provider.md): The ArgoCD provider enables you to pull topology and Application data.
+- [Auth0](https://docs.keephq.dev/providers/documentation/auth0-provider.md): Auth0 provider allows interaction with Auth0 APIs for authentication and user management.
+- [Axiom Provider](https://docs.keephq.dev/providers/documentation/axiom-provider.md): Axiom Provider is a class that allows to ingest/digest data from Axiom.
+- [Azure Monitor](https://docs.keephq.dev/providers/documentation/azuremonitoring-provider.md): Azure Monitorg provider allows you to get alerts from Azure Monitor via webhooks.
+- [Bash](https://docs.keephq.dev/providers/documentation/bash-provider.md): Bash provider allows executing Bash commands in a workflow, with a limitation for cloud execution.
+- [BigQuery](https://docs.keephq.dev/providers/documentation/bigquery-provider.md): BigQuery provider allows interaction with Google BigQuery for querying and managing datasets.
+- [Centreon](https://docs.keephq.dev/providers/documentation/centreon-provider.md): Centreon allows you to monitor your infrastructure with ease.
+- [Checkmk](https://docs.keephq.dev/providers/documentation/checkmk-provider.md): Checkmk provider allows you to get alerts from Checkmk via webhooks.
+- [Checkly](https://docs.keephq.dev/providers/documentation/checkly-provider.md): Checkly allows you to receive alerts from Checkly using API endpoints as well as webhooks
+- [Cilium](https://docs.keephq.dev/providers/documentation/cilium-provider.md): Cilium provider enables topology discovery by analyzing network flows between services in your Kubernetes cluster using Hubble.
+- [ClickHouse](https://docs.keephq.dev/providers/documentation/clickhouse-provider.md): ClickHouse provider allows you to interact with ClickHouse database.
+- [CloudWatch](https://docs.keephq.dev/providers/documentation/cloudwatch-provider.md): CloudWatch provider enables seamless integration with AWS CloudWatch for alerting and monitoring, directly pushing alarms into Keep.
+- [Console](https://docs.keephq.dev/providers/documentation/console-provider.md): Console provider is sort of a mock provider that projects given alert message to the console.
+- [Coralogix](https://docs.keephq.dev/providers/documentation/coralogix-provider.md): Coralogix provider allows you to send alerts from Coralogix to Keep using webhooks.
+- [Dash0](https://docs.keephq.dev/providers/documentation/dash0-provider.md): Dash0 provider allows you to get events from Dash0 using webhooks.
+- [Databend](https://docs.keephq.dev/providers/documentation/databend-provider.md): Databend provider allows you to query databases
+- [Datadog](https://docs.keephq.dev/providers/documentation/datadog-provider.md): Datadog provider allows you to query Datadog metrics and logs for monitoring and analytics.
+- [DeepSeek Provider](https://docs.keephq.dev/providers/documentation/deepseek-provider.md): The DeepSeek Provider enables integration of DeepSeek's language models into Keep.
+- [Discord](https://docs.keephq.dev/providers/documentation/discord-provider.md): Discord provider is a provider that allows to send notifications to Discord
+- [Dynatrace](https://docs.keephq.dev/providers/documentation/dynatrace-provider.md): Dynatrace provider allows integration with Dynatrace for monitoring, alerting, and collecting metrics.
+- [EKS Provider](https://docs.keephq.dev/providers/documentation/eks-provider.md): EKS provider integrates with AWS EKS and let you interatct with kubernetes clusters hosted on EKS.
+- [Elastic](https://docs.keephq.dev/providers/documentation/elastic-provider.md): Elastic provider is a provider used to query Elasticsearch (tested with elastic.co)
+- [Flashduty](https://docs.keephq.dev/providers/documentation/flashduty-provider.md): Flashduty docs
+- [Flux CD](https://docs.keephq.dev/providers/documentation/fluxcd-provider.md): Flux CD Provider enables integration with Flux CD for GitOps topology and alerts.
+- [GCP Monitoring](https://docs.keephq.dev/providers/documentation/gcpmonitoring-provider.md): GCP Monitoring provider allows you to get alerts and logs from GCP Monitoring via webhooks and log queries.
+- [Gemini Provider](https://docs.keephq.dev/providers/documentation/gemini-provider.md): The Gemini Provider allows for integrating Google's Gemini language models into Keep.
+- [GitHub](https://docs.keephq.dev/providers/documentation/github-provider.md): GitHub provider allows integration with GitHub for managing repositories, issues, pull requests, and more.
+- [Github Workflows](https://docs.keephq.dev/providers/documentation/github_workflows_provider.md): GithubWorkflowProvider is a provider that interacts with Github Workflows API.
+- [GitLab Provider](https://docs.keephq.dev/providers/documentation/gitlab-provider.md): GitLab provider is a provider used for creating issues in GitLab
+- [GitLab Pipelines](https://docs.keephq.dev/providers/documentation/gitlabpipelines-provider.md): GitLab Pipelines Provider is a provider that interacts with GitLab Pipelines API.
+- [Google Kubernetes Engine](https://docs.keephq.dev/providers/documentation/gke-provider.md): Google Kubernetes Engine provider allows managing Google Kubernetes Engine clusters and related resources.
+- [Google Chat](https://docs.keephq.dev/providers/documentation/google_chat-provider.md): Google Chat provider is a provider that allows to send messages to Google Chat
+- [Grafana Provider](https://docs.keephq.dev/providers/documentation/grafana-provider.md): Grafana Provider allows either pull/push alerts and pull Topology Map from Grafana to Keep.
+- [Grafana Incident Provider](https://docs.keephq.dev/providers/documentation/grafana_incident-provider.md): Grafana Incident Provider alows you to query all incidents from Grafana Incident.
+- [Grafana Loki](https://docs.keephq.dev/providers/documentation/grafana_loki-provider.md): Grafana Loki provider allows you to query logs from Grafana Loki.
+- [Grafana OnCall Provider](https://docs.keephq.dev/providers/documentation/grafana_oncall-provider.md): Grafana Oncall Provider is a class that allows to ingest data to the Grafana OnCall.
+- [Graylog Provider](https://docs.keephq.dev/providers/documentation/graylog-provider.md): The Graylog provider enables webhook installations for receiving alerts in Keep
+- [Grok Provider](https://docs.keephq.dev/providers/documentation/grok-provider.md): The Grok Provider allows for integrating X.AI's Grok language models into Keep.
+- [HTTP Provider](https://docs.keephq.dev/providers/documentation/http-provider.md): HTTP Provider is a provider used to query/notify using HTTP requests
+- [Icinga2 Provider](https://docs.keephq.dev/providers/documentation/icinga2-provider.md): Icinga2 Provider Allows Reception of Push Alerts from Icinga2 to Keep.
+- [ilert Provider](https://docs.keephq.dev/providers/documentation/ilert-provider.md): The ilert provider facilitates interaction with ilert’s API, allowing for the management of incidents. This includes the ability to create, update, and resolve alerts, as well as send custom event notifications. This provider integrates Keep's system with ilert's AI-first platform for operations tea…
+- [Incident.io Provider](https://docs.keephq.dev/providers/documentation/incidentio-provider.md): The Incident.io provider enables the querying of incidents on Incident.io, leveraging incident management capabilities for effective response.
+- [Incident Manager Provider](https://docs.keephq.dev/providers/documentation/incidentmanager-provider.md)
+- [Jira On-Prem Provider](https://docs.keephq.dev/providers/documentation/jira-on-prem-provider.md): Jira On-Prem Provider is a provider used to query data and creating issues in Jira
+- [Jira Cloud Provider](https://docs.keephq.dev/providers/documentation/jira-provider.md): Jira Cloud provider is a provider used to query data and creating issues in Jira
+- [Kafka](https://docs.keephq.dev/providers/documentation/kafka-provider.md): Kafka provider allows integration with Apache Kafka for producing and consuming messages.
+- [Keep](https://docs.keephq.dev/providers/documentation/keep-provider.md): Keep provider allows you to query and manage alerts in Keep.
+- [Kibana](https://docs.keephq.dev/providers/documentation/kibana-provider.md): Kibana provider allows you get alerts from Kibana Alerting via webhooks.
+- [Kubernetes](https://docs.keephq.dev/providers/documentation/kubernetes-provider.md): Kubernetes provider to perform rollout restart or list pods action.
+- [LibreNMS](https://docs.keephq.dev/providers/documentation/libre_nms-provider.md): LibreNMS allows you to receive alerts from LibreNMS using API endpoints as well as webhooks
+- [Linear Provider](https://docs.keephq.dev/providers/documentation/linear_provider.md): Linear Provider is a provider for fetching data and creating issues in Linear app.
+- [LinearB](https://docs.keephq.dev/providers/documentation/linearb-provider.md): The LinearB provider enables integration with LinearB's API to manage and notify incidents directly through webhooks.
+- [LiteLLM Provider](https://docs.keephq.dev/providers/documentation/litellm-provider.md): The LiteLLM Provider enables integration with LiteLLM proxy into Keep.
+- [Llama.cpp Provider](https://docs.keephq.dev/providers/documentation/llamacpp-provider.md): The Llama.cpp Provider allows for integrating locally running Llama.cpp models into Keep.
+- [Mailgun Provider](https://docs.keephq.dev/providers/documentation/mailgun-provider.md): Mailgun Provider allows sending alerts to Keep via email.
+- [Mattermost Provider](https://docs.keephq.dev/providers/documentation/mattermost-provider.md): Mattermost provider is used to send messages to Mattermost.
+- [Mock](https://docs.keephq.dev/providers/documentation/mock-provider.md): Template Provider is a template for newly added provider's documentation
+- [Monday](https://docs.keephq.dev/providers/documentation/monday-provider.md): Monday Provider allows you to add new pulses to your boards
+- [MongoDB](https://docs.keephq.dev/providers/documentation/mongodb-provider.md): MongoDB Provider is a provider used to query MongoDB databases
+- [MySQL](https://docs.keephq.dev/providers/documentation/mysql-provider.md): MySQL Provider is a provider used to query MySQL databases
+- [NetBox](https://docs.keephq.dev/providers/documentation/netbox-provider.md): NetBox provider allows you to get events from NetBox through webhook.
+- [Netdata](https://docs.keephq.dev/providers/documentation/netdata-provider.md): Netdata provider allows you to get alerts from Netdata via webhooks.
+- [New Relic](https://docs.keephq.dev/providers/documentation/new-relic-provider.md): New Relic Provider enables querying AI alerts and registering webhooks.
+- [Ntfy.sh](https://docs.keephq.dev/providers/documentation/ntfy-provider.md): Ntfy.sh allows you to send notifications to your devices
+- [Ollama Provider](https://docs.keephq.dev/providers/documentation/ollama-provider.md): The Ollama Provider allows for integrating locally running Ollama language models into Keep.
+- [OpenAI Provider](https://docs.keephq.dev/providers/documentation/openai-provider.md): The OpenAI Provider allows for integrating OpenAI's language models into Keep.
+- [OpenObserve](https://docs.keephq.dev/providers/documentation/openobserve-provider.md): OpenObserve provider allows you to get OpenObserve `alerts/actions` via webhook installation
+- [OpenSearch Serverless](https://docs.keephq.dev/providers/documentation/opensearchserverless-provider.md): OpenSearch Serverless provider enables seamless integration with AWS OpenSearch Serverless for document-level querying, alerting, and writing, directly into Keep.
+- [Openshift](https://docs.keephq.dev/providers/documentation/openshift-provider.md): Openshift provider to perform rollout restart action on specific resources.
+- [Opsgenie Provider](https://docs.keephq.dev/providers/documentation/opsgenie-provider.md): OpsGenie Provider is a provider that allows to create alerts in OpsGenie.
+- [PagerDuty Provider](https://docs.keephq.dev/providers/documentation/pagerduty-provider.md): PagerDuty Provider allows integration with PagerDuty to create, manage, and synchronize incidents and alerts within Keep.
+- [Pagertree Provider](https://docs.keephq.dev/providers/documentation/pagertree-provider.md): The Pagertree Provider facilitates interactions with the Pagertree API, allowing the retrieval and management of alerts.
+- [Parseable](https://docs.keephq.dev/providers/documentation/parseable-provider.md): Parseable provider allows integration with Parseable, a tool for collecting and querying logs.
+- [Pingdom](https://docs.keephq.dev/providers/documentation/pingdom-provider.md): Pingdom provider allows you to pull alerts from Pingdom or install Keep as webhook.
+- [PostHog](https://docs.keephq.dev/providers/documentation/posthog-provider.md): PostHog provider allows you to query session recordings and analytics data from PostHog.
+- [Microsoft Planner Provider](https://docs.keephq.dev/providers/documentation/planner-provider.md): Microsoft Planner Provider to create task in planner.
+- [PostgreSQL](https://docs.keephq.dev/providers/documentation/postgresql-provider.md): PostgreSQL Provider is a provider used to query POSTGRES databases
+- [Prometheus](https://docs.keephq.dev/providers/documentation/prometheus-provider.md): Prometheus provider allows integration with Prometheus for monitoring and alerting purposes.
+- [Pushover](https://docs.keephq.dev/providers/documentation/pushover-provider.md): Pushover docs
+- [Python](https://docs.keephq.dev/providers/documentation/python-provider.md): Python provider allows executing Python code snippets.
+- [QuickChart Provider](https://docs.keephq.dev/providers/documentation/quickchart-provider.md): The QuickChart provider enables the generation of chart images through a simple and open API, allowing visualization of alert trends and counts. It supports both anonymous usage and authenticated access with an API key for enhanced functionality.
+- [Redmine](https://docs.keephq.dev/providers/documentation/redmine-provider.md)
+- [Resend](https://docs.keephq.dev/providers/documentation/resend-provider.md)
+- [Rollbar](https://docs.keephq.dev/providers/documentation/rollbar-provider.md): Rollbar provides real-time error tracking and debugging tools for developers.
+- [SendGrid](https://docs.keephq.dev/providers/documentation/sendgrid-provider.md)
+- [Sentry](https://docs.keephq.dev/providers/documentation/sentry-provider.md): Sentry provider allows you to query Sentry events and to pull/push alerts from Sentry
+- [Service Now](https://docs.keephq.dev/providers/documentation/service-now-provider.md): Service Now provider allows sending notifications, updates, and retrieving topology information from the ServiceNow CMDB.
+- [SignalFX](https://docs.keephq.dev/providers/documentation/signalfx-provider.md): SignalFX provider allows you get alerts from SignalFX Alerting via webhooks.
+- [SIGNL4 Provider](https://docs.keephq.dev/providers/documentation/signl4-provider.md): SIGNL4 offers critical alerting, incident response and service dispatching for operating critical infrastructure. It alerts you persistently via app push, SMS text and voice calls including tracking, escalation, collaboration and duty planning. Find out more at [signl4.com](https://www.signl4.com/)
+- [Site24x7 Provider](https://docs.keephq.dev/providers/documentation/site24x7-provider.md): The Site24x7 Provider allows you to install webhooks and receive alerts in Site24x7. It manages authentication, setup of webhooks, and retrieval of alert logs from Site24x7.
+- [Keep's integration for Slack](https://docs.keephq.dev/providers/documentation/slack-provider.md): Enhance your Keep workflows with direct Slack notifications. Simplify communication with timely updates and alerts directly within Slack.
+- [SMTP](https://docs.keephq.dev/providers/documentation/smtp-provider.md): SMTP Provider allows you to send emails.
+- [Snowflake](https://docs.keephq.dev/providers/documentation/snowflake-provider.md): Template Provider is a template for newly added provider's documentation
+- [Splunk](https://docs.keephq.dev/providers/documentation/splunk-provider.md): Splunk provider allows you to get Splunk `saved searches` via webhook installation
+- [Squadcast Provider](https://docs.keephq.dev/providers/documentation/squadcast-provider.md): Squadcast provider is a provider used for creating issues in Squadcast
+- [SSH](https://docs.keephq.dev/providers/documentation/ssh-provider.md): The `SSH Provider` is a provider that provides a way to execute SSH commands and get their output.
+- [StatusCake](https://docs.keephq.dev/providers/documentation/statuscake-provider.md): StatusCake allows you to monitor your website and APIs. Keep allows to read alerts and install webhook in StatusCake
+- [SumoLogic Provider](https://docs.keephq.dev/providers/documentation/sumologic-provider.md): The SumoLogic provider enables webhook installations for receiving alerts in keep
+- [Microsoft Teams Provider](https://docs.keephq.dev/providers/documentation/teams-provider.md): Microsoft Teams Provider is a provider that allows to notify alerts to Microsoft Teams chats.
+- [Telegram Provider](https://docs.keephq.dev/providers/documentation/telegram-provider.md): Telegram Provider is a provider that allows to notify alerts to telegram chats.
+- [Template](https://docs.keephq.dev/providers/documentation/template.md): Template Provider is a template for newly added provider's documentation
+- [ThousandEyes](https://docs.keephq.dev/providers/documentation/thousandeyes-provider.md): ThousandEyes allows you to receive alerts from ThousandEyes using API endpoints as well as webhooks
+- [Trello](https://docs.keephq.dev/providers/documentation/trello-provider.md): Trello provider is a provider used to query data from Trello
+- [Twilio Provider](https://docs.keephq.dev/providers/documentation/twilio-provider.md): Twilio Provider is a provider that allows to notify alerts via SMS using Twilio.
+- [UptimeKuma](https://docs.keephq.dev/providers/documentation/uptimekuma-provider.md): UptimeKuma allows you to monitor your website and APIs and send alert to keep
+- [VictoriaLogs](https://docs.keephq.dev/providers/documentation/victorialogs-provider.md): VictoriaLogs provider allows you to query logs from VictoriaLogs.
+- [Victoriametrics Provider](https://docs.keephq.dev/providers/documentation/victoriametrics-provider.md): The VictoriametricsProvider allows you to fetch alerts in Victoriametrics.
+- [vLLM Provider](https://docs.keephq.dev/providers/documentation/vllm-provider.md): The vLLM Provider enables integration with vLLM-deployed language models into Keep.
+- [Wazuh](https://docs.keephq.dev/providers/documentation/wazuh-provider.md): Wazuh provider allows you to get alerts from Wazuh via custom integration.
+- [Webhook](https://docs.keephq.dev/providers/documentation/webhook-provider.md): A webhook is a method used to send real-time data from one application to another whenever a specific event occurs
+- [Websocket](https://docs.keephq.dev/providers/documentation/websocket-provider.md)
+- [YouTrack](https://docs.keephq.dev/providers/documentation/youtrack-provider.md): YouTrack provider allows you to create new issues in YouTrack.
+- [Zabbix](https://docs.keephq.dev/providers/documentation/zabbix-provider.md): Zabbix provider allows you to pull/push alerts from Zabbix
+- [Zenduty](https://docs.keephq.dev/providers/documentation/zenduty-provider.md): Zenduty docs
+- [Zoom](https://docs.keephq.dev/providers/documentation/zoom-provider.md): Zoom provider allows you to create meetings with Zoom.
+- [Zoom Chat](https://docs.keephq.dev/providers/documentation/zoom_chat-provider.md): Zoom Chat provider allows you to send Zoom Chats using the Incoming Webhook Zoom application.
+- [Adding a new Provider](https://docs.keephq.dev/providers/adding-a-new-provider.md)
+- [Configuration](https://docs.keephq.dev/deployment/configuration.md)
+- [Monitoring](https://docs.keephq.dev/deployment/monitoring.md)
+- [Overview](https://docs.keephq.dev/deployment/authentication/overview.md)
+- [No Authentication](https://docs.keephq.dev/deployment/authentication/no-auth.md)
+- [DB Authentication](https://docs.keephq.dev/deployment/authentication/db-auth.md)
+- [Auth0 Authentication](https://docs.keephq.dev/deployment/authentication/auth0-auth.md)
+- [Azure AD Authentication](https://docs.keephq.dev/deployment/authentication/azuread-auth.md)
+- [Keycloak Authentication](https://docs.keephq.dev/deployment/authentication/keycloak-auth.md)
+- [OAuth2Proxy Authentication](https://docs.keephq.dev/deployment/authentication/oauth2proxy-auth.md)
+- [Example: OAuth2‑Proxy + Keep + GitLab SSO](https://docs.keephq.dev/deployment/authentication/oauth2-proxy-gitlab.md)
+- [Okta Authentication](https://docs.keephq.dev/deployment/authentication/okta-auth.md)
+- [OneLogin Authentication](https://docs.keephq.dev/deployment/authentication/onelogin-auth.md)
+- [Overview](https://docs.keephq.dev/deployment/provision/overview.md)
+- [Providers Provisioning](https://docs.keephq.dev/deployment/provision/provider.md)
+- [Workflow Provisioning](https://docs.keephq.dev/deployment/provision/workflow.md)
+- [Dashboard Provisioning](https://docs.keephq.dev/deployment/provision/dashboard.md)
+- [Mapping Rule Provisioning](https://docs.keephq.dev/deployment/provision/mapping.md)
+- [Secret Store](https://docs.keephq.dev/deployment/secret-store.md)
+- [Docker](https://docs.keephq.dev/deployment/docker.md)
+- [Overview](https://docs.keephq.dev/deployment/kubernetes/overview.md)
+- [Installation](https://docs.keephq.dev/deployment/kubernetes/installation.md)
+- [Architecture](https://docs.keephq.dev/deployment/kubernetes/architecture.md)
+- [Openshift](https://docs.keephq.dev/deployment/kubernetes/openshift.md)
+- [AWS ECS](https://docs.keephq.dev/deployment/ecs.md)
+- [Running Keep with LiteLLM](https://docs.keephq.dev/deployment/local-llm/keep-with-litellm.md)
+- [Stress testing](https://docs.keephq.dev/deployment/stress-testing.md)
+- [Getting started](https://docs.keephq.dev/development/getting-started.md)
+- [Keep with an external URL](https://docs.keephq.dev/development/external-url.md)
+- [Overview](https://docs.keephq.dev/cli/overview.md)
+- [Installation](https://docs.keephq.dev/cli/installation.md)
+- [Sync Keep Workflows With Github Action](https://docs.keephq.dev/cli/github-actions.md)
+- [Cli alert](https://docs.keephq.dev/cli/commands/cli-alert.md)
+- [Alert enrich](https://docs.keephq.dev/cli/commands/alert-enrich.md)
+- [Alert get](https://docs.keephq.dev/cli/commands/alert-get.md)
+- [Alert list](https://docs.keephq.dev/cli/commands/alert-list.md)
+- [Cli provider](https://docs.keephq.dev/cli/commands/cli-provider.md)
+- [Provider connect](https://docs.keephq.dev/cli/commands/provider-connect.md)
+- [Provider delete](https://docs.keephq.dev/cli/commands/provider-delete.md)
+- [Provider list](https://docs.keephq.dev/cli/commands/provider-list.md)
+- [Cli workflow](https://docs.keephq.dev/cli/commands/cli-workflow.md)
+- [Workflow apply](https://docs.keephq.dev/cli/commands/workflow-apply.md)
+- [Workflow list](https://docs.keephq.dev/cli/commands/workflow-list.md)
+- [Workflow run](https://docs.keephq.dev/cli/commands/workflow-run.md)
+- [Workflow runs](https://docs.keephq.dev/cli/commands/workflow-runs.md)
+- [Runs logs](https://docs.keephq.dev/cli/commands/runs-logs.md)
+- [Runs list](https://docs.keephq.dev/cli/commands/runs-list.md)
+- [Mappings list](https://docs.keephq.dev/cli/commands/mappings-list.md)
+- [Mappings create](https://docs.keephq.dev/cli/commands/mappings-create.md)
+- [Mappings delete](https://docs.keephq.dev/cli/commands/mappings-delete.md)
+- [Extraction create](https://docs.keephq.dev/cli/commands/extraction-create.md)
+- [Extraction delete](https://docs.keephq.dev/cli/commands/extraction-delete.md)
+- [Extractions list](https://docs.keephq.dev/cli/commands/extractions-list.md)
+- [Cli](https://docs.keephq.dev/cli/commands/cli.md)
+- [api](https://docs.keephq.dev/cli/commands/cli-api.md)
+- [Cli config new](https://docs.keephq.dev/cli/commands/cli-config-new.md)
+- [Cli config show](https://docs.keephq.dev/cli/commands/cli-config-show.md)
+- [run](https://docs.keephq.dev/cli/commands/cli-run.md)
+- [config](https://docs.keephq.dev/cli/commands/cli-config.md)
+- [version](https://docs.keephq.dev/cli/commands/cli-version.md)
+- [whoami](https://docs.keephq.dev/cli/commands/cli-whoami.md)
+
+## OpenAPI Specs
+
+- [package-lock](https://docs.keephq.dev/package-lock.json)
+- [openapi](https://docs.keephq.dev/openapi.json)

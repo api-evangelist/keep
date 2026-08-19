@@ -1,0 +1,152 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions dashboard API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dashboard",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Read Dashboards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Read Dashboards"
+        },
+        {
+          "info": {
+            "name": "Create Dashboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dashboard",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Dashboard"
+        },
+        {
+          "info": {
+            "name": "Update Dashboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/dashboard/:dashboard_id",
+            "params": [
+              {
+                "name": "dashboard_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Dashboard"
+        },
+        {
+          "info": {
+            "name": "Delete Dashboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/dashboard/:dashboard_id",
+            "params": [
+              {
+                "name": "dashboard_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Dashboard"
+        },
+        {
+          "info": {
+            "name": "Get Metric Widgets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/metric-widgets",
+            "params": [
+              {
+                "name": "mttr",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "apd",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ipd",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "wpd",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "time_stamp",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Metric Widgets"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,198 @@
+{
+  "item": [
+    {
+      "id": "fddc19eb-e90d-489a-a05c-c1d889239a2e",
+      "name": "metrics",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c99a545b-5bca-42d2-a7a3-dba4d774f94b",
+          "name": "Get Metrics",
+          "request": {
+            "name": "Get Metrics",
+            "description": {
+              "content": "This endpoint is used by Prometheus to scrape such metrics from the application:\n- alerts_total {incident_name, incident_id} - The total number of alerts per incident.\n- open_incidents_total - The total number of open incidents.\n- workflows_executions_total {status} - The total number of workflow executions.\n\nPlease note that those metrics are per-tenant and are not designed to be used for the monitoring of the application itself.\n\nExample prometheus configuration:\n```\nscrape_configs:\n- job_name: \"scrape_keep\"\n  scrape_interval: 5m  # It's important to scrape not too often to avoid rate limiting.\n  static_configs:\n  - targets: [\"https://api.keephq.dev\"]  # Or your own domain.\n  authorization:\n    type: Bearer\n    credentials: \"{Your API Key}\"\n\n  # Optional, you can add labels to exported incidents. \n  # Label values will be equal to the last incident's alert payload value matching the label.\n  # Attention! Don't add \"flaky\" labels which could change from alert to alert within the same incident.\n  # Good labels: ['labels.department', 'labels.team'], bad labels: ['labels.severity', 'labels.pod_id']\n  # Check Keep -> Feed -> \"extraPayload\" column, it will help in writing labels.\n\n  params:\n    labels: ['labels.service', 'labels.queue']\n  # Will resuld as: \"labels_service\" and \"labels_queue\".\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "labels",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "labels",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "76d55b1f-2862-4220-8500-7e12d611d4fb",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "818f05ce-77f6-46d2-8b8f-7873725f0237",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "880c1141-86aa-4a57-8fe0-dd24c2f66c8f",
+    "name": "Keep actions metrics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Rest API powering https://platform.keephq.dev and friends 🏄‍♀️",
+      "type": "text/plain"
+    }
+  }
+}

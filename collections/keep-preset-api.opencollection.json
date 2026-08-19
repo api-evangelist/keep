@@ -1,0 +1,196 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions preset API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "preset",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Presets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/preset",
+            "params": [
+              {
+                "name": "time_stamp",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all presets for tenant"
+        },
+        {
+          "info": {
+            "name": "Create Preset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/preset",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a preset for tenant"
+        },
+        {
+          "info": {
+            "name": "Update Preset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/preset/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a preset for tenant"
+        },
+        {
+          "info": {
+            "name": "Delete Preset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/preset/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a preset for tenant"
+        },
+        {
+          "info": {
+            "name": "Get Preset Alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/preset/:preset_name/alerts",
+            "params": [
+              {
+                "name": "preset_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the alerts of a preset"
+        },
+        {
+          "info": {
+            "name": "Create Preset Tab",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/preset/:preset_id/tab",
+            "params": [
+              {
+                "name": "preset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a tab for a preset"
+        },
+        {
+          "info": {
+            "name": "Delete Tab",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/preset/:preset_id/tab/:tab_id",
+            "params": [
+              {
+                "name": "preset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tab_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a tab from a preset"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

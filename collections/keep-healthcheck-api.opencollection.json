@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions healthcheck API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "healthcheck",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Healthcheck",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/healthcheck"
+          },
+          "docs": "simple healthcheck endpoint"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

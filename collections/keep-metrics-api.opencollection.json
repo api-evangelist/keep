@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions metrics API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/metrics",
+            "params": [
+              {
+                "name": "labels",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This endpoint is used by Prometheus to scrape such metrics from the application:\n- alerts_total {incident_name, incident_id} - The total number of alerts per incident.\n- open_incidents_total - The total number of open incidents.\n- workflows_executions_total {status} - The total number of workflow executions.\n\nPlease note that those metrics are per-tenant and are not designed to be used for the monitoring of the application itself.\n\nExample prometheus configuration:\n```\nscrape_configs:\n- job_name"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

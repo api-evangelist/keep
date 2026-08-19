@@ -1,0 +1,3445 @@
+{
+  "item": [
+    {
+      "id": "ca594a26-e266-43f1-82de-0327b4079526",
+      "name": "incidents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "63bb8768-a2a0-463c-b7d8-e692bc225540",
+          "name": "Get All Incidents",
+          "request": {
+            "name": "Get All Incidents",
+            "description": {
+              "content": "Get last incidents",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "confirmed",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "sorting",
+                  "value": "creation_time"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "severity",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "severity",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "assignees",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "assignees",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sources",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sources",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "affected_services",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "affected_services",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e1af3caa-0489-46e2-af0d-ab894cf2d5d6",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "confirmed",
+                      "value": "true"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "creation_time"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignees",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignees",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "affected_services",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "affected_services",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 7765,\n  \"items\": [\n    {\n      \"id\": \"5487abff-38af-729d-3a1e-d90a902b5c98\",\n      \"alerts_count\": 6011,\n      \"alert_sources\": [\n        \"string\",\n        \"string\"\n      ],\n      \"severity\": \"<string>\",\n      \"services\": [\n        \"string\",\n        \"string\"\n      ],\n      \"is_predicted\": true,\n      \"is_confirmed\": true,\n      \"user_generated_name\": \"string\",\n      \"assignee\": \"string\",\n      \"user_summary\": \"string\",\n      \"same_incident_in_the_past_id\": \"4d0428f5-45f2-87ca-413a-82e42527d1d3\",\n      \"start_time\": \"1974-01-14T13:17:05.382Z\",\n      \"last_seen_time\": \"2017-07-21T07:07:06.957Z\",\n      \"end_time\": \"2016-05-07T15:20:56.326Z\",\n      \"creation_time\": \"1960-02-26T17:21:45.800Z\",\n      \"status\": \"firing\",\n      \"generated_summary\": \"string\",\n      \"ai_generated_name\": \"string\",\n      \"rule_fingerprint\": \"string\",\n      \"fingerprint\": \"string\",\n      \"merged_into_incident_id\": \"d2608fed-c5de-8db7-7ae2-49fe752b6fde\",\n      \"merged_by\": \"string\",\n      \"merged_at\": \"1966-03-24T18:02:52.494Z\"\n    },\n    {\n      \"id\": \"12efbcac-58c2-de3b-d56f-6d41456d9d43\",\n      \"alerts_count\": 887,\n      \"alert_sources\": [\n        \"string\",\n        \"string\"\n      ],\n      \"severity\": \"<string>\",\n      \"services\": [\n        \"string\",\n        \"string\"\n      ],\n      \"is_predicted\": true,\n      \"is_confirmed\": true,\n      \"user_generated_name\": \"string\",\n      \"assignee\": \"string\",\n      \"user_summary\": \"string\",\n      \"same_incident_in_the_past_id\": \"6245d76c-0edf-7b1e-c44b-ca7b49f1bdb5\",\n      \"start_time\": \"1994-01-22T03:49:49.893Z\",\n      \"last_seen_time\": \"2015-08-07T19:12:02.304Z\",\n      \"end_time\": \"1974-07-05T07:44:43.423Z\",\n      \"creation_time\": \"1997-04-18T23:16:19.143Z\",\n      \"status\": \"firing\",\n      \"generated_summary\": \"string\",\n      \"ai_generated_name\": \"string\",\n      \"rule_fingerprint\": \"string\",\n      \"fingerprint\": \"string\",\n      \"merged_into_incident_id\": \"5c526efb-e462-836e-e247-c3f439396620\",\n      \"merged_by\": \"string\",\n      \"merged_at\": \"2025-02-01T13:42:26.142Z\"\n    }\n  ],\n  \"limit\": 25,\n  \"offset\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c910f6ba-188a-46e8-89dd-9793fa516667",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "confirmed",
+                      "value": "true"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sorting",
+                      "value": "creation_time"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignees",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignees",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "affected_services",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "affected_services",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dda31dcc-6424-43b9-9fb9-be260ef4b916",
+          "name": "Create Incident",
+          "request": {
+            "name": "Create Incident",
+            "description": {
+              "content": "Create new incident",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_generated_name\": \"<string>\",\n  \"assignee\": \"<string>\",\n  \"user_summary\": \"<string>\",\n  \"same_incident_in_the_past_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e7f82bca-8b50-48cf-9bae-d96e76a3f750",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Incident name\",\n  \"user_summary\": \"Keep: Incident description\",\n  \"status\": \"firing\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"2c57195c-8fef-4bb7-2692-300dde60c48f\",\n  \"alerts_count\": 3947,\n  \"alert_sources\": [\n    \"string\",\n    \"string\"\n  ],\n  \"severity\": \"<string>\",\n  \"services\": [\n    \"string\",\n    \"string\"\n  ],\n  \"is_predicted\": false,\n  \"is_confirmed\": false,\n  \"user_generated_name\": \"string\",\n  \"assignee\": \"string\",\n  \"user_summary\": \"string\",\n  \"same_incident_in_the_past_id\": \"82a7e217-0d05-254b-36be-37195088478d\",\n  \"start_time\": \"2017-04-05T10:58:34.202Z\",\n  \"last_seen_time\": \"1957-08-13T01:36:41.002Z\",\n  \"end_time\": \"2023-10-12T19:03:41.512Z\",\n  \"creation_time\": \"2014-12-23T22:18:56.643Z\",\n  \"status\": \"firing\",\n  \"generated_summary\": \"string\",\n  \"ai_generated_name\": \"string\",\n  \"rule_fingerprint\": \"string\",\n  \"fingerprint\": \"string\",\n  \"merged_into_incident_id\": \"efb4f50d-fb92-3dd3-014d-49f11d811072\",\n  \"merged_by\": \"string\",\n  \"merged_at\": \"1990-04-12T07:07:55.550Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bdc9ae3a-ff49-4a02-9679-d9f1fd97ed6d",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Incident name\",\n  \"user_summary\": \"Keep: Incident description\",\n  \"status\": \"firing\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b00af51e-9a54-4f71-97f8-7b42b72c3b94",
+          "name": "Get Incidents Meta",
+          "request": {
+            "name": "Get Incidents Meta",
+            "description": {
+              "content": "Get incidents' metadata for filtering",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                "meta"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7b0c9429-ced5-4020-afdc-28188c120602",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "meta"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assignees\": [\n    \"string\",\n    \"string\"\n  ],\n  \"services\": [\n    \"string\",\n    \"string\"\n  ],\n  \"sources\": [\n    \"string\",\n    \"string\"\n  ],\n  \"statuses\": [\n    \"firing\",\n    \"resolved\",\n    \"acknowledged\",\n    \"merged\"\n  ],\n  \"severities\": [\n    \"critical\",\n    \"high\",\n    \"warning\",\n    \"info\",\n    \"low\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be970183-78ab-4e9e-a027-56660ad809f3",
+          "name": "Get Incident",
+          "request": {
+            "name": "Get Incident",
+            "description": {
+              "content": "Get incident by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                ":incident_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "incident_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2fe3e64c-789d-4a9a-b496-ca492b057cd6",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"2c57195c-8fef-4bb7-2692-300dde60c48f\",\n  \"alerts_count\": 3947,\n  \"alert_sources\": [\n    \"string\",\n    \"string\"\n  ],\n  \"severity\": \"<string>\",\n  \"services\": [\n    \"string\",\n    \"string\"\n  ],\n  \"is_predicted\": false,\n  \"is_confirmed\": false,\n  \"user_generated_name\": \"string\",\n  \"assignee\": \"string\",\n  \"user_summary\": \"string\",\n  \"same_incident_in_the_past_id\": \"82a7e217-0d05-254b-36be-37195088478d\",\n  \"start_time\": \"2017-04-05T10:58:34.202Z\",\n  \"last_seen_time\": \"1957-08-13T01:36:41.002Z\",\n  \"end_time\": \"2023-10-12T19:03:41.512Z\",\n  \"creation_time\": \"2014-12-23T22:18:56.643Z\",\n  \"status\": \"firing\",\n  \"generated_summary\": \"string\",\n  \"ai_generated_name\": \"string\",\n  \"rule_fingerprint\": \"string\",\n  \"fingerprint\": \"string\",\n  \"merged_into_incident_id\": \"efb4f50d-fb92-3dd3-014d-49f11d811072\",\n  \"merged_by\": \"string\",\n  \"merged_at\": \"1990-04-12T07:07:55.550Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97d0f88f-ea2f-4eef-abf7-1f994f24ace8",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "749d15ee-a6d1-4f7a-83a9-180cc69a95b3",
+          "name": "Update Incident",
+          "request": {
+            "name": "Update Incident",
+            "description": {
+              "content": "Update incident by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                ":incident_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "generatedByAi",
+                  "value": "false",
+                  "description": "Whether the incident update request was generated by AI"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "incident_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_generated_name\": \"<string>\",\n  \"assignee\": \"<string>\",\n  \"user_summary\": \"<string>\",\n  \"same_incident_in_the_past_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "310289c4-43de-4fe6-bc98-b15d5b2b90fa",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "generatedByAi",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Incident name\",\n  \"user_summary\": \"Keep: Incident description\",\n  \"status\": \"firing\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"2c57195c-8fef-4bb7-2692-300dde60c48f\",\n  \"alerts_count\": 3947,\n  \"alert_sources\": [\n    \"string\",\n    \"string\"\n  ],\n  \"severity\": \"<string>\",\n  \"services\": [\n    \"string\",\n    \"string\"\n  ],\n  \"is_predicted\": false,\n  \"is_confirmed\": false,\n  \"user_generated_name\": \"string\",\n  \"assignee\": \"string\",\n  \"user_summary\": \"string\",\n  \"same_incident_in_the_past_id\": \"82a7e217-0d05-254b-36be-37195088478d\",\n  \"start_time\": \"2017-04-05T10:58:34.202Z\",\n  \"last_seen_time\": \"1957-08-13T01:36:41.002Z\",\n  \"end_time\": \"2023-10-12T19:03:41.512Z\",\n  \"creation_time\": \"2014-12-23T22:18:56.643Z\",\n  \"status\": \"firing\",\n  \"generated_summary\": \"string\",\n  \"ai_generated_name\": \"string\",\n  \"rule_fingerprint\": \"string\",\n  \"fingerprint\": \"string\",\n  \"merged_into_incident_id\": \"efb4f50d-fb92-3dd3-014d-49f11d811072\",\n  \"merged_by\": \"string\",\n  \"merged_at\": \"1990-04-12T07:07:55.550Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38d12a2c-19d4-4afa-b2aa-bda647ae4d42",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "generatedByAi",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Incident name\",\n  \"user_summary\": \"Keep: Incident description\",\n  \"status\": \"firing\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3dffeba5-0a0c-48c2-aeed-6edfcc4f3bf8",
+          "name": "Delete Incident",
+          "request": {
+            "name": "Delete Incident",
+            "description": {
+              "content": "Delete incident by incident id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                ":incident_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "incident_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b7c1ccd3-a9b3-4757-ab0a-34ac3783dd19",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49962fcc-6afe-4eac-84e9-0fb71e79d279",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9a232fc-ce67-4af3-9eff-ef64e8385e30",
+          "name": "Merge Incidents",
+          "request": {
+            "name": "Merge Incidents",
+            "description": {
+              "content": "Merge incidents",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                "merge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"source_incident_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"destination_incident_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6fc1575c-824c-4ff1-9d7a-122906af24e8",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "merge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source_incident_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"destination_incident_id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"merged_incident_ids\": [\n    \"7e998a07-fbcf-74e0-e300-76d1894bc5ef\",\n    \"012d2b9b-4cad-941e-fbcc-0e0437f1330e\"\n  ],\n  \"skipped_incident_ids\": [\n    \"40b415b0-98f2-c52b-0a24-c3c309e1696c\",\n    \"d79cbbd3-766a-17ac-7749-9bc740a7b8a5\"\n  ],\n  \"failed_incident_ids\": [\n    \"c5e640b4-8ec2-7cf3-cabe-88ce6701b0cc\",\n    \"a3282d33-25d9-7277-c05a-f8e1f98bbd90\"\n  ],\n  \"destination_incident_id\": \"511ddb4f-9124-00e2-4172-005fe5a9cacd\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b385090-6ca2-493d-b5a4-e76776604fd5",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "merge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source_incident_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"destination_incident_id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de3c9a73-fd28-4e57-961c-6168339de546",
+          "name": "Get Incident Alerts",
+          "request": {
+            "name": "Get Incident Alerts",
+            "description": {
+              "content": "Get incident alerts by incident incident id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                ":incident_id",
+                "alerts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_unlinked",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "incident_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "df507c32-ddd8-4396-945b-f3ed7100581a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id",
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "include_unlinked",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1275,\n  \"items\": [\n    {\n      \"name\": \"Pod 'api-service-production' lacks memory\",\n      \"status\": \"firing\",\n      \"lastReceived\": \"2021-01-01T00:00:00.000Z\",\n      \"environment\": \"production\",\n      \"service\": \"backend\",\n      \"source\": [\n        \"prometheus\"\n      ],\n      \"message\": \"The pod 'api-service-production' lacks memory causing high error rate\",\n      \"description\": \"Due to the lack of memory, the pod 'api-service-production' is experiencing high error rate\",\n      \"severity\": \"critical\",\n      \"pushed\": true,\n      \"url\": \"https://www.keephq.dev?alertId=1234\",\n      \"labels\": {\n        \"pod\": \"api-service-production\",\n        \"region\": \"us-east-1\",\n        \"cpu\": \"88\",\n        \"memory\": \"100Mi\"\n      },\n      \"ticket_url\": \"https://www.keephq.dev?enrichedTicketId=456\",\n      \"fingerprint\": \"1234\"\n    },\n    {\n      \"name\": \"Pod 'api-service-production' lacks memory\",\n      \"status\": \"firing\",\n      \"lastReceived\": \"2021-01-01T00:00:00.000Z\",\n      \"environment\": \"production\",\n      \"service\": \"backend\",\n      \"source\": [\n        \"prometheus\"\n      ],\n      \"message\": \"The pod 'api-service-production' lacks memory causing high error rate\",\n      \"description\": \"Due to the lack of memory, the pod 'api-service-production' is experiencing high error rate\",\n      \"severity\": \"critical\",\n      \"pushed\": true,\n      \"url\": \"https://www.keephq.dev?alertId=1234\",\n      \"labels\": {\n        \"pod\": \"api-service-production\",\n        \"region\": \"us-east-1\",\n        \"cpu\": \"88\",\n        \"memory\": \"100Mi\"\n      },\n      \"ticket_url\": \"https://www.keephq.dev?enrichedTicketId=456\",\n      \"fingerprint\": \"1234\"\n    }\n  ],\n  \"limit\": 25,\n  \"offset\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bc80fdc-ef00-4e0d-8c04-984f7b5523bd",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id",
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "include_unlinked",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "580df91d-e25d-47a5-8b14-1f81d89cb5f6",
+          "name": "Add Alerts To Incident",
+          "request": {
+            "name": "Add Alerts To Incident",
+            "description": {
+              "content": "Add alerts to incident",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                ":incident_id",
+                "alerts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "is_created_by_ai",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "incident_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<uuid>\",\n  \"<uuid>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6fea5f95-cac8-4a2f-94b8-7f90fe221736",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id",
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "is_created_by_ai",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<uuid>\",\n  \"<uuid>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"Pod 'api-service-production' lacks memory\",\n    \"status\": \"firing\",\n    \"lastReceived\": \"2021-01-01T00:00:00.000Z\",\n    \"environment\": \"production\",\n    \"service\": \"backend\",\n    \"source\": [\n      \"prometheus\"\n    ],\n    \"message\": \"The pod 'api-service-production' lacks memory causing high error rate\",\n    \"description\": \"Due to the lack of memory, the pod 'api-service-production' is experiencing high error rate\",\n    \"severity\": \"critical\",\n    \"pushed\": true,\n    \"url\": \"https://www.keephq.dev?alertId=1234\",\n    \"labels\": {\n      \"pod\": \"api-service-production\",\n      \"region\": \"us-east-1\",\n      \"cpu\": \"88\",\n      \"memory\": \"100Mi\"\n    },\n    \"ticket_url\": \"https://www.keephq.dev?enrichedTicketId=456\",\n    \"fingerprint\": \"1234\"\n  },\n  {\n    \"name\": \"Pod 'api-service-production' lacks memory\",\n    \"status\": \"firing\",\n    \"lastReceived\": \"2021-01-01T00:00:00.000Z\",\n    \"environment\": \"production\",\n    \"service\": \"backend\",\n    \"source\": [\n      \"prometheus\"\n    ],\n    \"message\": \"The pod 'api-service-production' lacks memory causing high error rate\",\n    \"description\": \"Due to the lack of memory, the pod 'api-service-production' is experiencing high error rate\",\n    \"severity\": \"critical\",\n    \"pushed\": true,\n    \"url\": \"https://www.keephq.dev?alertId=1234\",\n    \"labels\": {\n      \"pod\": \"api-service-production\",\n      \"region\": \"us-east-1\",\n      \"cpu\": \"88\",\n      \"memory\": \"100Mi\"\n    },\n    \"ticket_url\": \"https://www.keephq.dev?enrichedTicketId=456\",\n    \"fingerprint\": \"1234\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47d48f46-e67e-49e1-91ee-b47fdb5458a5",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id",
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "is_created_by_ai",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<uuid>\",\n  \"<uuid>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d12cac78-2c33-4d79-88d5-3364184facfb",
+          "name": "Delete Alerts From Incident",
+          "request": {
+            "name": "Delete Alerts From Incident",
+            "description": {
+              "content": "Delete alerts from incident",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                ":incident_id",
+                "alerts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "incident_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<uuid>\",\n  \"<uuid>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "95391e06-387b-428d-bf86-e46dc33ab7dd",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id",
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<uuid>\",\n  \"<uuid>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"status\": \"string\",\n    \"severity\": \"string\",\n    \"lastReceived\": \"string\",\n    \"id\": \"string\",\n    \"firingStartTime\": \"string\",\n    \"environment\": \"undefined\",\n    \"isFullDuplicate\": false,\n    \"isPartialDuplicate\": false,\n    \"duplicateReason\": \"string\",\n    \"service\": \"string\",\n    \"apiKeyRef\": \"string\",\n    \"message\": \"string\",\n    \"description\": \"string\",\n    \"pushed\": false,\n    \"event_id\": \"string\",\n    \"url\": \"http://froyqOIrvuQUiqCpZvBND.dtlgez3rSkilCiozKK0eYeYSKt3Plg+\",\n    \"labels\": {},\n    \"fingerprint\": \"string\",\n    \"deleted\": false,\n    \"dismissUntil\": \"string\",\n    \"dismissed\": false,\n    \"assignee\": \"string\",\n    \"providerId\": \"string\",\n    \"providerType\": \"string\",\n    \"note\": \"string\",\n    \"startedAt\": \"string\",\n    \"isNoisy\": false,\n    \"incident\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"status\": \"string\",\n    \"severity\": \"string\",\n    \"lastReceived\": \"string\",\n    \"id\": \"string\",\n    \"firingStartTime\": \"string\",\n    \"environment\": \"undefined\",\n    \"isFullDuplicate\": false,\n    \"isPartialDuplicate\": false,\n    \"duplicateReason\": \"string\",\n    \"service\": \"string\",\n    \"apiKeyRef\": \"string\",\n    \"message\": \"string\",\n    \"description\": \"string\",\n    \"pushed\": false,\n    \"event_id\": \"string\",\n    \"url\": \"https://cjjxE.ywYd5AjQOKaYtYue\",\n    \"labels\": {},\n    \"fingerprint\": \"string\",\n    \"deleted\": false,\n    \"dismissUntil\": \"string\",\n    \"dismissed\": false,\n    \"assignee\": \"string\",\n    \"providerId\": \"string\",\n    \"providerType\": \"string\",\n    \"note\": \"string\",\n    \"startedAt\": \"string\",\n    \"isNoisy\": false,\n    \"incident\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ea2ba54-0f04-4951-9526-ca2765cc56a7",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id",
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<uuid>\",\n  \"<uuid>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "847753be-0cf9-4015-bfb0-e3f68142112d",
+          "name": "Get Future Incidents For An Incident",
+          "request": {
+            "name": "Get Future Incidents For An Incident",
+            "description": {
+              "content": "Get same incidents linked to this one",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                ":incident_id",
+                "future_incidents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "incident_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b2c5e005-1a23-4d7e-8bcd-0581f00d6bea",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id",
+                    "future_incidents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 4400,\n  \"items\": [\n    {\n      \"id\": \"6f22b9b5-cc12-9738-44c6-02bdc020c855\",\n      \"alerts_count\": 5293,\n      \"alert_sources\": [\n        \"string\",\n        \"string\"\n      ],\n      \"severity\": \"<string>\",\n      \"services\": [\n        \"string\",\n        \"string\"\n      ],\n      \"is_predicted\": true,\n      \"is_confirmed\": false,\n      \"user_generated_name\": \"string\",\n      \"assignee\": \"string\",\n      \"user_summary\": \"string\",\n      \"same_incident_in_the_past_id\": \"404ca53d-e493-3283-927d-58a71fd7477e\",\n      \"start_time\": \"1994-04-04T13:00:22.311Z\",\n      \"last_seen_time\": \"1979-01-06T16:37:16.076Z\",\n      \"end_time\": \"1954-07-09T15:08:02.125Z\",\n      \"creation_time\": \"1977-04-02T07:48:55.586Z\",\n      \"status\": \"firing\",\n      \"generated_summary\": \"string\",\n      \"ai_generated_name\": \"string\",\n      \"rule_fingerprint\": \"string\",\n      \"fingerprint\": \"string\",\n      \"merged_into_incident_id\": \"9bb73fef-ff9e-7b3d-dc28-19e4da428bd6\",\n      \"merged_by\": \"string\",\n      \"merged_at\": \"1987-02-19T20:21:05.597Z\"\n    },\n    {\n      \"id\": \"533e3f07-ad4c-5204-da4a-5549ea6653e2\",\n      \"alerts_count\": 3330,\n      \"alert_sources\": [\n        \"string\",\n        \"string\"\n      ],\n      \"severity\": \"<string>\",\n      \"services\": [\n        \"string\",\n        \"string\"\n      ],\n      \"is_predicted\": true,\n      \"is_confirmed\": false,\n      \"user_generated_name\": \"string\",\n      \"assignee\": \"string\",\n      \"user_summary\": \"string\",\n      \"same_incident_in_the_past_id\": \"02f12150-259f-beeb-bda7-cf1ee43944b9\",\n      \"start_time\": \"1999-01-17T00:23:47.485Z\",\n      \"last_seen_time\": \"1974-08-17T03:39:02.844Z\",\n      \"end_time\": \"1971-03-14T16:18:03.729Z\",\n      \"creation_time\": \"2026-07-23T12:11:05.178Z\",\n      \"status\": \"firing\",\n      \"generated_summary\": \"string\",\n      \"ai_generated_name\": \"string\",\n      \"rule_fingerprint\": \"string\",\n      \"fingerprint\": \"string\",\n      \"merged_into_incident_id\": \"70ce9a4c-e13c-9d21-a14c-722fb915d8bf\",\n      \"merged_by\": \"string\",\n      \"merged_at\": \"1971-01-04T04:15:08.511Z\"\n    }\n  ],\n  \"limit\": 25,\n  \"offset\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f26e3ddc-82dc-4ce9-a2fd-964d754a8579",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id",
+                    "future_incidents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "478918db-1a02-4bd4-8472-b8a569005eed",
+          "name": "Get Incident Workflows",
+          "request": {
+            "name": "Get Incident Workflows",
+            "description": {
+              "content": "Get incident workflows by incident id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                ":incident_id",
+                "workflows"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "incident_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e1d0517b-a35d-4ac2-a621-0548527ef34c",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id",
+                    "workflows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 5225,\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"workflow_id\": \"string\",\n      \"started\": \"1967-09-29T15:02:51.243Z\",\n      \"triggered_by\": \"string\",\n      \"status\": \"string\",\n      \"workflow_name\": \"string\",\n      \"logs\": [\n        {\n          \"id\": 7545,\n          \"timestamp\": \"1976-12-05T04:55:43.004Z\",\n          \"message\": \"string\",\n          \"context\": {}\n        },\n        {\n          \"id\": 1725,\n          \"timestamp\": \"1961-09-10T18:04:45.703Z\",\n          \"message\": \"string\",\n          \"context\": {}\n        }\n      ],\n      \"error\": \"string\",\n      \"execution_time\": 7779.525889804456,\n      \"results\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"workflow_id\": \"string\",\n      \"started\": \"1995-09-18T03:13:10.658Z\",\n      \"triggered_by\": \"string\",\n      \"status\": \"string\",\n      \"workflow_name\": \"string\",\n      \"logs\": [\n        {\n          \"id\": 71,\n          \"timestamp\": \"1984-05-13T07:23:15.722Z\",\n          \"message\": \"string\",\n          \"context\": {}\n        },\n        {\n          \"id\": 3366,\n          \"timestamp\": \"1957-11-14T05:00:09.989Z\",\n          \"message\": \"string\",\n          \"context\": {}\n        }\n      ],\n      \"error\": \"string\",\n      \"execution_time\": 4716.969023920812,\n      \"results\": {}\n    }\n  ],\n  \"limit\": 25,\n  \"offset\": 0,\n  \"passCount\": 0,\n  \"avgDuration\": 0,\n  \"workflow\": {\n    \"id\": \"string\",\n    \"created_by\": \"string\",\n    \"creation_time\": \"1948-07-02T17:18:42.606Z\",\n    \"providers\": [\n      {\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"installed\": false,\n        \"id\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"installed\": true,\n        \"id\": \"string\"\n      }\n    ],\n    \"workflow_raw\": \"string\",\n    \"name\": \"Workflow file doesn't contain name\",\n    \"description\": \"Workflow file doesn't contain description\",\n    \"interval\": 8469,\n    \"disabled\": false,\n    \"last_execution_time\": \"1966-02-19T07:25:04.772Z\",\n    \"last_execution_status\": \"string\",\n    \"revision\": 1,\n    \"last_updated\": \"1969-03-09T08:36:11.607Z\",\n    \"invalid\": false,\n    \"last_execution_started\": \"1979-04-13T11:49:30.554Z\",\n    \"provisioned\": false,\n    \"provisioned_file\": \"string\"\n  },\n  \"failCount\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc05723e-6aca-4766-9976-b3d6e719c427",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id",
+                    "workflows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c86ccec-459f-459b-aae3-77a65ecbc4f7",
+          "name": "Receive Event",
+          "request": {
+            "name": "Receive Event",
+            "description": {
+              "content": "Receive an alert event from a provider",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                "event",
+                ":provider_type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "provider_type",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7b56fd34-10dd-4384-a5d3-317b751cd714",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "event",
+                    ":provider_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider_type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef1959d0-5924-4d46-8dcb-8ef5e443439b",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "event",
+                    ":provider_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider_type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da193bda-1543-4335-aa39-e048e67095fd",
+          "name": "Change Incident Status",
+          "request": {
+            "name": "Change Incident Status",
+            "description": {
+              "content": "Change incident status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                ":incident_id",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "incident_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fa905a6c-d57d-4af9-a64e-b729dad31325",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"2c57195c-8fef-4bb7-2692-300dde60c48f\",\n  \"alerts_count\": 3947,\n  \"alert_sources\": [\n    \"string\",\n    \"string\"\n  ],\n  \"severity\": \"<string>\",\n  \"services\": [\n    \"string\",\n    \"string\"\n  ],\n  \"is_predicted\": false,\n  \"is_confirmed\": false,\n  \"user_generated_name\": \"string\",\n  \"assignee\": \"string\",\n  \"user_summary\": \"string\",\n  \"same_incident_in_the_past_id\": \"82a7e217-0d05-254b-36be-37195088478d\",\n  \"start_time\": \"2017-04-05T10:58:34.202Z\",\n  \"last_seen_time\": \"1957-08-13T01:36:41.002Z\",\n  \"end_time\": \"2023-10-12T19:03:41.512Z\",\n  \"creation_time\": \"2014-12-23T22:18:56.643Z\",\n  \"status\": \"firing\",\n  \"generated_summary\": \"string\",\n  \"ai_generated_name\": \"string\",\n  \"rule_fingerprint\": \"string\",\n  \"fingerprint\": \"string\",\n  \"merged_into_incident_id\": \"efb4f50d-fb92-3dd3-014d-49f11d811072\",\n  \"merged_by\": \"string\",\n  \"merged_at\": \"1990-04-12T07:07:55.550Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25383c6a-7885-4836-8b36-2a6ae420648c",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc57bb3e-f305-4735-8da9-750cdbf915d6",
+          "name": "Add Comment",
+          "request": {
+            "name": "Add Comment",
+            "description": {
+              "content": "Add incident audit activity",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                ":incident_id",
+                "comment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "incident_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d0c922fb-c095-490f-9cb1-23720d7c20ea",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id",
+                    "comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fingerprint\": \"string\",\n  \"tenant_id\": \"string\",\n  \"user_id\": \"string\",\n  \"action\": \"string\",\n  \"description\": \"string\",\n  \"id\": \"60c291ef-c7a7-4b28-0c44-ebf6190d080d\",\n  \"timestamp\": \"1992-07-30T05:31:16.023Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bebaaf47-2ad8-4d00-bdb8-56d8f11ecaac",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id",
+                    "comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21977ab9-cf1b-47df-a795-7ff078549a60",
+          "name": "Create With Ai",
+          "request": {
+            "name": "Create With Ai",
+            "description": {
+              "content": "Create incident with AI",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                "ai",
+                "suggest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0110139d-482f-4437-9c29-35f88e506ba2",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "ai",
+                    "suggest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"incident_suggestion\": [\n    {\n      \"id\": \"52469b37-22bb-9104-bda6-39c45e03c145\",\n      \"alerts_count\": 8321,\n      \"alert_sources\": [\n        \"string\",\n        \"string\"\n      ],\n      \"severity\": \"<string>\",\n      \"services\": [\n        \"string\",\n        \"string\"\n      ],\n      \"is_predicted\": false,\n      \"is_confirmed\": true,\n      \"user_generated_name\": \"string\",\n      \"assignee\": \"string\",\n      \"user_summary\": \"string\",\n      \"same_incident_in_the_past_id\": \"d5749dad-0531-0fcd-5cda-fd0d22c6bf5c\",\n      \"start_time\": \"1974-07-09T15:28:07.729Z\",\n      \"last_seen_time\": \"1997-11-15T06:09:46.309Z\",\n      \"end_time\": \"1952-12-11T12:36:28.133Z\",\n      \"creation_time\": \"1998-04-16T21:26:52.024Z\",\n      \"status\": \"firing\",\n      \"generated_summary\": \"string\",\n      \"ai_generated_name\": \"string\",\n      \"rule_fingerprint\": \"string\",\n      \"fingerprint\": \"string\",\n      \"merged_into_incident_id\": \"62ba8605-b714-a180-f0a1-7223975bea41\",\n      \"merged_by\": \"string\",\n      \"merged_at\": \"2017-01-03T05:53:28.922Z\"\n    },\n    {\n      \"id\": \"17aa258e-3876-16c0-60fe-c6f2af7044ef\",\n      \"alerts_count\": 6767,\n      \"alert_sources\": [\n        \"string\",\n        \"string\"\n      ],\n      \"severity\": \"<string>\",\n      \"services\": [\n        \"string\",\n        \"string\"\n      ],\n      \"is_predicted\": false,\n      \"is_confirmed\": true,\n      \"user_generated_name\": \"string\",\n      \"assignee\": \"string\",\n      \"user_summary\": \"string\",\n      \"same_incident_in_the_past_id\": \"4d9b0178-4a48-b94a-c049-3990f250cee8\",\n      \"start_time\": \"1968-02-10T10:47:41.502Z\",\n      \"last_seen_time\": \"2007-04-17T10:09:45.439Z\",\n      \"end_time\": \"1958-01-10T11:00:29.514Z\",\n      \"creation_time\": \"1984-10-23T19:57:27.185Z\",\n      \"status\": \"firing\",\n      \"generated_summary\": \"string\",\n      \"ai_generated_name\": \"string\",\n      \"rule_fingerprint\": \"string\",\n      \"fingerprint\": \"string\",\n      \"merged_into_incident_id\": \"d227f585-8bc1-16e5-8682-37245dce407b\",\n      \"merged_by\": \"string\",\n      \"merged_at\": \"2013-07-14T10:14:08.636Z\"\n    }\n  ],\n  \"suggestion_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5cc4e5a3-3346-41fd-b977-5596bb7dc671",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "ai",
+                    "suggest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08962e4f-c9bf-46a6-a0bd-41acea2c767e",
+          "name": "Commit With Ai",
+          "request": {
+            "name": "Commit With Ai",
+            "description": {
+              "content": "Commit incidents with AI and user feedback",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                "ai",
+                ":suggestion_id",
+                "commit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "suggestion_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"accepted\": \"<boolean>\",\n    \"original_suggestion\": \"<object>\",\n    \"incident\": {\n      \"id\": \"<uuid>\",\n      \"alerts_count\": \"<integer>\",\n      \"alert_sources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"severity\": \"<string>\",\n      \"services\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"is_predicted\": \"<boolean>\",\n      \"is_confirmed\": \"<boolean>\",\n      \"user_generated_name\": \"<string>\",\n      \"assignee\": \"<string>\",\n      \"user_summary\": \"<string>\",\n      \"same_incident_in_the_past_id\": \"<uuid>\",\n      \"start_time\": \"<dateTime>\",\n      \"last_seen_time\": \"<dateTime>\",\n      \"end_time\": \"<dateTime>\",\n      \"creation_time\": \"<dateTime>\",\n      \"status\": \"firing\",\n      \"generated_summary\": \"<string>\",\n      \"ai_generated_name\": \"<string>\",\n      \"rule_fingerprint\": \"<string>\",\n      \"fingerprint\": \"<string>\",\n      \"merged_into_incident_id\": \"<uuid>\",\n      \"merged_by\": \"<string>\",\n      \"merged_at\": \"<dateTime>\"\n    },\n    \"changes\": \"<object>\"\n  },\n  {\n    \"accepted\": \"<boolean>\",\n    \"original_suggestion\": \"<object>\",\n    \"incident\": {\n      \"id\": \"<uuid>\",\n      \"alerts_count\": \"<integer>\",\n      \"alert_sources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"severity\": \"<string>\",\n      \"services\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"is_predicted\": \"<boolean>\",\n      \"is_confirmed\": \"<boolean>\",\n      \"user_generated_name\": \"<string>\",\n      \"assignee\": \"<string>\",\n      \"user_summary\": \"<string>\",\n      \"same_incident_in_the_past_id\": \"<uuid>\",\n      \"start_time\": \"<dateTime>\",\n      \"last_seen_time\": \"<dateTime>\",\n      \"end_time\": \"<dateTime>\",\n      \"creation_time\": \"<dateTime>\",\n      \"status\": \"firing\",\n      \"generated_summary\": \"<string>\",\n      \"ai_generated_name\": \"<string>\",\n      \"rule_fingerprint\": \"<string>\",\n      \"fingerprint\": \"<string>\",\n      \"merged_into_incident_id\": \"<uuid>\",\n      \"merged_by\": \"<string>\",\n      \"merged_at\": \"<dateTime>\"\n    },\n    \"changes\": \"<object>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9b52ab82-1a7f-4b80-9c8b-12a1ca136a5b",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "ai",
+                    ":suggestion_id",
+                    "commit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "suggestion_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"accepted\": \"<boolean>\",\n    \"original_suggestion\": \"<object>\",\n    \"incident\": {\n      \"id\": \"<uuid>\",\n      \"alerts_count\": \"<integer>\",\n      \"alert_sources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"severity\": \"<string>\",\n      \"services\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"is_predicted\": \"<boolean>\",\n      \"is_confirmed\": \"<boolean>\",\n      \"user_generated_name\": \"<string>\",\n      \"assignee\": \"<string>\",\n      \"user_summary\": \"<string>\",\n      \"same_incident_in_the_past_id\": \"<uuid>\",\n      \"start_time\": \"<dateTime>\",\n      \"last_seen_time\": \"<dateTime>\",\n      \"end_time\": \"<dateTime>\",\n      \"creation_time\": \"<dateTime>\",\n      \"status\": \"firing\",\n      \"generated_summary\": \"<string>\",\n      \"ai_generated_name\": \"<string>\",\n      \"rule_fingerprint\": \"<string>\",\n      \"fingerprint\": \"<string>\",\n      \"merged_into_incident_id\": \"<uuid>\",\n      \"merged_by\": \"<string>\",\n      \"merged_at\": \"<dateTime>\"\n    },\n    \"changes\": \"<object>\"\n  },\n  {\n    \"accepted\": \"<boolean>\",\n    \"original_suggestion\": \"<object>\",\n    \"incident\": {\n      \"id\": \"<uuid>\",\n      \"alerts_count\": \"<integer>\",\n      \"alert_sources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"severity\": \"<string>\",\n      \"services\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"is_predicted\": \"<boolean>\",\n      \"is_confirmed\": \"<boolean>\",\n      \"user_generated_name\": \"<string>\",\n      \"assignee\": \"<string>\",\n      \"user_summary\": \"<string>\",\n      \"same_incident_in_the_past_id\": \"<uuid>\",\n      \"start_time\": \"<dateTime>\",\n      \"last_seen_time\": \"<dateTime>\",\n      \"end_time\": \"<dateTime>\",\n      \"creation_time\": \"<dateTime>\",\n      \"status\": \"firing\",\n      \"generated_summary\": \"<string>\",\n      \"ai_generated_name\": \"<string>\",\n      \"rule_fingerprint\": \"<string>\",\n      \"fingerprint\": \"<string>\",\n      \"merged_into_incident_id\": \"<uuid>\",\n      \"merged_by\": \"<string>\",\n      \"merged_at\": \"<dateTime>\"\n    },\n    \"changes\": \"<object>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"alerts_count\": \"<integer>\",\n    \"alert_sources\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"severity\": \"<string>\",\n    \"services\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"is_predicted\": \"<boolean>\",\n    \"is_confirmed\": \"<boolean>\",\n    \"user_generated_name\": \"<string>\",\n    \"assignee\": \"<string>\",\n    \"user_summary\": \"<string>\",\n    \"same_incident_in_the_past_id\": \"<uuid>\",\n    \"start_time\": \"<dateTime>\",\n    \"last_seen_time\": \"<dateTime>\",\n    \"end_time\": \"<dateTime>\",\n    \"creation_time\": \"<dateTime>\",\n    \"status\": \"firing\",\n    \"generated_summary\": \"<string>\",\n    \"ai_generated_name\": \"<string>\",\n    \"rule_fingerprint\": \"<string>\",\n    \"fingerprint\": \"<string>\",\n    \"merged_into_incident_id\": \"<uuid>\",\n    \"merged_by\": \"<string>\",\n    \"merged_at\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"alerts_count\": \"<integer>\",\n    \"alert_sources\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"severity\": \"<string>\",\n    \"services\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"is_predicted\": \"<boolean>\",\n    \"is_confirmed\": \"<boolean>\",\n    \"user_generated_name\": \"<string>\",\n    \"assignee\": \"<string>\",\n    \"user_summary\": \"<string>\",\n    \"same_incident_in_the_past_id\": \"<uuid>\",\n    \"start_time\": \"<dateTime>\",\n    \"last_seen_time\": \"<dateTime>\",\n    \"end_time\": \"<dateTime>\",\n    \"creation_time\": \"<dateTime>\",\n    \"status\": \"firing\",\n    \"generated_summary\": \"<string>\",\n    \"ai_generated_name\": \"<string>\",\n    \"rule_fingerprint\": \"<string>\",\n    \"fingerprint\": \"<string>\",\n    \"merged_into_incident_id\": \"<uuid>\",\n    \"merged_by\": \"<string>\",\n    \"merged_at\": \"<dateTime>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "672e8a64-6a4f-41c9-9e68-35e8250ef27d",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "ai",
+                    ":suggestion_id",
+                    "commit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "suggestion_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"accepted\": \"<boolean>\",\n    \"original_suggestion\": \"<object>\",\n    \"incident\": {\n      \"id\": \"<uuid>\",\n      \"alerts_count\": \"<integer>\",\n      \"alert_sources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"severity\": \"<string>\",\n      \"services\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"is_predicted\": \"<boolean>\",\n      \"is_confirmed\": \"<boolean>\",\n      \"user_generated_name\": \"<string>\",\n      \"assignee\": \"<string>\",\n      \"user_summary\": \"<string>\",\n      \"same_incident_in_the_past_id\": \"<uuid>\",\n      \"start_time\": \"<dateTime>\",\n      \"last_seen_time\": \"<dateTime>\",\n      \"end_time\": \"<dateTime>\",\n      \"creation_time\": \"<dateTime>\",\n      \"status\": \"firing\",\n      \"generated_summary\": \"<string>\",\n      \"ai_generated_name\": \"<string>\",\n      \"rule_fingerprint\": \"<string>\",\n      \"fingerprint\": \"<string>\",\n      \"merged_into_incident_id\": \"<uuid>\",\n      \"merged_by\": \"<string>\",\n      \"merged_at\": \"<dateTime>\"\n    },\n    \"changes\": \"<object>\"\n  },\n  {\n    \"accepted\": \"<boolean>\",\n    \"original_suggestion\": \"<object>\",\n    \"incident\": {\n      \"id\": \"<uuid>\",\n      \"alerts_count\": \"<integer>\",\n      \"alert_sources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"severity\": \"<string>\",\n      \"services\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"is_predicted\": \"<boolean>\",\n      \"is_confirmed\": \"<boolean>\",\n      \"user_generated_name\": \"<string>\",\n      \"assignee\": \"<string>\",\n      \"user_summary\": \"<string>\",\n      \"same_incident_in_the_past_id\": \"<uuid>\",\n      \"start_time\": \"<dateTime>\",\n      \"last_seen_time\": \"<dateTime>\",\n      \"end_time\": \"<dateTime>\",\n      \"creation_time\": \"<dateTime>\",\n      \"status\": \"firing\",\n      \"generated_summary\": \"<string>\",\n      \"ai_generated_name\": \"<string>\",\n      \"rule_fingerprint\": \"<string>\",\n      \"fingerprint\": \"<string>\",\n      \"merged_into_incident_id\": \"<uuid>\",\n      \"merged_by\": \"<string>\",\n      \"merged_at\": \"<dateTime>\"\n    },\n    \"changes\": \"<object>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "574b4ca4-4523-40c1-ac6e-96bbaea12098",
+          "name": "Confirm Incident",
+          "request": {
+            "name": "Confirm Incident",
+            "description": {
+              "content": "Confirm predicted incident by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                ":incident_id",
+                "confirm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "incident_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-API-KEY"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3ad55bfa-291f-4176-b5ab-a8f8c0226925",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"alerts_count\": \"<integer>\",\n  \"alert_sources\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"severity\": \"<string>\",\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"is_predicted\": \"<boolean>\",\n  \"is_confirmed\": \"<boolean>\",\n  \"user_generated_name\": \"<string>\",\n  \"assignee\": \"<string>\",\n  \"user_summary\": \"<string>\",\n  \"same_incident_in_the_past_id\": \"<uuid>\",\n  \"start_time\": \"<dateTime>\",\n  \"last_seen_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"creation_time\": \"<dateTime>\",\n  \"status\": \"firing\",\n  \"generated_summary\": \"<string>\",\n  \"ai_generated_name\": \"<string>\",\n  \"rule_fingerprint\": \"<string>\",\n  \"fingerprint\": \"<string>\",\n  \"merged_into_incident_id\": \"<uuid>\",\n  \"merged_by\": \"<string>\",\n  \"merged_at\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f467ac4-0c6e-4ade-abf4-93c4a6581ceb",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    ":incident_id",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "incident_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "323e1412-423d-4640-97a3-077084f170a1",
+    "name": "Keep actions incidents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Rest API powering https://platform.keephq.dev and friends 🏄‍♀️",
+      "type": "text/plain"
+    }
+  }
+}

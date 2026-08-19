@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions rules API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rules",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Rules"
+        },
+        {
+          "info": {
+            "name": "Create Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/rules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Rule"
+        },
+        {
+          "info": {
+            "name": "Update Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/rules/:rule_id",
+            "params": [
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Rule"
+        },
+        {
+          "info": {
+            "name": "Delete Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/rules/:rule_id",
+            "params": [
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Rule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

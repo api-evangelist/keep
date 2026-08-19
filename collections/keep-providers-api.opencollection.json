@@ -1,0 +1,444 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions providers API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "providers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Providers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Providers"
+        },
+        {
+          "info": {
+            "name": "Get Installed Providers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers/export",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "export all installed providers"
+        },
+        {
+          "info": {
+            "name": "Get Alerts Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers/:provider_type/:provider_id/configured-alerts",
+            "params": [
+              {
+                "name": "provider_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get alerts configuration from a provider"
+        },
+        {
+          "info": {
+            "name": "Get Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers/:provider_type/:provider_id/logs",
+            "params": [
+              {
+                "name": "provider_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get logs from a provider"
+        },
+        {
+          "info": {
+            "name": "Get Alerts Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers/:provider_type/schema",
+            "params": [
+              {
+                "name": "provider_type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the provider's API schema used to push alerts configuration"
+        },
+        {
+          "info": {
+            "name": "Get Alert Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers/:provider_type/:provider_id/alerts/count",
+            "params": [
+              {
+                "name": "provider_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ever",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get number of alerts a specific provider has received (in a specific time time period or ever)"
+        },
+        {
+          "info": {
+            "name": "Add Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/providers/:provider_type/:provider_id/alerts",
+            "params": [
+              {
+                "name": "provider_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "alert_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Push new alerts to the provider"
+        },
+        {
+          "info": {
+            "name": "Test Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/providers/test",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Test a provider's alert retrieval"
+        },
+        {
+          "info": {
+            "name": "Delete Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/providers/:provider_type/:provider_id",
+            "params": [
+              {
+                "name": "provider_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Provider"
+        },
+        {
+          "info": {
+            "name": "Validate Provider Scopes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/providers/:provider_id/scopes",
+            "params": [
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Validate provider scopes"
+        },
+        {
+          "info": {
+            "name": "Update Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/providers/:provider_id",
+            "params": [
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update provider"
+        },
+        {
+          "info": {
+            "name": "Install Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/providers/install",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Install Provider"
+        },
+        {
+          "info": {
+            "name": "Install Provider Oauth2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/providers/install/oauth2/:provider_type",
+            "params": [
+              {
+                "name": "provider_type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Install Provider Oauth2"
+        },
+        {
+          "info": {
+            "name": "Invoke Provider Method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/providers/:provider_id/invoke/:method",
+            "params": [
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "method",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Invoke provider special method"
+        },
+        {
+          "info": {
+            "name": "Install Provider Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/providers/install/webhook/:provider_type/:provider_id",
+            "params": [
+              {
+                "name": "provider_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Install Provider Webhook"
+        },
+        {
+          "info": {
+            "name": "Get Webhook Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers/:provider_type/webhook",
+            "params": [
+              {
+                "name": "provider_type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Webhook Settings"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

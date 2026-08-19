@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/actions",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all actions"
+        },
+        {
+          "info": {
+            "name": "Create Actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/actions",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create new actions by uploading a file"
+        },
+        {
+          "info": {
+            "name": "Put Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/actions/:action_id",
+            "params": [
+              {
+                "name": "action_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update an action"
+        },
+        {
+          "info": {
+            "name": "Delete Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/actions/:action_id",
+            "params": [
+              {
+                "name": "action_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete an action"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

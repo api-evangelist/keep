@@ -1,0 +1,699 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions alerts API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "alerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/alerts",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get last alerts occurrence"
+        },
+        {
+          "info": {
+            "name": "Delete Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/alerts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete alert by finerprint and last received time"
+        },
+        {
+          "info": {
+            "name": "Get Alert History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/alerts/:fingerprint/history",
+            "params": [
+              {
+                "name": "fingerprint",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get alert history"
+        },
+        {
+          "info": {
+            "name": "Assign Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/alerts/:fingerprint/assign/:last_received",
+            "params": [
+              {
+                "name": "fingerprint",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "last_received",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "unassign",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Assign alert to user"
+        },
+        {
+          "info": {
+            "name": "Receive Generic Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/alerts/event",
+            "params": [
+              {
+                "name": "fingerprint",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Receive a generic alert event"
+        },
+        {
+          "info": {
+            "name": "Webhook Challenge",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/alerts/event/netdata"
+          },
+          "docs": "Helper function to complete Netdata webhook challenge"
+        },
+        {
+          "info": {
+            "name": "Receive Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/alerts/event/:provider_type",
+            "params": [
+              {
+                "name": "provider_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fingerprint",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Receive an alert event from a provider"
+        },
+        {
+          "info": {
+            "name": "Get Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/alerts/:fingerprint",
+            "params": [
+              {
+                "name": "fingerprint",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get alert by fingerprint"
+        },
+        {
+          "info": {
+            "name": "Enrich Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/alerts/enrich",
+            "params": [
+              {
+                "name": "dispose_on_new_alert",
+                "value": "",
+                "type": "query",
+                "description": "Dispose on new alert"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Enrich an alert"
+        },
+        {
+          "info": {
+            "name": "Unenrich Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/alerts/unenrich",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Un-Enrich an alert"
+        },
+        {
+          "info": {
+            "name": "Search Alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/alerts/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search alerts"
+        },
+        {
+          "info": {
+            "name": "Get Multiple Fingerprint Alert Audit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/alerts/audit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get alert timeline audit trail for multiple fingerprints"
+        },
+        {
+          "info": {
+            "name": "Get Alert Audit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/alerts/:fingerprint/audit",
+            "params": [
+              {
+                "name": "fingerprint",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get alert timeline audit trail"
+        },
+        {
+          "info": {
+            "name": "Get Alert Quality",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/alerts/quality/metrics",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "time_stamp",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get alert quality"
+        },
+        {
+          "info": {
+            "name": "Get Workflows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workflows",
+            "params": [
+              {
+                "name": "is_v2",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get workflows"
+        },
+        {
+          "info": {
+            "name": "Create Workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/workflows",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create or update a workflow"
+        },
+        {
+          "info": {
+            "name": "Export Workflows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workflows/export",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "export all workflow Yamls"
+        },
+        {
+          "info": {
+            "name": "Run Workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/workflows/:workflow_id/run",
+            "params": [
+              {
+                "name": "workflow_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Run a workflow"
+        },
+        {
+          "info": {
+            "name": "Run Workflow From Definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/workflows/test",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Test run a workflow from a definition"
+        },
+        {
+          "info": {
+            "name": "Create Workflow From Body",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/workflows/json",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create or update a workflow"
+        },
+        {
+          "info": {
+            "name": "Get Random Workflow Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workflows/random-templates",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get random workflow templates"
+        },
+        {
+          "info": {
+            "name": "Get Workflow By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workflows/:workflow_id",
+            "params": [
+              {
+                "name": "workflow_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get workflow by ID"
+        },
+        {
+          "info": {
+            "name": "Update Workflow By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/workflows/:workflow_id",
+            "params": [
+              {
+                "name": "workflow_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a workflow"
+        },
+        {
+          "info": {
+            "name": "Delete Workflow By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/workflows/:workflow_id",
+            "params": [
+              {
+                "name": "workflow_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete workflow"
+        },
+        {
+          "info": {
+            "name": "Get Raw Workflow By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workflows/:workflow_id/raw",
+            "params": [
+              {
+                "name": "workflow_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get workflow executions by ID"
+        },
+        {
+          "info": {
+            "name": "Get Workflow Executions By Alert Fingerprint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workflows/executions",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get workflow executions by alert fingerprint"
+        },
+        {
+          "info": {
+            "name": "Get Workflow By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workflows/:workflow_id/runs",
+            "params": [
+              {
+                "name": "workflow_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tab",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "trigger",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "execution_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get workflow executions by ID"
+        },
+        {
+          "info": {
+            "name": "Get Workflow Execution Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/workflows/:workflow_id/runs/:workflow_execution_id",
+            "params": [
+              {
+                "name": "workflow_execution_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a workflow execution status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

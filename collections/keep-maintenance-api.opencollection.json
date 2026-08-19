@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions maintenance API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "maintenance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Maintenance Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/maintenance",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all maintenance rules"
+        },
+        {
+          "info": {
+            "name": "Create Maintenance Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/maintenance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new maintenance rule"
+        },
+        {
+          "info": {
+            "name": "Update Maintenance Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/maintenance/:rule_id",
+            "params": [
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update an existing maintenance rule"
+        },
+        {
+          "info": {
+            "name": "Delete Maintenance Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/maintenance/:rule_id",
+            "params": [
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a maintenance rule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

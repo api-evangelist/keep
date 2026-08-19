@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions permissions API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "permissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/auth/permissions",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get resources permissions"
+        },
+        {
+          "info": {
+            "name": "Create Permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/auth/permissions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create permissions for resources"
+        },
+        {
+          "info": {
+            "name": "Get Scopes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/auth/permissions/scopes",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all resources types"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

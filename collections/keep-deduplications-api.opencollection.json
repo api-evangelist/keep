@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions deduplications API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "deduplications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Deduplications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/deduplications",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Deduplications"
+        },
+        {
+          "info": {
+            "name": "Create Deduplication Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/deduplications",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Deduplication Rule"
+        },
+        {
+          "info": {
+            "name": "Get Deduplication Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/deduplications/fields",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Optional Fields For Deduplications"
+        },
+        {
+          "info": {
+            "name": "Update Deduplication Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/deduplications/:rule_id",
+            "params": [
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Deduplication Rule"
+        },
+        {
+          "info": {
+            "name": "Delete Deduplication Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/deduplications/:rule_id",
+            "params": [
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Deduplication Rule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

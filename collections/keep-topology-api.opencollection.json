@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions topology API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "topology",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Topology Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/topology",
+            "params": [
+              {
+                "name": "provider_ids",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "services",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include_empty_deps",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all topology data"
+        },
+        {
+          "info": {
+            "name": "Get Applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/topology/applications",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all applications"
+        },
+        {
+          "info": {
+            "name": "Create Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/topology/applications",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new application"
+        },
+        {
+          "info": {
+            "name": "Update Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/topology/applications/:application_id",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update an application"
+        },
+        {
+          "info": {
+            "name": "Delete Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/topology/applications/:application_id",
+            "params": [
+              {
+                "name": "application_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete an application"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

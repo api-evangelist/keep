@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions extraction API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "extraction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Extraction Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/extraction",
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all extraction rules"
+        },
+        {
+          "info": {
+            "name": "Create Extraction Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/extraction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new extraction rule"
+        },
+        {
+          "info": {
+            "name": "Update Extraction Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/extraction/:rule_id",
+            "params": [
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update an existing extraction rule"
+        },
+        {
+          "info": {
+            "name": "Delete Extraction Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/extraction/:rule_id",
+            "params": [
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete an extraction rule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

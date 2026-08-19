@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Keep actions pusher API",
+    "version": "0.24.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "pusher",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pusher Authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/pusher/auth",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-KEY",
+              "value": "{{X-API-KEY}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Authenticate a user to a private channel\n\nArgs:\n    request (Request): The request object\n    tenant_id (str, optional): The tenant ID. Defaults to Depends(verify_bearer_token).\n    pusher_client (Pusher, optional): Pusher client. Defaults to Depends(get_pusher_client).\n\nRaises:\n    HTTPException: 403 if the user is not allowed to access the channel.\n\nReturns:\n    dict: The authentication response."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

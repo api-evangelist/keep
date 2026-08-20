@@ -26,6 +26,14 @@ tags:
   - Alerting
   - Incident Management
   - Observability
+  - Open-Source
+  - SRE
+  - Workflow-Automation
+tags_raw:
+  - AIOps
+  - Alerting
+  - Incident Management
+  - Observability
   - Open Source
   - SRE
   - Workflow Automation
@@ -40,6 +48,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Actions
+  tags_raw:
   - actions
   properties:
   - type: OpenAPI
@@ -54,6 +64,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Alerts
+  tags_raw:
   - alerts
   properties:
   - type: OpenAPI
@@ -68,6 +80,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Authentication
+  tags_raw:
   - auth
   properties:
   - type: OpenAPI
@@ -82,6 +96,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Dashboard
+  tags_raw:
   - dashboard
   properties:
   - type: OpenAPI
@@ -110,6 +126,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Enrichment
+  tags_raw:
   - enrichment
   properties:
   - type: OpenAPI
@@ -124,6 +142,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Extraction
+  tags_raw:
   - extraction
   properties:
   - type: OpenAPI
@@ -138,6 +158,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Group
+  tags_raw:
   - groups
   properties:
   - type: OpenAPI
@@ -152,6 +174,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Health Check
+  tags_raw:
   - healthcheck
   properties:
   - type: OpenAPI
@@ -166,6 +190,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Incidents
+  tags_raw:
   - incidents
   properties:
   - type: OpenAPI
@@ -194,6 +220,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Maintenance
+  tags_raw:
   - maintenance
   properties:
   - type: OpenAPI
@@ -208,6 +236,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Mapping
+  tags_raw:
   - mapping
   properties:
   - type: OpenAPI
@@ -222,6 +252,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Metrics
+  tags_raw:
   - metrics
   properties:
   - type: OpenAPI
@@ -236,6 +268,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Permissions
+  tags_raw:
   - permissions
   properties:
   - type: OpenAPI
@@ -250,6 +284,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - PRESET
+  tags_raw:
   - preset
   properties:
   - type: OpenAPI
@@ -264,6 +300,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Providers
+  tags_raw:
   - providers
   properties:
   - type: OpenAPI
@@ -292,6 +330,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Roles
+  tags_raw:
   - roles
   properties:
   - type: OpenAPI
@@ -306,6 +346,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Rules
+  tags_raw:
   - rules
   properties:
   - type: OpenAPI
@@ -320,6 +362,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Settings
+  tags_raw:
   - settings
   properties:
   - type: OpenAPI
@@ -334,6 +378,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Status
+  tags_raw:
   - status
   properties:
   - type: OpenAPI
@@ -348,6 +394,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Tags
+  tags_raw:
   - tags
   properties:
   - type: OpenAPI
@@ -362,6 +410,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Topology
+  tags_raw:
   - topology
   properties:
   - type: OpenAPI
@@ -376,6 +426,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - User
+  tags_raw:
   - users
   properties:
   - type: OpenAPI
@@ -390,6 +442,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Whoami
+  tags_raw:
   - whoami
   properties:
   - type: OpenAPI
@@ -404,6 +458,8 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
+  - Workflows
+  tags_raw:
   - workflows
   properties:
   - type: OpenAPI

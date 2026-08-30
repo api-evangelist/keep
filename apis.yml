@@ -139,7 +139,7 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
-  - Enrichment
+  - enrichment
   tags_raw:
   - enrichment
   properties:
@@ -155,7 +155,7 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
-  - Extraction
+  - extraction
   tags_raw:
   - extraction
   properties:
@@ -249,7 +249,7 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
-  - Mapping
+  - mapping
   tags_raw:
   - mapping
   properties:
@@ -297,7 +297,7 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
-  - PRESET
+  - preset
   tags_raw:
   - preset
   properties:
@@ -359,7 +359,7 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
-  - Rules
+  - rules
   tags_raw:
   - rules
   properties:
@@ -423,7 +423,7 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
-  - Topology
+  - topology
   tags_raw:
   - topology
   properties:
@@ -455,7 +455,7 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
-  - Whoami
+  - whoami
   tags_raw:
   - whoami
   properties:

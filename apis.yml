@@ -482,6 +482,9 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 common:
+  - type: CapabilityMap
+    url: capabilities/keep-capability-edges.yml
+    name: Keep Business Capability Map
   - type: IssueTracker
     url: https://github.com/keephq/keep/issues
   - type: Releases

@@ -178,22 +178,6 @@ apis:
     url: https://docs.keephq.dev/overview/introduction
   - type: APIReference
     url: https://api.keephq.dev/docs
-- aid: keep:keep-healthcheck-api
-  name: Keep healthcheck API
-  description: The healthcheck API from Keep — 1 operation(s) for healthcheck.
-  humanURL: https://docs.keephq.dev
-  baseURL: https://api.keephq.dev
-  tags:
-  - Health Check
-  tags_raw:
-  - healthcheck
-  properties:
-  - type: OpenAPI
-    url: openapi/keep-healthcheck-api-openapi.yml
-  - type: Documentation
-    url: https://docs.keephq.dev/overview/introduction
-  - type: APIReference
-    url: https://api.keephq.dev/docs
 - aid: keep:keep-incidents-api
   name: Keep incidents API
   description: The incidents API from Keep — 13 operation(s) for incidents.
@@ -474,6 +458,20 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/keep-workflows-api-openapi.yml
+  - type: Documentation
+    url: https://docs.keephq.dev/overview/introduction
+  - type: APIReference
+    url: https://api.keephq.dev/docs
+- aid: keep:keep-health-check-api
+  name: Keep Health Check API
+  description: The Health Check API from Keep — 1 operation(s) for health check.
+  humanURL: https://docs.keephq.dev
+  baseURL: https://api.keephq.dev
+  tags:
+  - Health Check
+  properties:
+  - type: OpenAPI
+    url: openapi/keep-health-check-api-openapi.yml
   - type: Documentation
     url: https://docs.keephq.dev/overview/introduction
   - type: APIReference

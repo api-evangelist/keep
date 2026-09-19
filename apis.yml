@@ -106,7 +106,7 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
-  - Dashboard
+  - Dashboards
   tags_raw:
   - dashboard
   properties:

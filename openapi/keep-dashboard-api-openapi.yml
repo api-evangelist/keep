@@ -1,15 +1,15 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Keep actions dashboard API
+  title: Keep Dashboard API
   description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
   version: 0.24.5
 tags:
-- name: dashboard
+- name: Dashboard
 paths:
   /dashboard:
     get:
       tags:
-      - dashboard
+      - Dashboard
       summary: Read Dashboards
       operationId: read_dashboards_dashboard_get
       responses:
@@ -28,7 +28,7 @@ paths:
       - OAuth2PasswordBearer: []
     post:
       tags:
-      - dashboard
+      - Dashboard
       summary: Create Dashboard
       operationId: create_dashboard_dashboard_post
       requestBody:
@@ -57,7 +57,7 @@ paths:
   /dashboard/{dashboard_id}:
     put:
       tags:
-      - dashboard
+      - Dashboard
       summary: Update Dashboard
       operationId: update_dashboard_dashboard__dashboard_id__put
       parameters:
@@ -92,7 +92,7 @@ paths:
       - OAuth2PasswordBearer: []
     delete:
       tags:
-      - dashboard
+      - Dashboard
       summary: Delete Dashboard
       operationId: delete_dashboard_dashboard__dashboard_id__delete
       parameters:
@@ -121,7 +121,7 @@ paths:
   /dashboard/metric-widgets:
     get:
       tags:
-      - dashboard
+      - Dashboard
       summary: Get Metric Widgets
       operationId: get_metric_widgets_dashboard_metric_widgets_get
       parameters:
@@ -177,6 +177,15 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     DashboardResponseDTO:
       properties:
         id:
@@ -204,15 +213,6 @@ components:
       - created_at
       - updated_at
       title: DashboardResponseDTO
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -234,16 +234,6 @@ components:
       - msg
       - type
       title: ValidationError
-    DashboardUpdateDTO:
-      properties:
-        dashboard_config:
-          type: object
-          title: Dashboard Config
-        dashboard_name:
-          type: string
-          title: Dashboard Name
-      type: object
-      title: DashboardUpdateDTO
     DashboardCreateDTO:
       properties:
         dashboard_name:
@@ -257,8 +247,18 @@ components:
       - dashboard_name
       - dashboard_config
       title: DashboardCreateDTO
+    DashboardUpdateDTO:
+      properties:
+        dashboard_config:
+          type: object
+          title: Dashboard Config
+        dashboard_name:
+          type: string
+          title: Dashboard Name
+      type: object
+      title: DashboardUpdateDTO
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-KEY

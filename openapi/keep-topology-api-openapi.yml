@@ -1,15 +1,15 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Keep actions topology API
+  title: Keep Topology API
   description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
   version: 0.24.5
 tags:
-- name: topology
+- name: Topology
 paths:
   /topology:
     get:
       tags:
-      - topology
+      - Topology
       summary: Get Topology Data
       description: Get all topology data
       operationId: get_topology_data_topology_get
@@ -62,7 +62,7 @@ paths:
   /topology/applications:
     get:
       tags:
-      - topology
+      - Topology
       summary: Get Applications
       description: Get all applications
       operationId: get_applications_topology_applications_get
@@ -82,7 +82,7 @@ paths:
       - OAuth2PasswordBearer: []
     post:
       tags:
-      - topology
+      - Topology
       summary: Create Application
       description: Create a new application
       operationId: create_application_topology_applications_post
@@ -112,7 +112,7 @@ paths:
   /topology/applications/{application_id}:
     put:
       tags:
-      - topology
+      - Topology
       summary: Update Application
       description: Update an application
       operationId: update_application_topology_applications__application_id__put
@@ -149,7 +149,7 @@ paths:
       - OAuth2PasswordBearer: []
     delete:
       tags:
-      - topology
+      - Topology
       summary: Delete Application
       description: Delete an application
       operationId: delete_application_topology_applications__application_id__delete
@@ -179,6 +179,15 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
+    TopologyServiceDtoIn:
+      properties:
+        id:
+          type: integer
+          title: Id
+      type: object
+      required:
+      - id
+      title: TopologyServiceDtoIn
     HTTPValidationError:
       properties:
         detail:
@@ -188,67 +197,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    TopologyApplicationServiceDto:
-      properties:
-        id:
-          type: integer
-          title: Id
-        name:
-          type: string
-          title: Name
-        service:
-          type: string
-          title: Service
-      type: object
-      required:
-      - id
-      - name
-      - service
-      title: TopologyApplicationServiceDto
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    TopologyApplicationDtoOut:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        services:
-          items:
-            $ref: '#/components/schemas/TopologyApplicationServiceDto'
-          type: array
-          title: Services
-          default: []
-      type: object
-      required:
-      - id
-      - name
-      title: TopologyApplicationDtoOut
     TopologyApplicationDtoIn:
       properties:
         id:
@@ -288,15 +236,67 @@ components:
       - serviceId
       - serviceName
       title: TopologyServiceDependencyDto
-    TopologyServiceDtoIn:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    TopologyApplicationServiceDto:
       properties:
         id:
           type: integer
           title: Id
+        name:
+          type: string
+          title: Name
+        service:
+          type: string
+          title: Service
       type: object
       required:
       - id
-      title: TopologyServiceDtoIn
+      - name
+      - service
+      title: TopologyApplicationServiceDto
+    TopologyApplicationDtoOut:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        services:
+          items:
+            $ref: '#/components/schemas/TopologyApplicationServiceDto'
+          type: array
+          title: Services
+          default: []
+      type: object
+      required:
+      - id
+      - name
+      title: TopologyApplicationDtoOut
     TopologyServiceDtoOut:
       properties:
         source_provider_id:
@@ -371,7 +371,7 @@ components:
       - application_ids
       title: TopologyServiceDtoOut
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-KEY

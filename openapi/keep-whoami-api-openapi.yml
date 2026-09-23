@@ -1,15 +1,15 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Keep actions whoami API
+  title: Keep Whoami API
   description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
   version: 0.24.5
 tags:
-- name: whoami
+- name: Whoami
 paths:
   /whoami:
     get:
       tags:
-      - whoami
+      - Whoami
       summary: Get Tenant Id
       description: Get tenant id
       operationId: get_tenant_id_whoami_get
@@ -27,7 +27,7 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-KEY

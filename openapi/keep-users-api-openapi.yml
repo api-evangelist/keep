@@ -1,15 +1,15 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Keep actions users API
+  title: Keep Users API
   description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
   version: 0.24.5
 tags:
-- name: users
+- name: Users
 paths:
   /auth/users:
     get:
       tags:
-      - users
+      - Users
       summary: Get Users
       description: Get all users
       operationId: get_users_auth_users_get
@@ -29,7 +29,7 @@ paths:
       - OAuth2PasswordBearer: []
     post:
       tags:
-      - users
+      - Users
       summary: Create User
       description: Create a user
       operationId: create_user_auth_users_post
@@ -58,7 +58,7 @@ paths:
   /auth/users/{user_email}:
     put:
       tags:
-      - users
+      - Users
       summary: Update User
       description: Update a user
       operationId: update_user_auth_users__user_email__put
@@ -93,7 +93,7 @@ paths:
       - OAuth2PasswordBearer: []
     delete:
       tags:
-      - users
+      - Users
       summary: Delete User
       description: Delete a user
       operationId: delete_user_auth_users__user_email__delete
@@ -122,42 +122,6 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
-    User:
-      properties:
-        email:
-          type: string
-          title: Email
-        name:
-          type: string
-          title: Name
-        role:
-          type: string
-          title: Role
-        picture:
-          type: string
-          title: Picture
-        created_at:
-          type: string
-          title: Created At
-        last_login:
-          type: string
-          title: Last Login
-        ldap:
-          type: boolean
-          title: Ldap
-          default: false
-        groups:
-          items:
-            $ref: '#/components/schemas/Group'
-          type: array
-          title: Groups
-          default: []
-      type: object
-      required:
-      - email
-      - name
-      - created_at
-      title: User
     HTTPValidationError:
       properties:
         detail:
@@ -167,50 +131,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    CreateUserRequest:
-      properties:
-        username:
-          type: string
-          title: Username
-        name:
-          type: string
-          title: Name
-        password:
-          type: string
-          title: Password
-        role:
-          type: string
-          title: Role
-        groups:
-          items:
-            type: string
-          type: array
-          title: Groups
-      type: object
-      required:
-      - username
-      title: CreateUserRequest
     UpdateUserRequest:
       properties:
         username:
@@ -258,8 +178,88 @@ components:
       - id
       - name
       title: Group
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    CreateUserRequest:
+      properties:
+        username:
+          type: string
+          title: Username
+        name:
+          type: string
+          title: Name
+        password:
+          type: string
+          title: Password
+        role:
+          type: string
+          title: Role
+        groups:
+          items:
+            type: string
+          type: array
+          title: Groups
+      type: object
+      required:
+      - username
+      title: CreateUserRequest
+    User:
+      properties:
+        email:
+          type: string
+          title: Email
+        name:
+          type: string
+          title: Name
+        role:
+          type: string
+          title: Role
+        picture:
+          type: string
+          title: Picture
+        created_at:
+          type: string
+          title: Created At
+        last_login:
+          type: string
+          title: Last Login
+        ldap:
+          type: boolean
+          title: Ldap
+          default: false
+        groups:
+          items:
+            $ref: '#/components/schemas/Group'
+          type: array
+          title: Groups
+          default: []
+      type: object
+      required:
+      - email
+      - name
+      - created_at
+      title: User
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-KEY

@@ -1,15 +1,15 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Keep actions settings API
+  title: Keep Settings API
   description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
   version: 0.24.5
 tags:
-- name: settings
+- name: Settings
 paths:
   /settings/webhook:
     get:
       tags:
-      - settings
+      - Settings
       summary: Webhook Settings
       description: Get details about the webhook endpoint (e.g. the API url and an API key)
       operationId: webhook_settings_settings_webhook_get
@@ -27,7 +27,7 @@ paths:
   /settings/smtp:
     get:
       tags:
-      - settings
+      - Settings
       summary: Get Smtp Settings
       description: Get SMTP settings
       operationId: get_smtp_settings_settings_smtp_get
@@ -43,7 +43,7 @@ paths:
       - OAuth2PasswordBearer: []
     post:
       tags:
-      - settings
+      - Settings
       summary: Update Smtp Settings
       description: Install or update SMTP settings
       operationId: update_smtp_settings_settings_smtp_post
@@ -71,7 +71,7 @@ paths:
       - OAuth2PasswordBearer: []
     delete:
       tags:
-      - settings
+      - Settings
       summary: Delete Smtp Settings
       description: Delete SMTP settings
       operationId: delete_smtp_settings_settings_smtp_delete
@@ -88,7 +88,7 @@ paths:
   /settings/smtp/test:
     post:
       tags:
-      - settings
+      - Settings
       summary: Test Smtp Settings
       description: Test SMTP settings
       operationId: test_smtp_settings_settings_smtp_test_post
@@ -117,7 +117,7 @@ paths:
   /settings/apikey:
     put:
       tags:
-      - settings
+      - Settings
       summary: Update Api Key
       description: Update API key secret
       operationId: update_api_key_settings_apikey_put
@@ -133,7 +133,7 @@ paths:
       - OAuth2PasswordBearer: []
     post:
       tags:
-      - settings
+      - Settings
       summary: Create Key
       description: Create API key
       operationId: create_key_settings_apikey_post
@@ -150,7 +150,7 @@ paths:
   /settings/apikeys:
     get:
       tags:
-      - settings
+      - Settings
       summary: Get Keys
       description: Get API keys
       operationId: get_keys_settings_apikeys_get
@@ -167,7 +167,7 @@ paths:
   /settings/apikey/{keyId}:
     delete:
       tags:
-      - settings
+      - Settings
       summary: Delete Api Key
       description: Delete API key
       operationId: delete_api_key_settings_apikey__keyId__delete
@@ -197,7 +197,7 @@ paths:
   /settings/sso:
     get:
       tags:
-      - settings
+      - Settings
       summary: Get Sso Settings
       operationId: get_sso_settings_settings_sso_get
       responses:
@@ -212,27 +212,6 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     HTTPValidationError:
       properties:
         detail:
@@ -300,8 +279,29 @@ components:
       - apiKey
       - modelSchema
       title: WebhookSettings
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-KEY

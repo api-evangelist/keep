@@ -1,15 +1,15 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Keep actions API
+  title: Keep Actions API
   description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
   version: 0.24.5
 tags:
-- name: actions
+- name: Actions
 paths:
   /actions:
     get:
       tags:
-      - actions
+      - Actions
       summary: Get Actions
       description: Get all actions
       operationId: get_actions_actions_get
@@ -25,7 +25,7 @@ paths:
       - OAuth2PasswordBearer: []
     post:
       tags:
-      - actions
+      - Actions
       summary: Create Actions
       description: Create new actions by uploading a file
       operationId: create_actions_actions_post
@@ -53,7 +53,7 @@ paths:
   /actions/{action_id}:
     put:
       tags:
-      - actions
+      - Actions
       summary: Put Action
       description: Update an action
       operationId: put_action_actions__action_id__put
@@ -88,7 +88,7 @@ paths:
       - OAuth2PasswordBearer: []
     delete:
       tags:
-      - actions
+      - Actions
       summary: Delete Action
       description: Delete an action
       operationId: delete_action_actions__action_id__delete
@@ -117,27 +117,6 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     HTTPValidationError:
       properties:
         detail:
@@ -165,8 +144,29 @@ components:
           title: File
       type: object
       title: Body_create_actions_actions_post
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-KEY

@@ -1,15 +1,15 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Keep actions workflows API
+  title: Keep Workflows API
   description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
   version: 0.24.5
 tags:
-- name: workflows
+- name: Workflows
 paths:
   /workflows:
     get:
       tags:
-      - workflows
+      - Workflows
       summary: Get Workflows
       description: Get workflows
       operationId: get_workflows_workflows_get
@@ -47,7 +47,7 @@ paths:
       - OAuth2PasswordBearer: []
     post:
       tags:
-      - workflows
+      - Workflows
       summary: Create Workflow
       description: Create or update a workflow
       operationId: create_workflow_workflows_post
@@ -77,7 +77,7 @@ paths:
   /workflows/export:
     get:
       tags:
-      - workflows
+      - Workflows
       summary: Export Workflows
       description: export all workflow Yamls
       operationId: export_workflows_workflows_export_get
@@ -98,7 +98,7 @@ paths:
   /workflows/{workflow_id}/run:
     post:
       tags:
-      - workflows
+      - Workflows
       summary: Run Workflow
       description: Run a workflow
       operationId: run_workflow_workflows__workflow_id__run_post
@@ -136,7 +136,7 @@ paths:
   /workflows/test:
     post:
       tags:
-      - workflows
+      - Workflows
       summary: Run Workflow From Definition
       description: Test run a workflow from a definition
       operationId: run_workflow_from_definition_workflows_test_post
@@ -166,7 +166,7 @@ paths:
   /workflows/json:
     post:
       tags:
-      - workflows
+      - Workflows
       summary: Create Workflow From Body
       description: Create or update a workflow
       operationId: create_workflow_from_body_workflows_json_post
@@ -184,7 +184,7 @@ paths:
   /workflows/random-templates:
     get:
       tags:
-      - workflows
+      - Workflows
       summary: Get Random Workflow Templates
       description: Get random workflow templates
       operationId: get_random_workflow_templates_workflows_random_templates_get
@@ -205,7 +205,7 @@ paths:
   /workflows/{workflow_id}:
     get:
       tags:
-      - workflows
+      - Workflows
       summary: Get Workflow By Id
       description: Get workflow by ID
       operationId: get_workflow_by_id_workflows__workflow_id__get
@@ -234,7 +234,7 @@ paths:
       - OAuth2PasswordBearer: []
     put:
       tags:
-      - workflows
+      - Workflows
       summary: Update Workflow By Id
       description: Update a workflow
       operationId: update_workflow_by_id_workflows__workflow_id__put
@@ -264,7 +264,7 @@ paths:
       - OAuth2PasswordBearer: []
     delete:
       tags:
-      - workflows
+      - Workflows
       summary: Delete Workflow By Id
       description: Delete workflow
       operationId: delete_workflow_by_id_workflows__workflow_id__delete
@@ -294,7 +294,7 @@ paths:
   /workflows/{workflow_id}/raw:
     get:
       tags:
-      - workflows
+      - Workflows
       summary: Get Raw Workflow By Id
       description: Get workflow executions by ID
       operationId: get_raw_workflow_by_id_workflows__workflow_id__raw_get
@@ -326,7 +326,7 @@ paths:
   /workflows/executions:
     get:
       tags:
-      - workflows
+      - Workflows
       summary: Get Workflow Executions By Alert Fingerprint
       description: Get workflow executions by alert fingerprint
       operationId: get_workflow_executions_by_alert_fingerprint_workflows_executions_get
@@ -347,7 +347,7 @@ paths:
   /workflows/{workflow_id}/runs:
     get:
       tags:
-      - workflows
+      - Workflows
       summary: Get Workflow By Id
       description: Get workflow executions by ID
       operationId: get_workflow_by_id_workflows__workflow_id__runs_get
@@ -421,7 +421,7 @@ paths:
   /workflows/{workflow_id}/runs/{workflow_execution_id}:
     get:
       tags:
-      - workflows
+      - Workflows
       summary: Get Workflow Execution Status
       description: Get a workflow execution status
       operationId: get_workflow_execution_status_workflows__workflow_id__runs__workflow_execution_id__get
@@ -451,14 +451,6 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
-    Body_run_workflow_from_definition_workflows_test_post:
-      properties:
-        file:
-          type: string
-          format: binary
-          title: File
-      type: object
-      title: Body_run_workflow_from_definition_workflows_test_post
     HTTPValidationError:
       properties:
         detail:
@@ -561,6 +553,71 @@ components:
       required:
       - file
       title: Body_create_workflow_workflows_post
+    WorkflowExecutionsPaginatedResultsDto:
+      properties:
+        limit:
+          type: integer
+          title: Limit
+          default: 25
+        offset:
+          type: integer
+          title: Offset
+          default: 0
+        count:
+          type: integer
+          title: Count
+        items:
+          items:
+            $ref: '#/components/schemas/WorkflowExecutionDTO'
+          type: array
+          title: Items
+        passCount:
+          type: integer
+          title: Passcount
+          default: 0
+        avgDuration:
+          type: number
+          title: Avgduration
+          default: 0
+        workflow:
+          $ref: '#/components/schemas/WorkflowDTO'
+        failCount:
+          type: integer
+          title: Failcount
+          default: 0
+      type: object
+      required:
+      - count
+      - items
+      title: WorkflowExecutionsPaginatedResultsDto
+    WorkflowCreateOrUpdateDTO:
+      properties:
+        workflow_id:
+          type: string
+          title: Workflow Id
+        status:
+          type: string
+          enum:
+          - created
+          - updated
+          title: Status
+        revision:
+          type: integer
+          title: Revision
+          default: 1
+      type: object
+      required:
+      - workflow_id
+      - status
+      title: WorkflowCreateOrUpdateDTO
+    Body_run_workflow_from_definition_workflows_test_post:
+      properties:
+        file:
+          type: string
+          format: binary
+          title: File
+      type: object
+      title: Body_run_workflow_from_definition_workflows_test_post
     WorkflowExecutionDTO:
       properties:
         id:
@@ -651,63 +708,6 @@ components:
       - workflow_status
       - workflow_started
       title: WorkflowToAlertExecutionDTO
-    WorkflowExecutionsPaginatedResultsDto:
-      properties:
-        limit:
-          type: integer
-          title: Limit
-          default: 25
-        offset:
-          type: integer
-          title: Offset
-          default: 0
-        count:
-          type: integer
-          title: Count
-        items:
-          items:
-            $ref: '#/components/schemas/WorkflowExecutionDTO'
-          type: array
-          title: Items
-        passCount:
-          type: integer
-          title: Passcount
-          default: 0
-        avgDuration:
-          type: number
-          title: Avgduration
-          default: 0
-        workflow:
-          $ref: '#/components/schemas/WorkflowDTO'
-        failCount:
-          type: integer
-          title: Failcount
-          default: 0
-      type: object
-      required:
-      - count
-      - items
-      title: WorkflowExecutionsPaginatedResultsDto
-    ProviderDTO:
-      properties:
-        type:
-          type: string
-          title: Type
-        id:
-          type: string
-          title: Id
-        name:
-          type: string
-          title: Name
-        installed:
-          type: boolean
-          title: Installed
-      type: object
-      required:
-      - type
-      - name
-      - installed
-      title: ProviderDTO
     WorkflowExecutionLogsDTO:
       properties:
         id:
@@ -729,28 +729,28 @@ components:
       - timestamp
       - message
       title: WorkflowExecutionLogsDTO
-    WorkflowCreateOrUpdateDTO:
+    ProviderDTO:
       properties:
-        workflow_id:
+        type:
           type: string
-          title: Workflow Id
-        status:
+          title: Type
+        id:
           type: string
-          enum:
-          - created
-          - updated
-          title: Status
-        revision:
-          type: integer
-          title: Revision
-          default: 1
+          title: Id
+        name:
+          type: string
+          title: Name
+        installed:
+          type: boolean
+          title: Installed
       type: object
       required:
-      - workflow_id
-      - status
-      title: WorkflowCreateOrUpdateDTO
+      - type
+      - name
+      - installed
+      title: ProviderDTO
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-KEY

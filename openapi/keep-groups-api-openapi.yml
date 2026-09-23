@@ -1,15 +1,15 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Keep actions groups API
+  title: Keep Groups API
   description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
   version: 0.24.5
 tags:
-- name: groups
+- name: Groups
 paths:
   /auth/groups:
     get:
       tags:
-      - groups
+      - Groups
       summary: Get Groups
       description: Get all groups
       operationId: get_groups_auth_groups_get
@@ -29,7 +29,7 @@ paths:
       - OAuth2PasswordBearer: []
     post:
       tags:
-      - groups
+      - Groups
       summary: Create Group
       description: Create a group
       operationId: create_group_auth_groups_post
@@ -58,7 +58,7 @@ paths:
   /auth/groups/{group_name}:
     put:
       tags:
-      - groups
+      - Groups
       summary: Update Group
       description: Update a group
       operationId: update_group_auth_groups__group_name__put
@@ -93,7 +93,7 @@ paths:
       - OAuth2PasswordBearer: []
     delete:
       tags:
-      - groups
+      - Groups
       summary: Delete Group
       description: Delete a group
       operationId: delete_group_auth_groups__group_name__delete
@@ -122,6 +122,15 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -143,6 +152,27 @@ components:
       - msg
       - type
       title: ValidationError
+    CreateOrUpdateGroupRequest:
+      properties:
+        name:
+          type: string
+          title: Name
+        roles:
+          items:
+            type: string
+          type: array
+          title: Roles
+        members:
+          items:
+            type: string
+          type: array
+          title: Members
+      type: object
+      required:
+      - name
+      - roles
+      - members
+      title: CreateOrUpdateGroupRequest
     Group:
       properties:
         id:
@@ -172,38 +202,8 @@ components:
       - id
       - name
       title: Group
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    CreateOrUpdateGroupRequest:
-      properties:
-        name:
-          type: string
-          title: Name
-        roles:
-          items:
-            type: string
-          type: array
-          title: Roles
-        members:
-          items:
-            type: string
-          type: array
-          title: Members
-      type: object
-      required:
-      - name
-      - roles
-      - members
-      title: CreateOrUpdateGroupRequest
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-KEY

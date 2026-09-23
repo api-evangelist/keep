@@ -1,15 +1,15 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Keep actions alerts API
+  title: Keep Alerts API
   description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
   version: 0.24.5
 tags:
-- name: alerts
+- name: Alerts
 paths:
   /alerts:
     get:
       tags:
-      - alerts
+      - Alerts
       summary: Get All Alerts
       description: Get last alerts occurrence
       operationId: get_all_alerts_alerts_get
@@ -43,7 +43,7 @@ paths:
       - OAuth2PasswordBearer: []
     delete:
       tags:
-      - alerts
+      - Alerts
       summary: Delete Alert
       description: Delete alert by finerprint and last received time
       operationId: delete_alert_alerts_delete
@@ -76,7 +76,7 @@ paths:
   /alerts/{fingerprint}/history:
     get:
       tags:
-      - alerts
+      - Alerts
       summary: Get Alert History
       description: Get alert history
       operationId: get_alert_history_alerts__fingerprint__history_get
@@ -110,7 +110,7 @@ paths:
   /alerts/{fingerprint}/assign/{last_received}:
     post:
       tags:
-      - alerts
+      - Alerts
       summary: Assign Alert
       description: Assign alert to user
       operationId: assign_alert_alerts__fingerprint__assign__last_received__post
@@ -157,7 +157,7 @@ paths:
   /alerts/event:
     post:
       tags:
-      - alerts
+      - Alerts
       summary: Receive Generic Event
       description: Receive a generic alert event
       operationId: receive_generic_event_alerts_event_post
@@ -205,7 +205,7 @@ paths:
   /alerts/event/netdata:
     get:
       tags:
-      - alerts
+      - Alerts
       summary: Webhook Challenge
       description: Helper function to complete Netdata webhook challenge
       operationId: webhook_challenge_alerts_event_netdata_get
@@ -218,7 +218,7 @@ paths:
   /alerts/event/{provider_type}:
     post:
       tags:
-      - alerts
+      - Alerts
       summary: Receive Event
       description: Receive an alert event from a provider
       operationId: receive_event_alerts_event__provider_type__post
@@ -264,7 +264,7 @@ paths:
   /alerts/{fingerprint}:
     get:
       tags:
-      - alerts
+      - Alerts
       summary: Get Alert
       description: Get alert by fingerprint
       operationId: get_alert_alerts__fingerprint__get
@@ -295,7 +295,7 @@ paths:
   /alerts/enrich:
     post:
       tags:
-      - alerts
+      - Alerts
       summary: Enrich Alert
       description: Enrich an alert
       operationId: enrich_alert_alerts_enrich_post
@@ -338,7 +338,7 @@ paths:
   /alerts/unenrich:
     post:
       tags:
-      - alerts
+      - Alerts
       summary: Unenrich Alert
       description: Un-Enrich an alert
       operationId: unenrich_alert_alerts_unenrich_post
@@ -371,7 +371,7 @@ paths:
   /alerts/search:
     post:
       tags:
-      - alerts
+      - Alerts
       summary: Search Alerts
       description: Search alerts
       operationId: search_alerts_alerts_search_post
@@ -404,7 +404,7 @@ paths:
   /alerts/audit:
     post:
       tags:
-      - alerts
+      - Alerts
       summary: Get Multiple Fingerprint Alert Audit
       description: Get alert timeline audit trail for multiple fingerprints
       operationId: get_multiple_fingerprint_alert_audit_alerts_audit_post
@@ -440,7 +440,7 @@ paths:
   /alerts/{fingerprint}/audit:
     get:
       tags:
-      - alerts
+      - Alerts
       summary: Get Alert Audit
       description: Get alert timeline audit trail
       operationId: get_alert_audit_alerts__fingerprint__audit_get
@@ -474,7 +474,7 @@ paths:
   /alerts/quality/metrics:
     get:
       tags:
-      - alerts
+      - Alerts
       summary: Get Alert Quality
       description: Get alert quality
       operationId: get_alert_quality_alerts_quality_metrics_get
@@ -513,7 +513,7 @@ paths:
   /workflows:
     get:
       tags:
-      - alerts
+      - Alerts
       summary: Get Workflows
       description: Get workflows
       operationId: get_workflows_workflows_get
@@ -551,7 +551,7 @@ paths:
       - OAuth2PasswordBearer: []
     post:
       tags:
-      - alerts
+      - Alerts
       summary: Create Workflow
       description: Create or update a workflow
       operationId: create_workflow_workflows_post
@@ -581,7 +581,7 @@ paths:
   /workflows/export:
     get:
       tags:
-      - alerts
+      - Alerts
       summary: Export Workflows
       description: export all workflow Yamls
       operationId: export_workflows_workflows_export_get
@@ -602,7 +602,7 @@ paths:
   /workflows/{workflow_id}/run:
     post:
       tags:
-      - alerts
+      - Alerts
       summary: Run Workflow
       description: Run a workflow
       operationId: run_workflow_workflows__workflow_id__run_post
@@ -640,7 +640,7 @@ paths:
   /workflows/test:
     post:
       tags:
-      - alerts
+      - Alerts
       summary: Run Workflow From Definition
       description: Test run a workflow from a definition
       operationId: run_workflow_from_definition_workflows_test_post
@@ -670,7 +670,7 @@ paths:
   /workflows/json:
     post:
       tags:
-      - alerts
+      - Alerts
       summary: Create Workflow From Body
       description: Create or update a workflow
       operationId: create_workflow_from_body_workflows_json_post
@@ -688,7 +688,7 @@ paths:
   /workflows/random-templates:
     get:
       tags:
-      - alerts
+      - Alerts
       summary: Get Random Workflow Templates
       description: Get random workflow templates
       operationId: get_random_workflow_templates_workflows_random_templates_get
@@ -709,7 +709,7 @@ paths:
   /workflows/{workflow_id}:
     get:
       tags:
-      - alerts
+      - Alerts
       summary: Get Workflow By Id
       description: Get workflow by ID
       operationId: get_workflow_by_id_workflows__workflow_id__get
@@ -738,7 +738,7 @@ paths:
       - OAuth2PasswordBearer: []
     put:
       tags:
-      - alerts
+      - Alerts
       summary: Update Workflow By Id
       description: Update a workflow
       operationId: update_workflow_by_id_workflows__workflow_id__put
@@ -768,7 +768,7 @@ paths:
       - OAuth2PasswordBearer: []
     delete:
       tags:
-      - alerts
+      - Alerts
       summary: Delete Workflow By Id
       description: Delete workflow
       operationId: delete_workflow_by_id_workflows__workflow_id__delete
@@ -798,7 +798,7 @@ paths:
   /workflows/{workflow_id}/raw:
     get:
       tags:
-      - alerts
+      - Alerts
       summary: Get Raw Workflow By Id
       description: Get workflow executions by ID
       operationId: get_raw_workflow_by_id_workflows__workflow_id__raw_get
@@ -830,7 +830,7 @@ paths:
   /workflows/executions:
     get:
       tags:
-      - alerts
+      - Alerts
       summary: Get Workflow Executions By Alert Fingerprint
       description: Get workflow executions by alert fingerprint
       operationId: get_workflow_executions_by_alert_fingerprint_workflows_executions_get
@@ -851,7 +851,7 @@ paths:
   /workflows/{workflow_id}/runs:
     get:
       tags:
-      - alerts
+      - Alerts
       summary: Get Workflow By Id
       description: Get workflow executions by ID
       operationId: get_workflow_by_id_workflows__workflow_id__runs_get
@@ -925,7 +925,7 @@ paths:
   /workflows/{workflow_id}/runs/{workflow_execution_id}:
     get:
       tags:
-      - alerts
+      - Alerts
       summary: Get Workflow Execution Status
       description: Get a workflow execution status
       operationId: get_workflow_execution_status_workflows__workflow_id__runs__workflow_execution_id__get
@@ -955,230 +955,6 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
-    DeleteRequestBody:
-      properties:
-        fingerprint:
-          type: string
-          title: Fingerprint
-        lastReceived:
-          type: string
-          title: Lastreceived
-        restore:
-          type: boolean
-          title: Restore
-          default: false
-      type: object
-      required:
-      - fingerprint
-      - lastReceived
-      title: DeleteRequestBody
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    WorkflowToAlertExecutionDTO:
-      properties:
-        workflow_id:
-          type: string
-          title: Workflow Id
-        workflow_execution_id:
-          type: string
-          title: Workflow Execution Id
-        alert_fingerprint:
-          type: string
-          title: Alert Fingerprint
-        workflow_status:
-          type: string
-          title: Workflow Status
-        workflow_started:
-          type: string
-          format: date-time
-          title: Workflow Started
-      type: object
-      required:
-      - workflow_id
-      - workflow_execution_id
-      - alert_fingerprint
-      - workflow_status
-      - workflow_started
-      title: WorkflowToAlertExecutionDTO
-    WorkflowExecutionsPaginatedResultsDto:
-      properties:
-        limit:
-          type: integer
-          title: Limit
-          default: 25
-        offset:
-          type: integer
-          title: Offset
-          default: 0
-        count:
-          type: integer
-          title: Count
-        items:
-          items:
-            $ref: '#/components/schemas/WorkflowExecutionDTO'
-          type: array
-          title: Items
-        passCount:
-          type: integer
-          title: Passcount
-          default: 0
-        avgDuration:
-          type: number
-          title: Avgduration
-          default: 0
-        workflow:
-          $ref: '#/components/schemas/WorkflowDTO'
-        failCount:
-          type: integer
-          title: Failcount
-          default: 0
-      type: object
-      required:
-      - count
-      - items
-      title: WorkflowExecutionsPaginatedResultsDto
-    ProviderDTO:
-      properties:
-        type:
-          type: string
-          title: Type
-        id:
-          type: string
-          title: Id
-        name:
-          type: string
-          title: Name
-        installed:
-          type: boolean
-          title: Installed
-      type: object
-      required:
-      - type
-      - name
-      - installed
-      title: ProviderDTO
-    UnEnrichAlertRequestBody:
-      properties:
-        enrichments:
-          items:
-            type: string
-          type: array
-          title: Enrichments
-        fingerprint:
-          type: string
-          title: Fingerprint
-      type: object
-      required:
-      - enrichments
-      - fingerprint
-      title: UnEnrichAlertRequestBody
-    AlertStatus:
-      enum:
-      - firing
-      - resolved
-      - acknowledged
-      - suppressed
-      - pending
-      title: AlertStatus
-      description: An enumeration.
-    AlertActionType:
-      enum:
-      - alert was triggered
-      - alert acknowledged
-      - alert automatically resolved
-      - alert automatically resolved by API
-      - alert manually resolved
-      - alert status manually changed
-      - alert status changed by API
-      - alert status undone
-      - alert enriched by workflow
-      - alert enriched by mapping rule
-      - alert was deduplicated
-      - alert was assigned with ticket
-      - alert was unassigned from ticket
-      - alert ticket was updated
-      - alert enrichments disposed
-      - alert deleted
-      - alert enriched
-      - alert un-enriched
-      - a comment was added to the alert
-      - a comment was removed from the alert
-      - Alert is in maintenance window
-      - A comment was added to the incident
-      title: AlertActionType
-      description: An enumeration.
-    Body_create_workflow_workflows_post:
-      properties:
-        file:
-          type: string
-          format: binary
-          title: File
-      type: object
-      required:
-      - file
-      title: Body_create_workflow_workflows_post
-    WorkflowExecutionDTO:
-      properties:
-        id:
-          type: string
-          title: Id
-        workflow_id:
-          type: string
-          title: Workflow Id
-        started:
-          type: string
-          format: date-time
-          title: Started
-        triggered_by:
-          type: string
-          title: Triggered By
-        status:
-          type: string
-          title: Status
-        workflow_name:
-          type: string
-          title: Workflow Name
-        logs:
-          items:
-            $ref: '#/components/schemas/WorkflowExecutionLogsDTO'
-          type: array
-          title: Logs
-        error:
-          type: string
-          title: Error
-        execution_time:
-          type: number
-          title: Execution Time
-        results:
-          type: object
-          title: Results
-      type: object
-      required:
-      - id
-      - workflow_id
-      - started
-      - triggered_by
-      - status
-      title: WorkflowExecutionDTO
     PresetSearchQuery:
       properties:
         cel_query:
@@ -1232,15 +1008,105 @@ components:
       - user_id
       - description
       title: AlertAuditDto
-    AlertSeverity:
+    AlertActionType:
       enum:
-      - critical
-      - high
-      - warning
-      - info
-      - low
-      title: AlertSeverity
+      - alert was triggered
+      - alert acknowledged
+      - alert automatically resolved
+      - alert automatically resolved by API
+      - alert manually resolved
+      - alert status manually changed
+      - alert status changed by API
+      - alert status undone
+      - alert enriched by workflow
+      - alert enriched by mapping rule
+      - alert was deduplicated
+      - alert was assigned with ticket
+      - alert was unassigned from ticket
+      - alert ticket was updated
+      - alert enrichments disposed
+      - alert deleted
+      - alert enriched
+      - alert un-enriched
+      - a comment was added to the alert
+      - a comment was removed from the alert
+      - Alert is in maintenance window
+      - A comment was added to the incident
+      title: AlertActionType
       description: An enumeration.
+    UnEnrichAlertRequestBody:
+      properties:
+        enrichments:
+          items:
+            type: string
+          type: array
+          title: Enrichments
+        fingerprint:
+          type: string
+          title: Fingerprint
+      type: object
+      required:
+      - enrichments
+      - fingerprint
+      title: UnEnrichAlertRequestBody
+    EnrichAlertRequestBody:
+      properties:
+        enrichments:
+          additionalProperties:
+            type: string
+          type: object
+          title: Enrichments
+        fingerprint:
+          type: string
+          title: Fingerprint
+      type: object
+      required:
+      - enrichments
+      - fingerprint
+      title: EnrichAlertRequestBody
+    WorkflowExecutionDTO:
+      properties:
+        id:
+          type: string
+          title: Id
+        workflow_id:
+          type: string
+          title: Workflow Id
+        started:
+          type: string
+          format: date-time
+          title: Started
+        triggered_by:
+          type: string
+          title: Triggered By
+        status:
+          type: string
+          title: Status
+        workflow_name:
+          type: string
+          title: Workflow Name
+        logs:
+          items:
+            $ref: '#/components/schemas/WorkflowExecutionLogsDTO'
+          type: array
+          title: Logs
+        error:
+          type: string
+          title: Error
+        execution_time:
+          type: number
+          title: Execution Time
+        results:
+          type: object
+          title: Results
+      type: object
+      required:
+      - id
+      - workflow_id
+      - started
+      - triggered_by
+      - status
+      title: WorkflowExecutionDTO
     Body_run_workflow_from_definition_workflows_test_post:
       properties:
         file:
@@ -1249,6 +1115,61 @@ components:
           title: File
       type: object
       title: Body_run_workflow_from_definition_workflows_test_post
+    WorkflowToAlertExecutionDTO:
+      properties:
+        workflow_id:
+          type: string
+          title: Workflow Id
+        workflow_execution_id:
+          type: string
+          title: Workflow Execution Id
+        alert_fingerprint:
+          type: string
+          title: Alert Fingerprint
+        workflow_status:
+          type: string
+          title: Workflow Status
+        workflow_started:
+          type: string
+          format: date-time
+          title: Workflow Started
+      type: object
+      required:
+      - workflow_id
+      - workflow_execution_id
+      - alert_fingerprint
+      - workflow_status
+      - workflow_started
+      title: WorkflowToAlertExecutionDTO
+    ProviderDTO:
+      properties:
+        type:
+          type: string
+          title: Type
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        installed:
+          type: boolean
+          title: Installed
+      type: object
+      required:
+      - type
+      - name
+      - installed
+      title: ProviderDTO
+    AlertStatus:
+      enum:
+      - firing
+      - resolved
+      - acknowledged
+      - suppressed
+      - pending
+      title: AlertStatus
+      description: An enumeration.
     HTTPValidationError:
       properties:
         detail:
@@ -1341,21 +1262,103 @@ components:
       - providers
       - workflow_raw
       title: WorkflowDTO
-    EnrichAlertRequestBody:
+    AlertSeverity:
+      enum:
+      - critical
+      - high
+      - warning
+      - info
+      - low
+      title: AlertSeverity
+      description: An enumeration.
+    Body_create_workflow_workflows_post:
       properties:
-        enrichments:
-          additionalProperties:
-            type: string
-          type: object
-          title: Enrichments
-        fingerprint:
+        file:
           type: string
-          title: Fingerprint
+          format: binary
+          title: File
       type: object
       required:
-      - enrichments
-      - fingerprint
-      title: EnrichAlertRequestBody
+      - file
+      title: Body_create_workflow_workflows_post
+    WorkflowExecutionsPaginatedResultsDto:
+      properties:
+        limit:
+          type: integer
+          title: Limit
+          default: 25
+        offset:
+          type: integer
+          title: Offset
+          default: 0
+        count:
+          type: integer
+          title: Count
+        items:
+          items:
+            $ref: '#/components/schemas/WorkflowExecutionDTO'
+          type: array
+          title: Items
+        passCount:
+          type: integer
+          title: Passcount
+          default: 0
+        avgDuration:
+          type: number
+          title: Avgduration
+          default: 0
+        workflow:
+          $ref: '#/components/schemas/WorkflowDTO'
+        failCount:
+          type: integer
+          title: Failcount
+          default: 0
+      type: object
+      required:
+      - count
+      - items
+      title: WorkflowExecutionsPaginatedResultsDto
+    WorkflowCreateOrUpdateDTO:
+      properties:
+        workflow_id:
+          type: string
+          title: Workflow Id
+        status:
+          type: string
+          enum:
+          - created
+          - updated
+          title: Status
+        revision:
+          type: integer
+          title: Revision
+          default: 1
+      type: object
+      required:
+      - workflow_id
+      - status
+      title: WorkflowCreateOrUpdateDTO
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     AlertDto:
       properties:
         id:
@@ -1493,18 +1496,6 @@ components:
           memory: 100Mi
         ticket_url: https://www.keephq.dev?enrichedTicketId=456
         fingerprint: '1234'
-    SearchAlertsRequest:
-      properties:
-        query:
-          $ref: '#/components/schemas/PresetSearchQuery'
-        timeframe:
-          type: integer
-          title: Timeframe
-      type: object
-      required:
-      - query
-      - timeframe
-      title: SearchAlertsRequest
     WorkflowExecutionLogsDTO:
       properties:
         id:
@@ -1526,28 +1517,37 @@ components:
       - timestamp
       - message
       title: WorkflowExecutionLogsDTO
-    WorkflowCreateOrUpdateDTO:
+    SearchAlertsRequest:
       properties:
-        workflow_id:
-          type: string
-          title: Workflow Id
-        status:
-          type: string
-          enum:
-          - created
-          - updated
-          title: Status
-        revision:
+        query:
+          $ref: '#/components/schemas/PresetSearchQuery'
+        timeframe:
           type: integer
-          title: Revision
-          default: 1
+          title: Timeframe
       type: object
       required:
-      - workflow_id
-      - status
-      title: WorkflowCreateOrUpdateDTO
+      - query
+      - timeframe
+      title: SearchAlertsRequest
+    DeleteRequestBody:
+      properties:
+        fingerprint:
+          type: string
+          title: Fingerprint
+        lastReceived:
+          type: string
+          title: Lastreceived
+        restore:
+          type: boolean
+          title: Restore
+          default: false
+      type: object
+      required:
+      - fingerprint
+      - lastReceived
+      title: DeleteRequestBody
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-KEY

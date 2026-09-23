@@ -1,15 +1,15 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Keep actions enrichment API
+  title: Keep Enrichment API
   description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
   version: 0.24.5
 tags:
-- name: enrichment
+- name: Enrichment
 paths:
   /mapping:
     get:
       tags:
-      - enrichment
+      - Enrichment
       summary: Get Rules
       description: Get all mapping rules
       operationId: get_rules_mapping_get
@@ -29,7 +29,7 @@ paths:
       - OAuth2PasswordBearer: []
     post:
       tags:
-      - enrichment
+      - Enrichment
       summary: Create Rule
       description: Create a new mapping rule
       operationId: create_rule_mapping_post
@@ -59,7 +59,7 @@ paths:
   /mapping/{rule_id}:
     put:
       tags:
-      - enrichment
+      - Enrichment
       summary: Update Rule
       description: Update an existing rule
       operationId: update_rule_mapping__rule_id__put
@@ -95,7 +95,7 @@ paths:
       - OAuth2PasswordBearer: []
     delete:
       tags:
-      - enrichment
+      - Enrichment
       summary: Delete Rule
       description: Delete a mapping rule
       operationId: delete_rule_mapping__rule_id__delete
@@ -125,7 +125,7 @@ paths:
   /extraction:
     get:
       tags:
-      - enrichment
+      - Enrichment
       summary: Get Extraction Rules
       description: Get all extraction rules
       operationId: get_extraction_rules_extraction_get
@@ -145,7 +145,7 @@ paths:
       - OAuth2PasswordBearer: []
     post:
       tags:
-      - enrichment
+      - Enrichment
       summary: Create Extraction Rule
       description: Create a new extraction rule
       operationId: create_extraction_rule_extraction_post
@@ -175,7 +175,7 @@ paths:
   /extraction/{rule_id}:
     put:
       tags:
-      - enrichment
+      - Enrichment
       summary: Update Extraction Rule
       description: Update an existing extraction rule
       operationId: update_extraction_rule_extraction__rule_id__put
@@ -211,7 +211,7 @@ paths:
       - OAuth2PasswordBearer: []
     delete:
       tags:
-      - enrichment
+      - Enrichment
       summary: Delete Extraction Rule
       description: Delete an extraction rule
       operationId: delete_extraction_rule_extraction__rule_id__delete
@@ -249,118 +249,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    MappingRuleDtoOut:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        file_name:
-          type: string
-          title: File Name
-        priority:
-          type: integer
-          title: Priority
-          default: 0
-        matchers:
-          items:
-            type: string
-          type: array
-          title: Matchers
-        type:
-          type: string
-          enum:
-          - csv
-          - topology
-          title: Type
-          default: csv
-        id:
-          type: integer
-          title: Id
-        created_by:
-          type: string
-          title: Created By
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        attributes:
-          items:
-            type: string
-          type: array
-          title: Attributes
-          default: []
-        updated_by:
-          type: string
-          title: Updated By
-        last_updated_at:
-          type: string
-          format: date-time
-          title: Last Updated At
-      type: object
-      required:
-      - name
-      - matchers
-      - id
-      - created_at
-      title: MappingRuleDtoOut
-    ExtractionRuleDtoBase:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        priority:
-          type: integer
-          title: Priority
-          default: 0
-        attribute:
-          type: string
-          title: Attribute
-        condition:
-          type: string
-          title: Condition
-        disabled:
-          type: boolean
-          title: Disabled
-          default: false
-        regex:
-          type: string
-          title: Regex
-        pre:
-          type: boolean
-          title: Pre
-          default: false
-      type: object
-      required:
-      - name
-      - regex
-      title: ExtractionRuleDtoBase
     MappingRule:
       properties:
         id:
@@ -434,6 +322,155 @@ components:
       - type
       - matchers
       title: MappingRule
+    ExtractionRuleDtoBase:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        priority:
+          type: integer
+          title: Priority
+          default: 0
+        attribute:
+          type: string
+          title: Attribute
+        condition:
+          type: string
+          title: Condition
+        disabled:
+          type: boolean
+          title: Disabled
+          default: false
+        regex:
+          type: string
+          title: Regex
+        pre:
+          type: boolean
+          title: Pre
+          default: false
+      type: object
+      required:
+      - name
+      - regex
+      title: ExtractionRuleDtoBase
+    MappingRuleDtoOut:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        file_name:
+          type: string
+          title: File Name
+        priority:
+          type: integer
+          title: Priority
+          default: 0
+        matchers:
+          items:
+            type: string
+          type: array
+          title: Matchers
+        type:
+          type: string
+          enum:
+          - csv
+          - topology
+          title: Type
+          default: csv
+        id:
+          type: integer
+          title: Id
+        created_by:
+          type: string
+          title: Created By
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        attributes:
+          items:
+            type: string
+          type: array
+          title: Attributes
+          default: []
+        updated_by:
+          type: string
+          title: Updated By
+        last_updated_at:
+          type: string
+          format: date-time
+          title: Last Updated At
+      type: object
+      required:
+      - name
+      - matchers
+      - id
+      - created_at
+      title: MappingRuleDtoOut
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    MappingRuleDtoIn:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        file_name:
+          type: string
+          title: File Name
+        priority:
+          type: integer
+          title: Priority
+          default: 0
+        matchers:
+          items:
+            type: string
+          type: array
+          title: Matchers
+        type:
+          type: string
+          enum:
+          - csv
+          - topology
+          title: Type
+          default: csv
+        rows:
+          items:
+            type: object
+          type: array
+          title: Rows
+      type: object
+      required:
+      - name
+      - matchers
+      title: MappingRuleDtoIn
     ExtractionRuleDtoOut:
       properties:
         name:
@@ -487,45 +524,8 @@ components:
       - id
       - created_at
       title: ExtractionRuleDtoOut
-    MappingRuleDtoIn:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        file_name:
-          type: string
-          title: File Name
-        priority:
-          type: integer
-          title: Priority
-          default: 0
-        matchers:
-          items:
-            type: string
-          type: array
-          title: Matchers
-        type:
-          type: string
-          enum:
-          - csv
-          - topology
-          title: Type
-          default: csv
-        rows:
-          items:
-            type: object
-          type: array
-          title: Rows
-      type: object
-      required:
-      - name
-      - matchers
-      title: MappingRuleDtoIn
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-KEY

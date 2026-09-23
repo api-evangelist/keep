@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Keep actions preset API
+  title: Keep Preset API
   description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
   version: 0.24.5
 tags:
@@ -251,80 +251,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    CreatePresetTab:
-      properties:
-        name:
-          type: string
-          title: Name
-        filter:
-          type: string
-          title: Filter
-      type: object
-      required:
-      - name
-      - filter
-      title: CreatePresetTab
-    CreateOrUpdatePresetDto:
-      properties:
-        name:
-          type: string
-          title: Name
-        options:
-          items:
-            $ref: '#/components/schemas/PresetOption'
-          type: array
-          title: Options
-        is_private:
-          type: boolean
-          title: Is Private
-          default: false
-        is_noisy:
-          type: boolean
-          title: Is Noisy
-          default: false
-        tags:
-          items:
-            $ref: '#/components/schemas/TagDto'
-          type: array
-          title: Tags
-          default: []
-      type: object
-      required:
-      - options
-      title: CreateOrUpdatePresetDto
-    TagDto:
-      properties:
-        id:
-          type: string
-          title: Id
-        name:
-          type: string
-          title: Name
-      type: object
-      required:
-      - name
-      title: TagDto
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     PresetDto:
       properties:
         id:
@@ -373,6 +299,80 @@ components:
       - id
       - name
       title: PresetDto
+    TagDto:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: TagDto
+    CreatePresetTab:
+      properties:
+        name:
+          type: string
+          title: Name
+        filter:
+          type: string
+          title: Filter
+      type: object
+      required:
+      - name
+      - filter
+      title: CreatePresetTab
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    CreateOrUpdatePresetDto:
+      properties:
+        name:
+          type: string
+          title: Name
+        options:
+          items:
+            $ref: '#/components/schemas/PresetOption'
+          type: array
+          title: Options
+        is_private:
+          type: boolean
+          title: Is Private
+          default: false
+        is_noisy:
+          type: boolean
+          title: Is Noisy
+          default: false
+        tags:
+          items:
+            $ref: '#/components/schemas/TagDto'
+          type: array
+          title: Tags
+          default: []
+      type: object
+      required:
+      - options
+      title: CreateOrUpdatePresetDto
     PresetOption:
       properties:
         label:
@@ -389,7 +389,7 @@ components:
       - value
       title: PresetOption
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-KEY

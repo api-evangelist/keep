@@ -1,15 +1,15 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Keep actions providers API
+  title: Keep Providers API
   description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
   version: 0.24.5
 tags:
-- name: providers
+- name: Providers
 paths:
   /providers:
     get:
       tags:
-      - providers
+      - Providers
       summary: Get Providers
       operationId: get_providers_providers_get
       responses:
@@ -25,7 +25,7 @@ paths:
   /providers/export:
     get:
       tags:
-      - providers
+      - Providers
       summary: Get Installed Providers
       description: export all installed providers
       operationId: get_installed_providers_providers_export_get
@@ -42,7 +42,7 @@ paths:
   /providers/{provider_type}/{provider_id}/configured-alerts:
     get:
       tags:
-      - providers
+      - Providers
       summary: Get Alerts Configuration
       description: Get alerts configuration from a provider
       operationId: get_alerts_configuration_providers__provider_type___provider_id__configured_alerts_get
@@ -81,7 +81,7 @@ paths:
   /providers/{provider_type}/{provider_id}/logs:
     get:
       tags:
-      - providers
+      - Providers
       summary: Get Logs
       description: Get logs from a provider
       operationId: get_logs_providers__provider_type___provider_id__logs_get
@@ -127,7 +127,7 @@ paths:
   /providers/{provider_type}/schema:
     get:
       tags:
-      - providers
+      - Providers
       summary: Get Alerts Schema
       description: Get the provider's API schema used to push alerts configuration
       operationId: get_alerts_schema_providers__provider_type__schema_get
@@ -155,7 +155,7 @@ paths:
   /providers/{provider_type}/{provider_id}/alerts/count:
     get:
       tags:
-      - providers
+      - Providers
       summary: Get Alert Count
       description: Get number of alerts a specific provider has received (in a specific time time period or ever)
       operationId: get_alert_count_providers__provider_type___provider_id__alerts_count_get
@@ -211,7 +211,7 @@ paths:
   /providers/{provider_type}/{provider_id}/alerts:
     post:
       tags:
-      - providers
+      - Providers
       summary: Add Alert
       description: Push new alerts to the provider
       operationId: add_alert_providers__provider_type___provider_id__alerts_post
@@ -260,7 +260,7 @@ paths:
   /providers/test:
     post:
       tags:
-      - providers
+      - Providers
       summary: Test Provider
       description: Test a provider's alert retrieval
       operationId: test_provider_providers_test_post
@@ -290,7 +290,7 @@ paths:
   /providers/{provider_type}/{provider_id}:
     delete:
       tags:
-      - providers
+      - Providers
       summary: Delete Provider
       operationId: delete_provider_providers__provider_type___provider_id__delete
       parameters:
@@ -325,7 +325,7 @@ paths:
   /providers/{provider_id}/scopes:
     post:
       tags:
-      - providers
+      - Providers
       summary: Validate Provider Scopes
       description: Validate provider scopes
       operationId: validate_provider_scopes_providers__provider_id__scopes_post
@@ -361,7 +361,7 @@ paths:
   /providers/{provider_id}:
     put:
       tags:
-      - providers
+      - Providers
       summary: Update Provider
       description: Update provider
       operationId: update_provider_providers__provider_id__put
@@ -391,7 +391,7 @@ paths:
   /providers/install:
     post:
       tags:
-      - providers
+      - Providers
       summary: Install Provider
       operationId: install_provider_providers_install_post
       responses:
@@ -407,7 +407,7 @@ paths:
   /providers/install/oauth2/{provider_type}:
     post:
       tags:
-      - providers
+      - Providers
       summary: Install Provider Oauth2
       operationId: install_provider_oauth2_providers_install_oauth2__provider_type__post
       parameters:
@@ -443,7 +443,7 @@ paths:
   /providers/{provider_id}/invoke/{method}:
     post:
       tags:
-      - providers
+      - Providers
       summary: Invoke Provider Method
       description: Invoke provider special method
       operationId: invoke_provider_method_providers__provider_id__invoke__method__post
@@ -486,7 +486,7 @@ paths:
   /providers/install/webhook/{provider_type}/{provider_id}:
     post:
       tags:
-      - providers
+      - Providers
       summary: Install Provider Webhook
       operationId: install_provider_webhook_providers_install_webhook__provider_type___provider_id__post
       parameters:
@@ -521,7 +521,7 @@ paths:
   /providers/{provider_type}/webhook:
     get:
       tags:
-      - providers
+      - Providers
       summary: Get Webhook Settings
       operationId: get_webhook_settings_providers__provider_type__webhook_get
       parameters:
@@ -550,6 +550,15 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -586,17 +595,8 @@ components:
       required:
       - webhookTemplate
       title: ProviderWebhookSettings
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-KEY

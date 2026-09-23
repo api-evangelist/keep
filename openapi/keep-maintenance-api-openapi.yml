@@ -1,15 +1,15 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Keep actions maintenance API
+  title: Keep Maintenance API
   description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
   version: 0.24.5
 tags:
-- name: maintenance
+- name: Maintenance
 paths:
   /maintenance:
     get:
       tags:
-      - maintenance
+      - Maintenance
       summary: Get Maintenance Rules
       description: Get all maintenance rules
       operationId: get_maintenance_rules_maintenance_get
@@ -29,7 +29,7 @@ paths:
       - OAuth2PasswordBearer: []
     post:
       tags:
-      - maintenance
+      - Maintenance
       summary: Create Maintenance Rule
       description: Create a new maintenance rule
       operationId: create_maintenance_rule_maintenance_post
@@ -59,7 +59,7 @@ paths:
   /maintenance/{rule_id}:
     put:
       tags:
-      - maintenance
+      - Maintenance
       summary: Update Maintenance Rule
       description: Update an existing maintenance rule
       operationId: update_maintenance_rule_maintenance__rule_id__put
@@ -95,7 +95,7 @@ paths:
       - OAuth2PasswordBearer: []
     delete:
       tags:
-      - maintenance
+      - Maintenance
       summary: Delete Maintenance Rule
       description: Delete a maintenance rule
       operationId: delete_maintenance_rule_maintenance__rule_id__delete
@@ -124,6 +124,47 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    MaintenanceRuleCreate:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        cel_query:
+          type: string
+          title: Cel Query
+        start_time:
+          type: string
+          format: date-time
+          title: Start Time
+        duration_seconds:
+          type: integer
+          title: Duration Seconds
+        suppress:
+          type: boolean
+          title: Suppress
+          default: false
+        enabled:
+          type: boolean
+          title: Enabled
+          default: true
+      type: object
+      required:
+      - name
+      - cel_query
+      - start_time
+      title: MaintenanceRuleCreate
     MaintenanceRuleRead:
       properties:
         id:
@@ -194,49 +235,8 @@ components:
       - msg
       - type
       title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    MaintenanceRuleCreate:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        cel_query:
-          type: string
-          title: Cel Query
-        start_time:
-          type: string
-          format: date-time
-          title: Start Time
-        duration_seconds:
-          type: integer
-          title: Duration Seconds
-        suppress:
-          type: boolean
-          title: Suppress
-          default: false
-        enabled:
-          type: boolean
-          title: Enabled
-          default: true
-      type: object
-      required:
-      - name
-      - cel_query
-      - start_time
-      title: MaintenanceRuleCreate
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-KEY

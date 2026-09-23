@@ -1,15 +1,15 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Keep actions extraction API
+  title: Keep Extraction API
   description: Rest API powering https://platform.keephq.dev and friends 🏄‍♀️
   version: 0.24.5
 tags:
-- name: extraction
+- name: Extraction
 paths:
   /extraction:
     get:
       tags:
-      - extraction
+      - Extraction
       summary: Get Extraction Rules
       description: Get all extraction rules
       operationId: get_extraction_rules_extraction_get
@@ -29,7 +29,7 @@ paths:
       - OAuth2PasswordBearer: []
     post:
       tags:
-      - extraction
+      - Extraction
       summary: Create Extraction Rule
       description: Create a new extraction rule
       operationId: create_extraction_rule_extraction_post
@@ -59,7 +59,7 @@ paths:
   /extraction/{rule_id}:
     put:
       tags:
-      - extraction
+      - Extraction
       summary: Update Extraction Rule
       description: Update an existing extraction rule
       operationId: update_extraction_rule_extraction__rule_id__put
@@ -95,7 +95,7 @@ paths:
       - OAuth2PasswordBearer: []
     delete:
       tags:
-      - extraction
+      - Extraction
       summary: Delete Extraction Rule
       description: Delete an extraction rule
       operationId: delete_extraction_rule_extraction__rule_id__delete
@@ -124,6 +124,15 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ExtractionRuleDtoBase:
       properties:
         name:
@@ -179,15 +188,6 @@ components:
       - msg
       - type
       title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     ExtractionRuleDtoOut:
       properties:
         name:
@@ -242,7 +242,7 @@ components:
       - created_at
       title: ExtractionRuleDtoOut
   securitySchemes:
-    API Key:
+    API_Key:
       type: apiKey
       in: header
       name: X-API-KEY

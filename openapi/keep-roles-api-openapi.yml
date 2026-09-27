@@ -128,6 +128,27 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     HTTPValidationError:
       properties:
         detail:
@@ -137,22 +158,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    CreateOrUpdateRole:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        scopes:
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-          title: Scopes
-      type: object
-      title: CreateOrUpdateRole
     Role:
       properties:
         id:
@@ -181,27 +186,22 @@ components:
       - description
       - scopes
       title: Role
-    ValidationError:
+    CreateOrUpdateRole:
       properties:
-        loc:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        scopes:
           items:
-            anyOf:
-            - type: string
-            - type: integer
+            type: string
           type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
+          uniqueItems: true
+          title: Scopes
       type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+      title: CreateOrUpdateRole
   securitySchemes:
     API_Key:
       type: apiKey

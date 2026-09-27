@@ -240,6 +240,64 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    MappingRuleDtoIn:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        file_name:
+          type: string
+          title: File Name
+        priority:
+          type: integer
+          title: Priority
+          default: 0
+        matchers:
+          items:
+            type: string
+          type: array
+          title: Matchers
+        type:
+          type: string
+          enum:
+          - csv
+          - topology
+          title: Type
+          default: csv
+        rows:
+          items:
+            type: object
+          type: array
+          title: Rows
+      type: object
+      required:
+      - name
+      - matchers
+      title: MappingRuleDtoIn
     HTTPValidationError:
       properties:
         detail:
@@ -249,6 +307,93 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    ExtractionRuleDtoBase:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        priority:
+          type: integer
+          title: Priority
+          default: 0
+        attribute:
+          type: string
+          title: Attribute
+        condition:
+          type: string
+          title: Condition
+        disabled:
+          type: boolean
+          title: Disabled
+          default: false
+        regex:
+          type: string
+          title: Regex
+        pre:
+          type: boolean
+          title: Pre
+          default: false
+      type: object
+      required:
+      - name
+      - regex
+      title: ExtractionRuleDtoBase
+    ExtractionRuleDtoOut:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        priority:
+          type: integer
+          title: Priority
+          default: 0
+        attribute:
+          type: string
+          title: Attribute
+        condition:
+          type: string
+          title: Condition
+        disabled:
+          type: boolean
+          title: Disabled
+          default: false
+        regex:
+          type: string
+          title: Regex
+        pre:
+          type: boolean
+          title: Pre
+          default: false
+        id:
+          type: integer
+          title: Id
+        created_by:
+          type: string
+          title: Created By
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_by:
+          type: string
+          title: Updated By
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - name
+      - regex
+      - id
+      - created_at
+      title: ExtractionRuleDtoOut
     MappingRule:
       properties:
         id:
@@ -322,40 +467,6 @@ components:
       - type
       - matchers
       title: MappingRule
-    ExtractionRuleDtoBase:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        priority:
-          type: integer
-          title: Priority
-          default: 0
-        attribute:
-          type: string
-          title: Attribute
-        condition:
-          type: string
-          title: Condition
-        disabled:
-          type: boolean
-          title: Disabled
-          default: false
-        regex:
-          type: string
-          title: Regex
-        pre:
-          type: boolean
-          title: Pre
-          default: false
-      type: object
-      required:
-      - name
-      - regex
-      title: ExtractionRuleDtoBase
     MappingRuleDtoOut:
       properties:
         name:
@@ -413,117 +524,6 @@ components:
       - id
       - created_at
       title: MappingRuleDtoOut
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    MappingRuleDtoIn:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        file_name:
-          type: string
-          title: File Name
-        priority:
-          type: integer
-          title: Priority
-          default: 0
-        matchers:
-          items:
-            type: string
-          type: array
-          title: Matchers
-        type:
-          type: string
-          enum:
-          - csv
-          - topology
-          title: Type
-          default: csv
-        rows:
-          items:
-            type: object
-          type: array
-          title: Rows
-      type: object
-      required:
-      - name
-      - matchers
-      title: MappingRuleDtoIn
-    ExtractionRuleDtoOut:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        priority:
-          type: integer
-          title: Priority
-          default: 0
-        attribute:
-          type: string
-          title: Attribute
-        condition:
-          type: string
-          title: Condition
-        disabled:
-          type: boolean
-          title: Disabled
-          default: false
-        regex:
-          type: string
-          title: Regex
-        pre:
-          type: boolean
-          title: Pre
-          default: false
-        id:
-          type: integer
-          title: Id
-        created_by:
-          type: string
-          title: Created By
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        updated_by:
-          type: string
-          title: Updated By
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-      type: object
-      required:
-      - name
-      - regex
-      - id
-      - created_at
-      title: ExtractionRuleDtoOut
   securitySchemes:
     API_Key:
       type: apiKey

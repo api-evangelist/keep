@@ -242,15 +242,27 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
-    HTTPValidationError:
+    ValidationError:
       properties:
-        detail:
+        loc:
           items:
-            $ref: '#/components/schemas/ValidationError'
+            anyOf:
+            - type: string
+            - type: integer
           type: array
-          title: Detail
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
       type: object
-      title: HTTPValidationError
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     PresetDto:
       properties:
         id:
@@ -299,52 +311,6 @@ components:
       - id
       - name
       title: PresetDto
-    TagDto:
-      properties:
-        id:
-          type: string
-          title: Id
-        name:
-          type: string
-          title: Name
-      type: object
-      required:
-      - name
-      title: TagDto
-    CreatePresetTab:
-      properties:
-        name:
-          type: string
-          title: Name
-        filter:
-          type: string
-          title: Filter
-      type: object
-      required:
-      - name
-      - filter
-      title: CreatePresetTab
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     CreateOrUpdatePresetDto:
       properties:
         name:
@@ -388,6 +354,40 @@ components:
       - label
       - value
       title: PresetOption
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    TagDto:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: TagDto
+    CreatePresetTab:
+      properties:
+        name:
+          type: string
+          title: Name
+        filter:
+          type: string
+          title: Filter
+      type: object
+      required:
+      - name
+      - filter
+      title: CreatePresetTab
   securitySchemes:
     API_Key:
       type: apiKey

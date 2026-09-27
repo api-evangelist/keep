@@ -7,16 +7,20 @@ description: Keep is an open-source AIOps and alert management platform that uni
 type: Index
 deliveryModel:
   model: unknown
+  license_evidence:
+    repo: keephq/keep
+    spdx: NOASSERTION
+    stars: 12355
   open_source: unknown
   commercial: true
-  callable_host: true
+  callable_host: false
   label: Delivery model not determined — needs a product licence on record
   confidence: low
   source:
   - openapi
   - pricing
   - repository-unlicensed
-  generated: '2026-08-28'
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: unknown
@@ -36,9 +40,9 @@ tags:
 - Alerting
 - Incident Management
 - Observability
-- Open-Source
+- Open Source
 - SRE
-- Workflow-Automation
+- Workflow Automation
 tags_raw:
 - AIOps
 - Alerting
@@ -47,13 +51,15 @@ tags_raw:
 - Open Source
 - SRE
 - Workflow Automation
+- Open-Source
+- Workflow-Automation
 url: https://raw.githubusercontent.com/api-evangelist/keep/refs/heads/main/apis.yml
 created: '2026-05-11'
 modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: keep:keep-actions-api
-  name: Keep actions API
+  name: Keep Actions API
   description: The actions API from Keep — 2 operation(s) for actions.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -69,7 +75,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-alerts-api
-  name: Keep alerts API
+  name: Keep Alerts API
   description: The alerts API from Keep — 24 operation(s) for alerts.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -85,7 +91,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-auth-api
-  name: Keep auth API
+  name: Keep Auth API
   description: The auth API from Keep — 8 operation(s) for auth.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -101,7 +107,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-dashboard-api
-  name: Keep dashboard API
+  name: Keep Dashboard API
   description: The dashboard API from Keep — 3 operation(s) for dashboard.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -117,7 +123,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-deduplications-api
-  name: Keep deduplications API
+  name: Keep Deduplications API
   description: The deduplications API from Keep — 3 operation(s) for deduplications.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -131,7 +137,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-enrichment-api
-  name: Keep enrichment API
+  name: Keep Enrichment API
   description: The enrichment API from Keep — 4 operation(s) for enrichment.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -147,7 +153,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-extraction-api
-  name: Keep extraction API
+  name: Keep Extraction API
   description: The extraction API from Keep — 2 operation(s) for extraction.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -163,7 +169,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-groups-api
-  name: Keep groups API
+  name: Keep Groups API
   description: The groups API from Keep — 2 operation(s) for groups.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -179,7 +185,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-incidents-api
-  name: Keep incidents API
+  name: Keep Incidents API
   description: The incidents API from Keep — 13 operation(s) for incidents.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -209,7 +215,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-maintenance-api
-  name: Keep maintenance API
+  name: Keep Maintenance API
   description: The maintenance API from Keep — 2 operation(s) for maintenance.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -225,7 +231,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-mapping-api
-  name: Keep mapping API
+  name: Keep Mapping API
   description: The mapping API from Keep — 2 operation(s) for mapping.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -241,7 +247,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-metrics-api
-  name: Keep metrics API
+  name: Keep Metrics API
   description: The metrics API from Keep — 1 operation(s) for metrics.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -257,7 +263,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-permissions-api
-  name: Keep permissions API
+  name: Keep Permissions API
   description: The permissions API from Keep — 2 operation(s) for permissions.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -273,7 +279,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-preset-api
-  name: Keep preset API
+  name: Keep Preset API
   description: The preset API from Keep — 5 operation(s) for preset.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -289,7 +295,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-providers-api
-  name: Keep providers API
+  name: Keep Providers API
   description: The providers API from Keep — 16 operation(s) for providers.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -305,7 +311,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-pusher-api
-  name: Keep pusher API
+  name: Keep Pusher API
   description: The pusher API from Keep — 1 operation(s) for pusher.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -319,7 +325,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-roles-api
-  name: Keep roles API
+  name: Keep Roles API
   description: The roles API from Keep — 2 operation(s) for roles.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -335,7 +341,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-rules-api
-  name: Keep rules API
+  name: Keep Rules API
   description: The rules API from Keep — 2 operation(s) for rules.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -351,7 +357,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-settings-api
-  name: Keep settings API
+  name: Keep Settings API
   description: The settings API from Keep — 7 operation(s) for settings.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -367,7 +373,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-status-api
-  name: Keep status API
+  name: Keep Status API
   description: The status API from Keep — 1 operation(s) for status.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -383,7 +389,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-tags-api
-  name: Keep tags API
+  name: Keep Tags API
   description: The tags API from Keep — 1 operation(s) for tags.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -399,7 +405,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-topology-api
-  name: Keep topology API
+  name: Keep Topology API
   description: The topology API from Keep — 3 operation(s) for topology.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -415,7 +421,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-users-api
-  name: Keep users API
+  name: Keep Users API
   description: The users API from Keep — 2 operation(s) for users.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -431,7 +437,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-whoami-api
-  name: Keep whoami API
+  name: Keep Whoami API
   description: The whoami API from Keep — 1 operation(s) for whoami.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
@@ -447,7 +453,7 @@ apis:
   - type: APIReference
     url: https://api.keephq.dev/docs
 - aid: keep:keep-workflows-api
-  name: Keep workflows API
+  name: Keep Workflows API
   description: The workflows API from Keep — 11 operation(s) for workflows.
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev

@@ -177,6 +177,16 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
+    DashboardUpdateDTO:
+      properties:
+        dashboard_config:
+          type: object
+          title: Dashboard Config
+        dashboard_name:
+          type: string
+          title: Dashboard Name
+      type: object
+      title: DashboardUpdateDTO
     ValidationError:
       properties:
         loc:
@@ -247,16 +257,6 @@ components:
       - dashboard_name
       - dashboard_config
       title: DashboardCreateDTO
-    DashboardUpdateDTO:
-      properties:
-        dashboard_config:
-          type: object
-          title: Dashboard Config
-        dashboard_name:
-          type: string
-          title: Dashboard Name
-      type: object
-      title: DashboardUpdateDTO
   securitySchemes:
     API_Key:
       type: apiKey

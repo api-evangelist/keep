@@ -261,6 +261,88 @@ components:
       - msg
       - type
       title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    MappingRule:
+      properties:
+        id:
+          type: integer
+          title: Id
+        tenant_id:
+          type: string
+          title: Tenant Id
+        priority:
+          type: integer
+          title: Priority
+          default: 0
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+        description:
+          type: string
+          maxLength: 2048
+          title: Description
+        file_name:
+          type: string
+          maxLength: 255
+          title: File Name
+        created_by:
+          type: string
+          maxLength: 255
+          title: Created By
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        disabled:
+          type: boolean
+          title: Disabled
+          default: false
+        override:
+          type: boolean
+          title: Override
+          default: true
+        condition:
+          type: string
+          maxLength: 2000
+          title: Condition
+        type:
+          type: string
+          maxLength: 255
+          title: Type
+        matchers:
+          items:
+            type: string
+          type: array
+          title: Matchers
+        rows:
+          items:
+            type: object
+          type: array
+          title: Rows
+        updated_by:
+          type: string
+          maxLength: 255
+          title: Updated By
+        last_updated_at:
+          type: string
+          format: date-time
+          title: Last Updated At
+      type: object
+      required:
+      - tenant_id
+      - name
+      - type
+      - matchers
+      title: MappingRule
     MappingRuleDtoIn:
       properties:
         name:
@@ -298,15 +380,6 @@ components:
       - name
       - matchers
       title: MappingRuleDtoIn
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     ExtractionRuleDtoBase:
       properties:
         name:
@@ -394,79 +467,6 @@ components:
       - id
       - created_at
       title: ExtractionRuleDtoOut
-    MappingRule:
-      properties:
-        id:
-          type: integer
-          title: Id
-        tenant_id:
-          type: string
-          title: Tenant Id
-        priority:
-          type: integer
-          title: Priority
-          default: 0
-        name:
-          type: string
-          maxLength: 255
-          title: Name
-        description:
-          type: string
-          maxLength: 2048
-          title: Description
-        file_name:
-          type: string
-          maxLength: 255
-          title: File Name
-        created_by:
-          type: string
-          maxLength: 255
-          title: Created By
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        disabled:
-          type: boolean
-          title: Disabled
-          default: false
-        override:
-          type: boolean
-          title: Override
-          default: true
-        condition:
-          type: string
-          maxLength: 2000
-          title: Condition
-        type:
-          type: string
-          maxLength: 255
-          title: Type
-        matchers:
-          items:
-            type: string
-          type: array
-          title: Matchers
-        rows:
-          items:
-            type: object
-          type: array
-          title: Rows
-        updated_by:
-          type: string
-          maxLength: 255
-          title: Updated By
-        last_updated_at:
-          type: string
-          format: date-time
-          title: Last Updated At
-      type: object
-      required:
-      - tenant_id
-      - name
-      - type
-      - matchers
-      title: MappingRule
     MappingRuleDtoOut:
       properties:
         name:

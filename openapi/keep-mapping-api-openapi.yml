@@ -145,43 +145,6 @@ components:
       - msg
       - type
       title: ValidationError
-    MappingRuleDtoIn:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        file_name:
-          type: string
-          title: File Name
-        priority:
-          type: integer
-          title: Priority
-          default: 0
-        matchers:
-          items:
-            type: string
-          type: array
-          title: Matchers
-        type:
-          type: string
-          enum:
-          - csv
-          - topology
-          title: Type
-          default: csv
-        rows:
-          items:
-            type: object
-          type: array
-          title: Rows
-      type: object
-      required:
-      - name
-      - matchers
-      title: MappingRuleDtoIn
     HTTPValidationError:
       properties:
         detail:
@@ -264,6 +227,43 @@ components:
       - type
       - matchers
       title: MappingRule
+    MappingRuleDtoIn:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        file_name:
+          type: string
+          title: File Name
+        priority:
+          type: integer
+          title: Priority
+          default: 0
+        matchers:
+          items:
+            type: string
+          type: array
+          title: Matchers
+        type:
+          type: string
+          enum:
+          - csv
+          - topology
+          title: Type
+          default: csv
+        rows:
+          items:
+            type: object
+          type: array
+          title: Rows
+      type: object
+      required:
+      - name
+      - matchers
+      title: MappingRuleDtoIn
     MappingRuleDtoOut:
       properties:
         name:

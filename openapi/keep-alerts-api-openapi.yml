@@ -955,6 +955,221 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    UnEnrichAlertRequestBody:
+      properties:
+        enrichments:
+          items:
+            type: string
+          type: array
+          title: Enrichments
+        fingerprint:
+          type: string
+          title: Fingerprint
+      type: object
+      required:
+      - enrichments
+      - fingerprint
+      title: UnEnrichAlertRequestBody
+    AlertStatus:
+      enum:
+      - firing
+      - resolved
+      - acknowledged
+      - suppressed
+      - pending
+      title: AlertStatus
+      description: An enumeration.
+    EnrichAlertRequestBody:
+      properties:
+        enrichments:
+          additionalProperties:
+            type: string
+          type: object
+          title: Enrichments
+        fingerprint:
+          type: string
+          title: Fingerprint
+      type: object
+      required:
+      - enrichments
+      - fingerprint
+      title: EnrichAlertRequestBody
+    WorkflowDTO:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+          default: Workflow file doesn't contain name
+        description:
+          type: string
+          title: Description
+          default: Workflow file doesn't contain description
+        created_by:
+          type: string
+          title: Created By
+        creation_time:
+          type: string
+          format: date-time
+          title: Creation Time
+        triggers:
+          items:
+            type: object
+          type: array
+          title: Triggers
+        interval:
+          type: integer
+          title: Interval
+        disabled:
+          type: boolean
+          title: Disabled
+          default: false
+        last_execution_time:
+          type: string
+          format: date-time
+          title: Last Execution Time
+        last_execution_status:
+          type: string
+          title: Last Execution Status
+        providers:
+          items:
+            $ref: '#/components/schemas/ProviderDTO'
+          type: array
+          title: Providers
+        workflow_raw:
+          type: string
+          title: Workflow Raw
+        revision:
+          type: integer
+          title: Revision
+          default: 1
+        last_updated:
+          type: string
+          format: date-time
+          title: Last Updated
+        invalid:
+          type: boolean
+          title: Invalid
+          default: false
+        last_executions:
+          items:
+            type: object
+          type: array
+          title: Last Executions
+        last_execution_started:
+          type: string
+          format: date-time
+          title: Last Execution Started
+        provisioned:
+          type: boolean
+          title: Provisioned
+          default: false
+        provisioned_file:
+          type: string
+          title: Provisioned File
+      type: object
+      required:
+      - id
+      - created_by
+      - creation_time
+      - providers
+      - workflow_raw
+      title: WorkflowDTO
+    SearchAlertsRequest:
+      properties:
+        query:
+          $ref: '#/components/schemas/PresetSearchQuery'
+        timeframe:
+          type: integer
+          title: Timeframe
+      type: object
+      required:
+      - query
+      - timeframe
+      title: SearchAlertsRequest
+    WorkflowExecutionDTO:
+      properties:
+        id:
+          type: string
+          title: Id
+        workflow_id:
+          type: string
+          title: Workflow Id
+        started:
+          type: string
+          format: date-time
+          title: Started
+        triggered_by:
+          type: string
+          title: Triggered By
+        status:
+          type: string
+          title: Status
+        workflow_name:
+          type: string
+          title: Workflow Name
+        logs:
+          items:
+            $ref: '#/components/schemas/WorkflowExecutionLogsDTO'
+          type: array
+          title: Logs
+        error:
+          type: string
+          title: Error
+        execution_time:
+          type: number
+          title: Execution Time
+        results:
+          type: object
+          title: Results
+      type: object
+      required:
+      - id
+      - workflow_id
+      - started
+      - triggered_by
+      - status
+      title: WorkflowExecutionDTO
+    DeleteRequestBody:
+      properties:
+        fingerprint:
+          type: string
+          title: Fingerprint
+        lastReceived:
+          type: string
+          title: Lastreceived
+        restore:
+          type: boolean
+          title: Restore
+          default: false
+      type: object
+      required:
+      - fingerprint
+      - lastReceived
+      title: DeleteRequestBody
     Body_create_workflow_workflows_post:
       properties:
         file:
@@ -965,81 +1180,6 @@ components:
       required:
       - file
       title: Body_create_workflow_workflows_post
-    AlertStatus:
-      enum:
-      - firing
-      - resolved
-      - acknowledged
-      - suppressed
-      - pending
-      title: AlertStatus
-      description: An enumeration.
-    WorkflowExecutionsPaginatedResultsDto:
-      properties:
-        limit:
-          type: integer
-          title: Limit
-          default: 25
-        offset:
-          type: integer
-          title: Offset
-          default: 0
-        count:
-          type: integer
-          title: Count
-        items:
-          items:
-            $ref: '#/components/schemas/WorkflowExecutionDTO'
-          type: array
-          title: Items
-        passCount:
-          type: integer
-          title: Passcount
-          default: 0
-        avgDuration:
-          type: number
-          title: Avgduration
-          default: 0
-        workflow:
-          $ref: '#/components/schemas/WorkflowDTO'
-        failCount:
-          type: integer
-          title: Failcount
-          default: 0
-      type: object
-      required:
-      - count
-      - items
-      title: WorkflowExecutionsPaginatedResultsDto
-    WorkflowCreateOrUpdateDTO:
-      properties:
-        workflow_id:
-          type: string
-          title: Workflow Id
-        status:
-          type: string
-          enum:
-          - created
-          - updated
-          title: Status
-        revision:
-          type: integer
-          title: Revision
-          default: 1
-      type: object
-      required:
-      - workflow_id
-      - status
-      title: WorkflowCreateOrUpdateDTO
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     AlertDto:
       properties:
         id:
@@ -1177,36 +1317,84 @@ components:
           memory: 100Mi
         ticket_url: https://www.keephq.dev?enrichedTicketId=456
         fingerprint: '1234'
-    UnEnrichAlertRequestBody:
+    Body_run_workflow_from_definition_workflows_test_post:
       properties:
-        enrichments:
-          items:
-            type: string
-          type: array
-          title: Enrichments
-        fingerprint:
+        file:
           type: string
-          title: Fingerprint
+          format: binary
+          title: File
       type: object
-      required:
-      - enrichments
-      - fingerprint
-      title: UnEnrichAlertRequestBody
-    EnrichAlertRequestBody:
+      title: Body_run_workflow_from_definition_workflows_test_post
+    WorkflowExecutionLogsDTO:
       properties:
-        enrichments:
-          additionalProperties:
-            type: string
+        id:
+          type: integer
+          title: Id
+        timestamp:
+          type: string
+          format: date-time
+          title: Timestamp
+        message:
+          type: string
+          title: Message
+        context:
           type: object
-          title: Enrichments
-        fingerprint:
-          type: string
-          title: Fingerprint
+          title: Context
       type: object
       required:
-      - enrichments
-      - fingerprint
-      title: EnrichAlertRequestBody
+      - id
+      - timestamp
+      - message
+      title: WorkflowExecutionLogsDTO
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ProviderDTO:
+      properties:
+        type:
+          type: string
+          title: Type
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        installed:
+          type: boolean
+          title: Installed
+      type: object
+      required:
+      - type
+      - name
+      - installed
+      title: ProviderDTO
+    WorkflowCreateOrUpdateDTO:
+      properties:
+        workflow_id:
+          type: string
+          title: Workflow Id
+        status:
+          type: string
+          enum:
+          - created
+          - updated
+          title: Status
+        revision:
+          type: integer
+          title: Revision
+          default: 1
+      type: object
+      required:
+      - workflow_id
+      - status
+      title: WorkflowCreateOrUpdateDTO
     AlertActionType:
       enum:
       - alert was triggered
@@ -1233,116 +1421,39 @@ components:
       - A comment was added to the incident
       title: AlertActionType
       description: An enumeration.
-    WorkflowExecutionDTO:
+    PresetSearchQuery:
       properties:
-        id:
+        cel_query:
           type: string
-          title: Id
-        workflow_id:
-          type: string
-          title: Workflow Id
-        started:
-          type: string
-          format: date-time
-          title: Started
-        triggered_by:
-          type: string
-          title: Triggered By
-        status:
-          type: string
-          title: Status
-        workflow_name:
-          type: string
-          title: Workflow Name
-        logs:
-          items:
-            $ref: '#/components/schemas/WorkflowExecutionLogsDTO'
-          type: array
-          title: Logs
-        error:
-          type: string
-          title: Error
-        execution_time:
-          type: number
-          title: Execution Time
-        results:
+          minLength: 0
+          title: Cel Query
+        sql_query:
           type: object
-          title: Results
-      type: object
-      required:
-      - id
-      - workflow_id
-      - started
-      - triggered_by
-      - status
-      title: WorkflowExecutionDTO
-    WorkflowExecutionLogsDTO:
-      properties:
-        id:
+          title: Sql Query
+        limit:
           type: integer
-          title: Id
-        timestamp:
-          type: string
-          format: date-time
-          title: Timestamp
-        message:
-          type: string
-          title: Message
-        context:
-          type: object
-          title: Context
+          minimum: 0
+          title: Limit
+          default: 1000
+        timeframe:
+          type: integer
+          minimum: 0
+          title: Timeframe
+          default: 0
       type: object
       required:
-      - id
-      - timestamp
-      - message
-      title: WorkflowExecutionLogsDTO
-    Body_run_workflow_from_definition_workflows_test_post:
-      properties:
-        file:
-          type: string
-          format: binary
-          title: File
-      type: object
-      title: Body_run_workflow_from_definition_workflows_test_post
-    DeleteRequestBody:
-      properties:
-        fingerprint:
-          type: string
-          title: Fingerprint
-        lastReceived:
-          type: string
-          title: Lastreceived
-        restore:
-          type: boolean
-          title: Restore
-          default: false
-      type: object
-      required:
-      - fingerprint
-      - lastReceived
-      title: DeleteRequestBody
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+      - cel_query
+      - sql_query
+      title: PresetSearchQuery
+    AlertSeverity:
+      enum:
+      - critical
+      - high
+      - warning
+      - info
+      - low
+      title: AlertSeverity
+      description: An enumeration.
     AlertAuditDto:
       properties:
         id:
@@ -1372,6 +1483,43 @@ components:
       - user_id
       - description
       title: AlertAuditDto
+    WorkflowExecutionsPaginatedResultsDto:
+      properties:
+        limit:
+          type: integer
+          title: Limit
+          default: 25
+        offset:
+          type: integer
+          title: Offset
+          default: 0
+        count:
+          type: integer
+          title: Count
+        items:
+          items:
+            $ref: '#/components/schemas/WorkflowExecutionDTO'
+          type: array
+          title: Items
+        passCount:
+          type: integer
+          title: Passcount
+          default: 0
+        avgDuration:
+          type: number
+          title: Avgduration
+          default: 0
+        workflow:
+          $ref: '#/components/schemas/WorkflowDTO'
+        failCount:
+          type: integer
+          title: Failcount
+          default: 0
+      type: object
+      required:
+      - count
+      - items
+      title: WorkflowExecutionsPaginatedResultsDto
     WorkflowToAlertExecutionDTO:
       properties:
         workflow_id:
@@ -1398,154 +1546,6 @@ components:
       - workflow_status
       - workflow_started
       title: WorkflowToAlertExecutionDTO
-    SearchAlertsRequest:
-      properties:
-        query:
-          $ref: '#/components/schemas/PresetSearchQuery'
-        timeframe:
-          type: integer
-          title: Timeframe
-      type: object
-      required:
-      - query
-      - timeframe
-      title: SearchAlertsRequest
-    ProviderDTO:
-      properties:
-        type:
-          type: string
-          title: Type
-        id:
-          type: string
-          title: Id
-        name:
-          type: string
-          title: Name
-        installed:
-          type: boolean
-          title: Installed
-      type: object
-      required:
-      - type
-      - name
-      - installed
-      title: ProviderDTO
-    AlertSeverity:
-      enum:
-      - critical
-      - high
-      - warning
-      - info
-      - low
-      title: AlertSeverity
-      description: An enumeration.
-    WorkflowDTO:
-      properties:
-        id:
-          type: string
-          title: Id
-        name:
-          type: string
-          title: Name
-          default: Workflow file doesn't contain name
-        description:
-          type: string
-          title: Description
-          default: Workflow file doesn't contain description
-        created_by:
-          type: string
-          title: Created By
-        creation_time:
-          type: string
-          format: date-time
-          title: Creation Time
-        triggers:
-          items:
-            type: object
-          type: array
-          title: Triggers
-        interval:
-          type: integer
-          title: Interval
-        disabled:
-          type: boolean
-          title: Disabled
-          default: false
-        last_execution_time:
-          type: string
-          format: date-time
-          title: Last Execution Time
-        last_execution_status:
-          type: string
-          title: Last Execution Status
-        providers:
-          items:
-            $ref: '#/components/schemas/ProviderDTO'
-          type: array
-          title: Providers
-        workflow_raw:
-          type: string
-          title: Workflow Raw
-        revision:
-          type: integer
-          title: Revision
-          default: 1
-        last_updated:
-          type: string
-          format: date-time
-          title: Last Updated
-        invalid:
-          type: boolean
-          title: Invalid
-          default: false
-        last_executions:
-          items:
-            type: object
-          type: array
-          title: Last Executions
-        last_execution_started:
-          type: string
-          format: date-time
-          title: Last Execution Started
-        provisioned:
-          type: boolean
-          title: Provisioned
-          default: false
-        provisioned_file:
-          type: string
-          title: Provisioned File
-      type: object
-      required:
-      - id
-      - created_by
-      - creation_time
-      - providers
-      - workflow_raw
-      title: WorkflowDTO
-    PresetSearchQuery:
-      properties:
-        cel_query:
-          type: string
-          minLength: 0
-          title: Cel Query
-        sql_query:
-          type: object
-          title: Sql Query
-        limit:
-          type: integer
-          minimum: 0
-          title: Limit
-          default: 1000
-        timeframe:
-          type: integer
-          minimum: 0
-          title: Timeframe
-          default: 0
-      type: object
-      required:
-      - cel_query
-      - sql_query
-      title: PresetSearchQuery
   securitySchemes:
     API_Key:
       type: apiKey

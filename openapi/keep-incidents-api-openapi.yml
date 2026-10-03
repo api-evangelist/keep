@@ -748,6 +748,172 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    IncidentListFilterParamsDto:
+      properties:
+        statuses:
+          items:
+            $ref: '#/components/schemas/IncidentStatus'
+          type: array
+          default:
+          - firing
+          - resolved
+          - acknowledged
+          - merged
+        severities:
+          items:
+            $ref: '#/components/schemas/IncidentSeverity'
+          type: array
+          default:
+          - critical
+          - high
+          - warning
+          - info
+          - low
+        assignees:
+          items:
+            type: string
+          type: array
+          title: Assignees
+        services:
+          items:
+            type: string
+          type: array
+          title: Services
+        sources:
+          items:
+            type: string
+          type: array
+          title: Sources
+      type: object
+      required:
+      - assignees
+      - services
+      - sources
+      title: IncidentListFilterParamsDto
+    IncidentStatusChangeDto:
+      properties:
+        status:
+          $ref: '#/components/schemas/IncidentStatus'
+        comment:
+          type: string
+          title: Comment
+      type: object
+      required:
+      - status
+      title: IncidentStatusChangeDto
+    AlertStatus:
+      enum:
+      - firing
+      - resolved
+      - acknowledged
+      - suppressed
+      - pending
+      title: AlertStatus
+      description: An enumeration.
+    WorkflowDTO:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+          default: Workflow file doesn't contain name
+        description:
+          type: string
+          title: Description
+          default: Workflow file doesn't contain description
+        created_by:
+          type: string
+          title: Created By
+        creation_time:
+          type: string
+          format: date-time
+          title: Creation Time
+        triggers:
+          items:
+            type: object
+          type: array
+          title: Triggers
+        interval:
+          type: integer
+          title: Interval
+        disabled:
+          type: boolean
+          title: Disabled
+          default: false
+        last_execution_time:
+          type: string
+          format: date-time
+          title: Last Execution Time
+        last_execution_status:
+          type: string
+          title: Last Execution Status
+        providers:
+          items:
+            $ref: '#/components/schemas/ProviderDTO'
+          type: array
+          title: Providers
+        workflow_raw:
+          type: string
+          title: Workflow Raw
+        revision:
+          type: integer
+          title: Revision
+          default: 1
+        last_updated:
+          type: string
+          format: date-time
+          title: Last Updated
+        invalid:
+          type: boolean
+          title: Invalid
+          default: false
+        last_executions:
+          items:
+            type: object
+          type: array
+          title: Last Executions
+        last_execution_started:
+          type: string
+          format: date-time
+          title: Last Execution Started
+        provisioned:
+          type: boolean
+          title: Provisioned
+          default: false
+        provisioned_file:
+          type: string
+          title: Provisioned File
+      type: object
+      required:
+      - id
+      - created_by
+      - creation_time
+      - providers
+      - workflow_raw
+      title: WorkflowDTO
     AlertWithIncidentLinkMetadataPaginatedResultsDto:
       properties:
         limit:
@@ -771,85 +937,6 @@ components:
       - count
       - items
       title: AlertWithIncidentLinkMetadataPaginatedResultsDto
-    AlertStatus:
-      enum:
-      - firing
-      - resolved
-      - acknowledged
-      - suppressed
-      - pending
-      title: AlertStatus
-      description: An enumeration.
-    WorkflowExecutionsPaginatedResultsDto:
-      properties:
-        limit:
-          type: integer
-          title: Limit
-          default: 25
-        offset:
-          type: integer
-          title: Offset
-          default: 0
-        count:
-          type: integer
-          title: Count
-        items:
-          items:
-            $ref: '#/components/schemas/WorkflowExecutionDTO'
-          type: array
-          title: Items
-        passCount:
-          type: integer
-          title: Passcount
-          default: 0
-        avgDuration:
-          type: number
-          title: Avgduration
-          default: 0
-        workflow:
-          $ref: '#/components/schemas/WorkflowDTO'
-        failCount:
-          type: integer
-          title: Failcount
-          default: 0
-      type: object
-      required:
-      - count
-      - items
-      title: WorkflowExecutionsPaginatedResultsDto
-    IncidentSorting:
-      enum:
-      - creation_time
-      - start_time
-      - last_seen_time
-      - severity
-      - status
-      - alerts_count
-      - -creation_time
-      - -start_time
-      - -last_seen_time
-      - -severity
-      - -status
-      - -alerts_count
-      title: IncidentSorting
-      description: An enumeration.
-    MergeIncidentsRequestDto:
-      properties:
-        source_incident_ids:
-          items:
-            type: string
-            format: uuid
-          type: array
-          title: Source Incident Ids
-        destination_incident_id:
-          type: string
-          format: uuid
-          title: Destination Incident Id
-      type: object
-      required:
-      - source_incident_ids
-      - destination_incident_id
-      title: MergeIncidentsRequestDto
     AlertAudit:
       properties:
         id:
@@ -883,34 +970,121 @@ components:
       - action
       - description
       title: AlertAudit
-    HTTPValidationError:
+    WorkflowExecutionDTO:
       properties:
-        detail:
+        id:
+          type: string
+          title: Id
+        workflow_id:
+          type: string
+          title: Workflow Id
+        started:
+          type: string
+          format: date-time
+          title: Started
+        triggered_by:
+          type: string
+          title: Triggered By
+        status:
+          type: string
+          title: Status
+        workflow_name:
+          type: string
+          title: Workflow Name
+        logs:
           items:
-            $ref: '#/components/schemas/ValidationError'
+            $ref: '#/components/schemas/WorkflowExecutionLogsDTO'
           type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    IncidentCommit:
-      properties:
-        accepted:
-          type: boolean
-          title: Accepted
-        original_suggestion:
+          title: Logs
+        error:
+          type: string
+          title: Error
+        execution_time:
+          type: number
+          title: Execution Time
+        results:
           type: object
-          title: Original Suggestion
-        changes:
-          type: object
-          title: Changes
-        incident:
-          $ref: '#/components/schemas/IncidentDto'
+          title: Results
       type: object
       required:
-      - accepted
-      - original_suggestion
-      - incident
-      title: IncidentCommit
+      - id
+      - workflow_id
+      - started
+      - triggered_by
+      - status
+      title: WorkflowExecutionDTO
+    IncidentDtoIn:
+      properties:
+        user_generated_name:
+          type: string
+          title: User Generated Name
+        assignee:
+          type: string
+          title: Assignee
+        user_summary:
+          type: string
+          title: User Summary
+        same_incident_in_the_past_id:
+          type: string
+          format: uuid
+          title: Same Incident In The Past Id
+      type: object
+      title: IncidentDtoIn
+      example:
+        id: c2509cb3-6168-4347-b83b-a41da9df2d5b
+        name: Incident name
+        user_summary: 'Keep: Incident description'
+        status: firing
+    MergeIncidentsResponseDto:
+      properties:
+        merged_incident_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Merged Incident Ids
+        skipped_incident_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Skipped Incident Ids
+        failed_incident_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Failed Incident Ids
+        destination_incident_id:
+          type: string
+          format: uuid
+          title: Destination Incident Id
+        message:
+          type: string
+          title: Message
+      type: object
+      required:
+      - merged_incident_ids
+      - skipped_incident_ids
+      - failed_incident_ids
+      - destination_incident_id
+      - message
+      title: MergeIncidentsResponseDto
+    IncidentsClusteringSuggestion:
+      properties:
+        incident_suggestion:
+          items:
+            $ref: '#/components/schemas/IncidentDto'
+          type: array
+          title: Incident Suggestion
+        suggestion_id:
+          type: string
+          title: Suggestion Id
+      type: object
+      required:
+      - incident_suggestion
+      - suggestion_id
+      title: IncidentsClusteringSuggestion
     AlertDto:
       properties:
         id:
@@ -1048,6 +1222,23 @@ components:
           memory: 100Mi
         ticket_url: https://www.keephq.dev?enrichedTicketId=456
         fingerprint: '1234'
+    MergeIncidentsRequestDto:
+      properties:
+        source_incident_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Source Incident Ids
+        destination_incident_id:
+          type: string
+          format: uuid
+          title: Destination Incident Id
+      type: object
+      required:
+      - source_incident_ids
+      - destination_incident_id
+      title: MergeIncidentsRequestDto
     IncidentSeverity:
       enum:
       - critical
@@ -1057,60 +1248,76 @@ components:
       - low
       title: IncidentSeverity
       description: An enumeration.
-    IncidentListFilterParamsDto:
+    IncidentCommit:
       properties:
-        statuses:
-          items:
-            $ref: '#/components/schemas/IncidentStatus'
-          type: array
-          default:
-          - firing
-          - resolved
-          - acknowledged
-          - merged
-        severities:
-          items:
-            $ref: '#/components/schemas/IncidentSeverity'
-          type: array
-          default:
-          - critical
-          - high
-          - warning
-          - info
-          - low
-        assignees:
-          items:
-            type: string
-          type: array
-          title: Assignees
-        services:
-          items:
-            type: string
-          type: array
-          title: Services
-        sources:
-          items:
-            type: string
-          type: array
-          title: Sources
+        accepted:
+          type: boolean
+          title: Accepted
+        original_suggestion:
+          type: object
+          title: Original Suggestion
+        changes:
+          type: object
+          title: Changes
+        incident:
+          $ref: '#/components/schemas/IncidentDto'
       type: object
       required:
-      - assignees
-      - services
-      - sources
-      title: IncidentListFilterParamsDto
-    IncidentStatusChangeDto:
+      - accepted
+      - original_suggestion
+      - incident
+      title: IncidentCommit
+    WorkflowExecutionLogsDTO:
       properties:
-        status:
-          $ref: '#/components/schemas/IncidentStatus'
-        comment:
+        id:
+          type: integer
+          title: Id
+        timestamp:
           type: string
-          title: Comment
+          format: date-time
+          title: Timestamp
+        message:
+          type: string
+          title: Message
+        context:
+          type: object
+          title: Context
       type: object
       required:
-      - status
-      title: IncidentStatusChangeDto
-    IncidentDtoIn:
+      - id
+      - timestamp
+      - message
+      title: WorkflowExecutionLogsDTO
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ProviderDTO:
+      properties:
+        type:
+          type: string
+          title: Type
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        installed:
+          type: boolean
+          title: Installed
+      type: object
+      required:
+      - type
+      - name
+      - installed
+      title: ProviderDTO
+    IncidentDto:
       properties:
         user_generated_name:
           type: string
@@ -1125,8 +1332,84 @@ components:
           type: string
           format: uuid
           title: Same Incident In The Past Id
+        id:
+          type: string
+          format: uuid
+          title: Id
+        start_time:
+          type: string
+          format: date-time
+          title: Start Time
+        last_seen_time:
+          type: string
+          format: date-time
+          title: Last Seen Time
+        end_time:
+          type: string
+          format: date-time
+          title: End Time
+        creation_time:
+          type: string
+          format: date-time
+          title: Creation Time
+        alerts_count:
+          type: integer
+          title: Alerts Count
+        alert_sources:
+          items:
+            type: string
+          type: array
+          title: Alert Sources
+        severity:
+          $ref: '#/components/schemas/IncidentSeverity'
+        status:
+          allOf:
+          - $ref: '#/components/schemas/IncidentStatus'
+          default: firing
+        services:
+          items:
+            type: string
+          type: array
+          title: Services
+        is_predicted:
+          type: boolean
+          title: Is Predicted
+        is_confirmed:
+          type: boolean
+          title: Is Confirmed
+        generated_summary:
+          type: string
+          title: Generated Summary
+        ai_generated_name:
+          type: string
+          title: Ai Generated Name
+        rule_fingerprint:
+          type: string
+          title: Rule Fingerprint
+        fingerprint:
+          type: string
+          title: Fingerprint
+        merged_into_incident_id:
+          type: string
+          format: uuid
+          title: Merged Into Incident Id
+        merged_by:
+          type: string
+          title: Merged By
+        merged_at:
+          type: string
+          format: date-time
+          title: Merged At
       type: object
-      title: IncidentDtoIn
+      required:
+      - id
+      - alerts_count
+      - alert_sources
+      - severity
+      - services
+      - is_predicted
+      - is_confirmed
+      title: IncidentDto
       example:
         id: c2509cb3-6168-4347-b83b-a41da9df2d5b
         name: Incident name
@@ -1273,6 +1556,76 @@ components:
           memory: 100Mi
         ticket_url: https://www.keephq.dev?enrichedTicketId=456
         fingerprint: '1234'
+    AlertSeverity:
+      enum:
+      - critical
+      - high
+      - warning
+      - info
+      - low
+      title: AlertSeverity
+      description: An enumeration.
+    IncidentSorting:
+      enum:
+      - creation_time
+      - start_time
+      - last_seen_time
+      - severity
+      - status
+      - alerts_count
+      - -creation_time
+      - -start_time
+      - -last_seen_time
+      - -severity
+      - -status
+      - -alerts_count
+      title: IncidentSorting
+      description: An enumeration.
+    IncidentStatus:
+      enum:
+      - firing
+      - resolved
+      - acknowledged
+      - merged
+      title: IncidentStatus
+      description: An enumeration.
+    WorkflowExecutionsPaginatedResultsDto:
+      properties:
+        limit:
+          type: integer
+          title: Limit
+          default: 25
+        offset:
+          type: integer
+          title: Offset
+          default: 0
+        count:
+          type: integer
+          title: Count
+        items:
+          items:
+            $ref: '#/components/schemas/WorkflowExecutionDTO'
+          type: array
+          title: Items
+        passCount:
+          type: integer
+          title: Passcount
+          default: 0
+        avgDuration:
+          type: number
+          title: Avgduration
+          default: 0
+        workflow:
+          $ref: '#/components/schemas/WorkflowDTO'
+        failCount:
+          type: integer
+          title: Failcount
+          default: 0
+      type: object
+      required:
+      - count
+      - items
+      title: WorkflowExecutionsPaginatedResultsDto
     IncidentsPaginatedResultsDto:
       properties:
         limit:
@@ -1296,359 +1649,6 @@ components:
       - count
       - items
       title: IncidentsPaginatedResultsDto
-    WorkflowExecutionDTO:
-      properties:
-        id:
-          type: string
-          title: Id
-        workflow_id:
-          type: string
-          title: Workflow Id
-        started:
-          type: string
-          format: date-time
-          title: Started
-        triggered_by:
-          type: string
-          title: Triggered By
-        status:
-          type: string
-          title: Status
-        workflow_name:
-          type: string
-          title: Workflow Name
-        logs:
-          items:
-            $ref: '#/components/schemas/WorkflowExecutionLogsDTO'
-          type: array
-          title: Logs
-        error:
-          type: string
-          title: Error
-        execution_time:
-          type: number
-          title: Execution Time
-        results:
-          type: object
-          title: Results
-      type: object
-      required:
-      - id
-      - workflow_id
-      - started
-      - triggered_by
-      - status
-      title: WorkflowExecutionDTO
-    WorkflowExecutionLogsDTO:
-      properties:
-        id:
-          type: integer
-          title: Id
-        timestamp:
-          type: string
-          format: date-time
-          title: Timestamp
-        message:
-          type: string
-          title: Message
-        context:
-          type: object
-          title: Context
-      type: object
-      required:
-      - id
-      - timestamp
-      - message
-      title: WorkflowExecutionLogsDTO
-    IncidentsClusteringSuggestion:
-      properties:
-        incident_suggestion:
-          items:
-            $ref: '#/components/schemas/IncidentDto'
-          type: array
-          title: Incident Suggestion
-        suggestion_id:
-          type: string
-          title: Suggestion Id
-      type: object
-      required:
-      - incident_suggestion
-      - suggestion_id
-      title: IncidentsClusteringSuggestion
-    IncidentStatus:
-      enum:
-      - firing
-      - resolved
-      - acknowledged
-      - merged
-      title: IncidentStatus
-      description: An enumeration.
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    IncidentDto:
-      properties:
-        user_generated_name:
-          type: string
-          title: User Generated Name
-        assignee:
-          type: string
-          title: Assignee
-        user_summary:
-          type: string
-          title: User Summary
-        same_incident_in_the_past_id:
-          type: string
-          format: uuid
-          title: Same Incident In The Past Id
-        id:
-          type: string
-          format: uuid
-          title: Id
-        start_time:
-          type: string
-          format: date-time
-          title: Start Time
-        last_seen_time:
-          type: string
-          format: date-time
-          title: Last Seen Time
-        end_time:
-          type: string
-          format: date-time
-          title: End Time
-        creation_time:
-          type: string
-          format: date-time
-          title: Creation Time
-        alerts_count:
-          type: integer
-          title: Alerts Count
-        alert_sources:
-          items:
-            type: string
-          type: array
-          title: Alert Sources
-        severity:
-          $ref: '#/components/schemas/IncidentSeverity'
-        status:
-          allOf:
-          - $ref: '#/components/schemas/IncidentStatus'
-          default: firing
-        services:
-          items:
-            type: string
-          type: array
-          title: Services
-        is_predicted:
-          type: boolean
-          title: Is Predicted
-        is_confirmed:
-          type: boolean
-          title: Is Confirmed
-        generated_summary:
-          type: string
-          title: Generated Summary
-        ai_generated_name:
-          type: string
-          title: Ai Generated Name
-        rule_fingerprint:
-          type: string
-          title: Rule Fingerprint
-        fingerprint:
-          type: string
-          title: Fingerprint
-        merged_into_incident_id:
-          type: string
-          format: uuid
-          title: Merged Into Incident Id
-        merged_by:
-          type: string
-          title: Merged By
-        merged_at:
-          type: string
-          format: date-time
-          title: Merged At
-      type: object
-      required:
-      - id
-      - alerts_count
-      - alert_sources
-      - severity
-      - services
-      - is_predicted
-      - is_confirmed
-      title: IncidentDto
-      example:
-        id: c2509cb3-6168-4347-b83b-a41da9df2d5b
-        name: Incident name
-        user_summary: 'Keep: Incident description'
-        status: firing
-    ProviderDTO:
-      properties:
-        type:
-          type: string
-          title: Type
-        id:
-          type: string
-          title: Id
-        name:
-          type: string
-          title: Name
-        installed:
-          type: boolean
-          title: Installed
-      type: object
-      required:
-      - type
-      - name
-      - installed
-      title: ProviderDTO
-    AlertSeverity:
-      enum:
-      - critical
-      - high
-      - warning
-      - info
-      - low
-      title: AlertSeverity
-      description: An enumeration.
-    WorkflowDTO:
-      properties:
-        id:
-          type: string
-          title: Id
-        name:
-          type: string
-          title: Name
-          default: Workflow file doesn't contain name
-        description:
-          type: string
-          title: Description
-          default: Workflow file doesn't contain description
-        created_by:
-          type: string
-          title: Created By
-        creation_time:
-          type: string
-          format: date-time
-          title: Creation Time
-        triggers:
-          items:
-            type: object
-          type: array
-          title: Triggers
-        interval:
-          type: integer
-          title: Interval
-        disabled:
-          type: boolean
-          title: Disabled
-          default: false
-        last_execution_time:
-          type: string
-          format: date-time
-          title: Last Execution Time
-        last_execution_status:
-          type: string
-          title: Last Execution Status
-        providers:
-          items:
-            $ref: '#/components/schemas/ProviderDTO'
-          type: array
-          title: Providers
-        workflow_raw:
-          type: string
-          title: Workflow Raw
-        revision:
-          type: integer
-          title: Revision
-          default: 1
-        last_updated:
-          type: string
-          format: date-time
-          title: Last Updated
-        invalid:
-          type: boolean
-          title: Invalid
-          default: false
-        last_executions:
-          items:
-            type: object
-          type: array
-          title: Last Executions
-        last_execution_started:
-          type: string
-          format: date-time
-          title: Last Execution Started
-        provisioned:
-          type: boolean
-          title: Provisioned
-          default: false
-        provisioned_file:
-          type: string
-          title: Provisioned File
-      type: object
-      required:
-      - id
-      - created_by
-      - creation_time
-      - providers
-      - workflow_raw
-      title: WorkflowDTO
-    MergeIncidentsResponseDto:
-      properties:
-        merged_incident_ids:
-          items:
-            type: string
-            format: uuid
-          type: array
-          title: Merged Incident Ids
-        skipped_incident_ids:
-          items:
-            type: string
-            format: uuid
-          type: array
-          title: Skipped Incident Ids
-        failed_incident_ids:
-          items:
-            type: string
-            format: uuid
-          type: array
-          title: Failed Incident Ids
-        destination_incident_id:
-          type: string
-          format: uuid
-          title: Destination Incident Id
-        message:
-          type: string
-          title: Message
-      type: object
-      required:
-      - merged_incident_ids
-      - skipped_incident_ids
-      - failed_incident_ids
-      - destination_incident_id
-      - message
-      title: MergeIncidentsResponseDto
   securitySchemes:
     API_Key:
       type: apiKey

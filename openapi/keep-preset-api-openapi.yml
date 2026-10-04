@@ -242,6 +242,56 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    CreatePresetTab:
+      properties:
+        name:
+          type: string
+          title: Name
+        filter:
+          type: string
+          title: Filter
+      type: object
+      required:
+      - name
+      - filter
+      title: CreatePresetTab
+    CreateOrUpdatePresetDto:
+      properties:
+        name:
+          type: string
+          title: Name
+        options:
+          items:
+            $ref: '#/components/schemas/PresetOption'
+          type: array
+          title: Options
+        is_private:
+          type: boolean
+          title: Is Private
+          default: false
+        is_noisy:
+          type: boolean
+          title: Is Noisy
+          default: false
+        tags:
+          items:
+            $ref: '#/components/schemas/TagDto'
+          type: array
+          title: Tags
+          default: []
+      type: object
+      required:
+      - options
+      title: CreateOrUpdatePresetDto
     PresetDto:
       properties:
         id:
@@ -290,6 +340,21 @@ components:
       - id
       - name
       title: PresetDto
+    PresetOption:
+      properties:
+        label:
+          type: string
+          title: Label
+        value:
+          anyOf:
+          - type: string
+          - type: object
+          title: Value
+      type: object
+      required:
+      - label
+      - value
+      title: PresetOption
     ValidationError:
       properties:
         loc:
@@ -311,30 +376,6 @@ components:
       - msg
       - type
       title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    PresetOption:
-      properties:
-        label:
-          type: string
-          title: Label
-        value:
-          anyOf:
-          - type: string
-          - type: object
-          title: Value
-      type: object
-      required:
-      - label
-      - value
-      title: PresetOption
     TagDto:
       properties:
         id:
@@ -347,47 +388,6 @@ components:
       required:
       - name
       title: TagDto
-    CreateOrUpdatePresetDto:
-      properties:
-        name:
-          type: string
-          title: Name
-        options:
-          items:
-            $ref: '#/components/schemas/PresetOption'
-          type: array
-          title: Options
-        is_private:
-          type: boolean
-          title: Is Private
-          default: false
-        is_noisy:
-          type: boolean
-          title: Is Noisy
-          default: false
-        tags:
-          items:
-            $ref: '#/components/schemas/TagDto'
-          type: array
-          title: Tags
-          default: []
-      type: object
-      required:
-      - options
-      title: CreateOrUpdatePresetDto
-    CreatePresetTab:
-      properties:
-        name:
-          type: string
-          title: Name
-        filter:
-          type: string
-          title: Filter
-      type: object
-      required:
-      - name
-      - filter
-      title: CreatePresetTab
   securitySchemes:
     API_Key:
       type: apiKey

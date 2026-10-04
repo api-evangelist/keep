@@ -82,15 +82,6 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -112,22 +103,15 @@ components:
       - msg
       - type
       title: ValidationError
-    PermissionEntity:
+    HTTPValidationError:
       properties:
-        id:
-          type: string
-          title: Id
-        type:
-          type: string
-          title: Type
-        name:
-          type: string
-          title: Name
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
       type: object
-      required:
-      - id
-      - type
-      title: PermissionEntity
+      title: HTTPValidationError
     ResourcePermission:
       properties:
         resource_id:
@@ -151,6 +135,22 @@ components:
       - resource_type
       - permissions
       title: ResourcePermission
+    PermissionEntity:
+      properties:
+        id:
+          type: string
+          title: Id
+        type:
+          type: string
+          title: Type
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - id
+      - type
+      title: PermissionEntity
   securitySchemes:
     API_Key:
       type: apiKey

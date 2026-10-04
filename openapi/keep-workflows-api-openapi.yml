@@ -451,14 +451,133 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
-    Body_run_workflow_from_definition_workflows_test_post:
+    WorkflowToAlertExecutionDTO:
+      properties:
+        workflow_id:
+          type: string
+          title: Workflow Id
+        workflow_execution_id:
+          type: string
+          title: Workflow Execution Id
+        alert_fingerprint:
+          type: string
+          title: Alert Fingerprint
+        workflow_status:
+          type: string
+          title: Workflow Status
+        workflow_started:
+          type: string
+          format: date-time
+          title: Workflow Started
+      type: object
+      required:
+      - workflow_id
+      - workflow_execution_id
+      - alert_fingerprint
+      - workflow_status
+      - workflow_started
+      title: WorkflowToAlertExecutionDTO
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    WorkflowExecutionLogsDTO:
+      properties:
+        id:
+          type: integer
+          title: Id
+        timestamp:
+          type: string
+          format: date-time
+          title: Timestamp
+        message:
+          type: string
+          title: Message
+        context:
+          type: object
+          title: Context
+      type: object
+      required:
+      - id
+      - timestamp
+      - message
+      title: WorkflowExecutionLogsDTO
+    WorkflowCreateOrUpdateDTO:
+      properties:
+        workflow_id:
+          type: string
+          title: Workflow Id
+        status:
+          type: string
+          enum:
+          - created
+          - updated
+          title: Status
+        revision:
+          type: integer
+          title: Revision
+          default: 1
+      type: object
+      required:
+      - workflow_id
+      - status
+      title: WorkflowCreateOrUpdateDTO
+    Body_create_workflow_workflows_post:
       properties:
         file:
           type: string
           format: binary
           title: File
       type: object
-      title: Body_run_workflow_from_definition_workflows_test_post
+      required:
+      - file
+      title: Body_create_workflow_workflows_post
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ProviderDTO:
+      properties:
+        type:
+          type: string
+          title: Type
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        installed:
+          type: boolean
+          title: Installed
+      type: object
+      required:
+      - type
+      - name
+      - installed
+      title: ProviderDTO
     WorkflowExecutionDTO:
       properties:
         id:
@@ -502,144 +621,6 @@ components:
       - triggered_by
       - status
       title: WorkflowExecutionDTO
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    WorkflowExecutionLogsDTO:
-      properties:
-        id:
-          type: integer
-          title: Id
-        timestamp:
-          type: string
-          format: date-time
-          title: Timestamp
-        message:
-          type: string
-          title: Message
-        context:
-          type: object
-          title: Context
-      type: object
-      required:
-      - id
-      - timestamp
-      - message
-      title: WorkflowExecutionLogsDTO
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    ProviderDTO:
-      properties:
-        type:
-          type: string
-          title: Type
-        id:
-          type: string
-          title: Id
-        name:
-          type: string
-          title: Name
-        installed:
-          type: boolean
-          title: Installed
-      type: object
-      required:
-      - type
-      - name
-      - installed
-      title: ProviderDTO
-    WorkflowCreateOrUpdateDTO:
-      properties:
-        workflow_id:
-          type: string
-          title: Workflow Id
-        status:
-          type: string
-          enum:
-          - created
-          - updated
-          title: Status
-        revision:
-          type: integer
-          title: Revision
-          default: 1
-      type: object
-      required:
-      - workflow_id
-      - status
-      title: WorkflowCreateOrUpdateDTO
-    WorkflowExecutionsPaginatedResultsDto:
-      properties:
-        limit:
-          type: integer
-          title: Limit
-          default: 25
-        offset:
-          type: integer
-          title: Offset
-          default: 0
-        count:
-          type: integer
-          title: Count
-        items:
-          items:
-            $ref: '#/components/schemas/WorkflowExecutionDTO'
-          type: array
-          title: Items
-        passCount:
-          type: integer
-          title: Passcount
-          default: 0
-        avgDuration:
-          type: number
-          title: Avgduration
-          default: 0
-        workflow:
-          $ref: '#/components/schemas/WorkflowDTO'
-        failCount:
-          type: integer
-          title: Failcount
-          default: 0
-      type: object
-      required:
-      - count
-      - items
-      title: WorkflowExecutionsPaginatedResultsDto
-    Body_create_workflow_workflows_post:
-      properties:
-        file:
-          type: string
-          format: binary
-          title: File
-      type: object
-      required:
-      - file
-      title: Body_create_workflow_workflows_post
     WorkflowDTO:
       properties:
         id:
@@ -723,32 +704,51 @@ components:
       - providers
       - workflow_raw
       title: WorkflowDTO
-    WorkflowToAlertExecutionDTO:
+    WorkflowExecutionsPaginatedResultsDto:
       properties:
-        workflow_id:
-          type: string
-          title: Workflow Id
-        workflow_execution_id:
-          type: string
-          title: Workflow Execution Id
-        alert_fingerprint:
-          type: string
-          title: Alert Fingerprint
-        workflow_status:
-          type: string
-          title: Workflow Status
-        workflow_started:
-          type: string
-          format: date-time
-          title: Workflow Started
+        limit:
+          type: integer
+          title: Limit
+          default: 25
+        offset:
+          type: integer
+          title: Offset
+          default: 0
+        count:
+          type: integer
+          title: Count
+        items:
+          items:
+            $ref: '#/components/schemas/WorkflowExecutionDTO'
+          type: array
+          title: Items
+        passCount:
+          type: integer
+          title: Passcount
+          default: 0
+        avgDuration:
+          type: number
+          title: Avgduration
+          default: 0
+        workflow:
+          $ref: '#/components/schemas/WorkflowDTO'
+        failCount:
+          type: integer
+          title: Failcount
+          default: 0
       type: object
       required:
-      - workflow_id
-      - workflow_execution_id
-      - alert_fingerprint
-      - workflow_status
-      - workflow_started
-      title: WorkflowToAlertExecutionDTO
+      - count
+      - items
+      title: WorkflowExecutionsPaginatedResultsDto
+    Body_run_workflow_from_definition_workflows_test_post:
+      properties:
+        file:
+          type: string
+          format: binary
+          title: File
+      type: object
+      title: Body_run_workflow_from_definition_workflows_test_post
   securitySchemes:
     API_Key:
       type: apiKey

@@ -559,6 +559,21 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    ProviderWebhookSettings:
+      properties:
+        webhookDescription:
+          type: string
+          title: Webhookdescription
+        webhookTemplate:
+          type: string
+          title: Webhooktemplate
+        webhookMarkdown:
+          type: string
+          title: Webhookmarkdown
+      type: object
+      required:
+      - webhookTemplate
+      title: ProviderWebhookSettings
     ValidationError:
       properties:
         loc:
@@ -580,21 +595,6 @@ components:
       - msg
       - type
       title: ValidationError
-    ProviderWebhookSettings:
-      properties:
-        webhookDescription:
-          type: string
-          title: Webhookdescription
-        webhookTemplate:
-          type: string
-          title: Webhooktemplate
-        webhookMarkdown:
-          type: string
-          title: Webhookmarkdown
-      type: object
-      required:
-      - webhookTemplate
-      title: ProviderWebhookSettings
   securitySchemes:
     API_Key:
       type: apiKey

@@ -124,15 +124,6 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -154,40 +145,15 @@ components:
       - msg
       - type
       title: ValidationError
-    ExtractionRuleDtoBase:
+    HTTPValidationError:
       properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        priority:
-          type: integer
-          title: Priority
-          default: 0
-        attribute:
-          type: string
-          title: Attribute
-        condition:
-          type: string
-          title: Condition
-        disabled:
-          type: boolean
-          title: Disabled
-          default: false
-        regex:
-          type: string
-          title: Regex
-        pre:
-          type: boolean
-          title: Pre
-          default: false
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
       type: object
-      required:
-      - name
-      - regex
-      title: ExtractionRuleDtoBase
+      title: HTTPValidationError
     ExtractionRuleDtoOut:
       properties:
         name:
@@ -241,6 +207,40 @@ components:
       - id
       - created_at
       title: ExtractionRuleDtoOut
+    ExtractionRuleDtoBase:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        priority:
+          type: integer
+          title: Priority
+          default: 0
+        attribute:
+          type: string
+          title: Attribute
+        condition:
+          type: string
+          title: Condition
+        disabled:
+          type: boolean
+          title: Disabled
+          default: false
+        regex:
+          type: string
+          title: Regex
+        pre:
+          type: boolean
+          title: Pre
+          default: false
+      type: object
+      required:
+      - name
+      - regex
+      title: ExtractionRuleDtoBase
   securitySchemes:
     API_Key:
       type: apiKey

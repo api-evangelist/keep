@@ -1,0 +1,66 @@
+slug: keep
+provider: Keep
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Incidents
+  spec_file: keep-incidents-api-openapi.yml
+  capability_id: BC-4220.30
+  capability_id_l1: BC-4220
+  capability_name: Incident Response Management
+  confidence: 0.75
+  evidence: POST /incidents 'Create Incident', POST /incidents/merge 'Merge Incidents', 'Add Alerts To
+    Incident'; schemas IncidentSeverity, IncidentStatusChangeDto
+  reason: Production incident lifecycle built on correlated monitoring alerts, matching incident detection,
+    coordination and response for a running service rather than HSE or security incidents.
+- tag: Roles
+  spec_file: keep-roles-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.72
+  evidence: GET/POST/PUT/DELETE /auth/roles ... schemas Role, CreateOrUpdateRole
+  reason: Full CRUD over roles under the auth namespace is role-based access control administration, mapping
+    to Identity & Access Management rather than any monitoring capability.
+- tag: Auth
+  spec_file: keep-auth-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: GET /auth/roles 'Get Roles', POST /auth/permissions 'Create Permissions', GET /auth/users;
+    schemas ResourcePermission, Role, CreateUserRequest
+  reason: Administrative surface for users, groups, roles, permissions and scopes — role-based access
+    administration, i.e. identity and access management. Moderated confidence since product-internal RBAC
+    is partly technical plumbing.
+- tag: Permissions
+  spec_file: keep-permissions-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: GET /auth/permissions ... POST /auth/permissions ... GET /auth/permissions/scopes; schemas
+    PermissionEntity, ResourcePermission
+  reason: Operations manage permission entities and scopes under /auth, i.e. access-control administration
+    for the platform — Identity & Access Management. Not an observability/business-domain capability;
+    confidence tempered because this is also plausibly read as product plumbing.
+- tag: Users
+  spec_file: keep-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /auth/users create_user ... DELETE /auth/users/{user_email}; schemas CreateUserRequest,
+    Group, User
+  reason: User account provisioning and deprovisioning under /auth is identity administration (joiners-movers-leavers)
+    for the platform, not HR employee records.

@@ -1,14 +1,150 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/keep-openapi.json
-docs: https://docs.keephq.dev/deployment/authentication/overview
-note: Keep does not publish OAuth scopes; API access uses API keys/JWT bearer tokens
-  with role-based access control (RBAC) configured per identity provider (Auth0,
-  Keycloak, Azure AD, Okta, OneLogin), per https://docs.keephq.dev/deployment/authentication/overview.
+generated: '2026-10-14'
+method: none
+source: openapi/keep-actions-api-openapi.yml, openapi/keep-alerts-api-openapi.yml, openapi/keep-auth-api-openapi.yml,
+  openapi/keep-dashboard-api-openapi.yml, openapi/keep-deduplications-api-openapi.yml, openapi/keep-enrichment-api-openapi.yml,
+  openapi/keep-extraction-api-openapi.yml, openapi/keep-groups-api-openapi.yml, openapi/keep-health-check-api-openapi.yml,
+  openapi/keep-incidents-api-openapi.yml, openapi/keep-keep-api-api-openapi.yml, openapi/keep-maintenance-api-openapi.yml,
+  openapi/keep-mapping-api-openapi.yml, openapi/keep-metrics-api-openapi.yml, openapi/keep-permissions-api-openapi.yml,
+  openapi/keep-preset-api-openapi.yml, openapi/keep-providers-api-openapi.yml, openapi/keep-pusher-api-openapi.yml,
+  openapi/keep-roles-api-openapi.yml, openapi/keep-rules-api-openapi.yml, openapi/keep-settings-api-openapi.yml,
+  openapi/keep-status-api-openapi.yml, openapi/keep-tags-api-openapi.yml, openapi/keep-topology-api-openapi.yml,
+  openapi/keep-users-api-openapi.yml, openapi/keep-whoami-api-openapi.yml, openapi/keep-workflows-api-openapi.yml
 schemes:
 - name: OAuth2PasswordBearer
-  source: openapi/keep-openapi.json
+  source: openapi/keep-actions-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-alerts-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-auth-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-dashboard-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-deduplications-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-enrichment-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-extraction-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-groups-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-health-check-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-incidents-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-keep-api-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-maintenance-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-mapping-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-metrics-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-permissions-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-preset-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-providers-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-pusher-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-roles-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-rules-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-settings-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-status-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-tags-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-topology-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-users-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-whoami-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: token
+- name: OAuth2PasswordBearer
+  source: openapi/keep-workflows-api-openapi.yml
   flows:
   - flow: password
     tokenUrl: token
 scopes: []
+note: The OAuth2 security scheme(s) in the OpenAPI declare no scopes, and no security requirement
+  references one.

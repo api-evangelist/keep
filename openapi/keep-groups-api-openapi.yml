@@ -122,44 +122,6 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    Group:
-      properties:
-        id:
-          type: string
-          title: Id
-        name:
-          type: string
-          title: Name
-        roles:
-          items:
-            type: string
-          type: array
-          title: Roles
-          default: []
-        members:
-          items:
-            type: string
-          type: array
-          title: Members
-          default: []
-        memberCount:
-          type: integer
-          title: Membercount
-          default: 0
-      type: object
-      required:
-      - id
-      - name
-      title: Group
     ValidationError:
       properties:
         loc:
@@ -202,6 +164,44 @@ components:
       - roles
       - members
       title: CreateOrUpdateGroupRequest
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    Group:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        roles:
+          items:
+            type: string
+          type: array
+          title: Roles
+          default: []
+        members:
+          items:
+            type: string
+          type: array
+          title: Members
+          default: []
+        memberCount:
+          type: integer
+          title: Membercount
+          default: 0
+      type: object
+      required:
+      - id
+      - name
+      title: Group
   securitySchemes:
     API_Key:
       type: apiKey

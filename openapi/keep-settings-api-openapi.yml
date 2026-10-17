@@ -233,15 +233,6 @@ components:
       - msg
       - type
       title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     SMTPSettings:
       properties:
         host:
@@ -283,6 +274,15 @@ components:
         secure: true
         from_email: noreply@example.com
         to_email: ''
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     WebhookSettings:
       properties:
         webhookApi:

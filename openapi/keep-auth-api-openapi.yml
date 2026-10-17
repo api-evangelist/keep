@@ -430,35 +430,22 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
-    Group:
+    PermissionEntity:
       properties:
         id:
           type: string
           title: Id
+        type:
+          type: string
+          title: Type
         name:
           type: string
           title: Name
-        roles:
-          items:
-            type: string
-          type: array
-          title: Roles
-          default: []
-        members:
-          items:
-            type: string
-          type: array
-          title: Members
-          default: []
-        memberCount:
-          type: integer
-          title: Membercount
-          default: 0
       type: object
       required:
       - id
-      - name
-      title: Group
+      - type
+      title: PermissionEntity
     CreateOrUpdateRole:
       properties:
         name:
@@ -475,34 +462,24 @@ components:
           title: Scopes
       type: object
       title: CreateOrUpdateRole
-    Role:
+    UpdateUserRequest:
       properties:
-        id:
+        username:
           type: string
-          title: Id
-        name:
+          title: Username
+        password:
           type: string
-          title: Name
-        description:
+          title: Password
+        role:
           type: string
-          title: Description
-        scopes:
+          title: Role
+        groups:
           items:
             type: string
           type: array
-          uniqueItems: true
-          title: Scopes
-        predefined:
-          type: boolean
-          title: Predefined
-          default: true
+          title: Groups
       type: object
-      required:
-      - id
-      - name
-      - description
-      - scopes
-      title: Role
+      title: UpdateUserRequest
     HTTPValidationError:
       properties:
         detail:
@@ -512,6 +489,50 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ResourcePermission:
+      properties:
+        resource_id:
+          type: string
+          title: Resource Id
+        resource_name:
+          type: string
+          title: Resource Name
+        resource_type:
+          type: string
+          title: Resource Type
+        permissions:
+          items:
+            $ref: '#/components/schemas/PermissionEntity'
+          type: array
+          title: Permissions
+      type: object
+      required:
+      - resource_id
+      - resource_name
+      - resource_type
+      - permissions
+      title: ResourcePermission
     User:
       properties:
         email:
@@ -571,24 +592,34 @@ components:
       required:
       - username
       title: CreateUserRequest
-    UpdateUserRequest:
+    Role:
       properties:
-        username:
+        id:
           type: string
-          title: Username
-        password:
+          title: Id
+        name:
           type: string
-          title: Password
-        role:
+          title: Name
+        description:
           type: string
-          title: Role
-        groups:
+          title: Description
+        scopes:
           items:
             type: string
           type: array
-          title: Groups
+          uniqueItems: true
+          title: Scopes
+        predefined:
+          type: boolean
+          title: Predefined
+          default: true
       type: object
-      title: UpdateUserRequest
+      required:
+      - id
+      - name
+      - description
+      - scopes
+      title: Role
     CreateOrUpdateGroupRequest:
       properties:
         name:
@@ -610,66 +641,35 @@ components:
       - roles
       - members
       title: CreateOrUpdateGroupRequest
-    PermissionEntity:
+    Group:
       properties:
         id:
           type: string
           title: Id
-        type:
-          type: string
-          title: Type
         name:
           type: string
           title: Name
+        roles:
+          items:
+            type: string
+          type: array
+          title: Roles
+          default: []
+        members:
+          items:
+            type: string
+          type: array
+          title: Members
+          default: []
+        memberCount:
+          type: integer
+          title: Membercount
+          default: 0
       type: object
       required:
       - id
-      - type
-      title: PermissionEntity
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    ResourcePermission:
-      properties:
-        resource_id:
-          type: string
-          title: Resource Id
-        resource_name:
-          type: string
-          title: Resource Name
-        resource_type:
-          type: string
-          title: Resource Type
-        permissions:
-          items:
-            $ref: '#/components/schemas/PermissionEntity'
-          type: array
-          title: Permissions
-      type: object
-      required:
-      - resource_id
-      - resource_name
-      - resource_type
-      - permissions
-      title: ResourcePermission
+      - name
+      title: Group
   securitySchemes:
     API_Key:
       type: apiKey

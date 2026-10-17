@@ -145,38 +145,6 @@ components:
       - msg
       - type
       title: ValidationError
-    MaintenanceRuleCreate:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        cel_query:
-          type: string
-          title: Cel Query
-        start_time:
-          type: string
-          format: date-time
-          title: Start Time
-        duration_seconds:
-          type: integer
-          title: Duration Seconds
-        suppress:
-          type: boolean
-          title: Suppress
-          default: false
-        enabled:
-          type: boolean
-          title: Enabled
-          default: true
-      type: object
-      required:
-      - name
-      - cel_query
-      - start_time
-      title: MaintenanceRuleCreate
     HTTPValidationError:
       properties:
         detail:
@@ -235,6 +203,38 @@ components:
       - start_time
       - end_time
       title: MaintenanceRuleRead
+    MaintenanceRuleCreate:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        cel_query:
+          type: string
+          title: Cel Query
+        start_time:
+          type: string
+          format: date-time
+          title: Start Time
+        duration_seconds:
+          type: integer
+          title: Duration Seconds
+        suppress:
+          type: boolean
+          title: Suppress
+          default: false
+        enabled:
+          type: boolean
+          title: Enabled
+          default: true
+      type: object
+      required:
+      - name
+      - cel_query
+      - start_time
+      title: MaintenanceRuleCreate
   securitySchemes:
     API_Key:
       type: apiKey

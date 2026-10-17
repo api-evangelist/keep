@@ -179,32 +179,32 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
-    TopologyApplicationServiceDto:
+    TopologyServiceDtoIn:
       properties:
         id:
           type: integer
           title: Id
-        name:
-          type: string
-          title: Name
-        service:
-          type: string
-          title: Service
       type: object
       required:
       - id
-      - name
-      - service
-      title: TopologyApplicationServiceDto
-    HTTPValidationError:
+      title: TopologyServiceDtoIn
+    TopologyServiceDependencyDto:
       properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
+        serviceId:
+          type: integer
+          title: Serviceid
+        serviceName:
+          type: string
+          title: Servicename
+        protocol:
+          type: string
+          title: Protocol
+          default: unknown
       type: object
-      title: HTTPValidationError
+      required:
+      - serviceId
+      - serviceName
+      title: TopologyServiceDependencyDto
     TopologyApplicationDtoIn:
       properties:
         id:
@@ -227,50 +227,6 @@ components:
       required:
       - name
       title: TopologyApplicationDtoIn
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    TopologyApplicationDtoOut:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        services:
-          items:
-            $ref: '#/components/schemas/TopologyApplicationServiceDto'
-          type: array
-          title: Services
-          default: []
-      type: object
-      required:
-      - id
-      - name
-      title: TopologyApplicationDtoOut
     TopologyServiceDtoOut:
       properties:
         source_provider_id:
@@ -344,32 +300,76 @@ components:
       - dependencies
       - application_ids
       title: TopologyServiceDtoOut
-    TopologyServiceDtoIn:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    TopologyApplicationDtoOut:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        services:
+          items:
+            $ref: '#/components/schemas/TopologyApplicationServiceDto'
+          type: array
+          title: Services
+          default: []
+      type: object
+      required:
+      - id
+      - name
+      title: TopologyApplicationDtoOut
+    TopologyApplicationServiceDto:
       properties:
         id:
           type: integer
           title: Id
+        name:
+          type: string
+          title: Name
+        service:
+          type: string
+          title: Service
       type: object
       required:
       - id
-      title: TopologyServiceDtoIn
-    TopologyServiceDependencyDto:
-      properties:
-        serviceId:
-          type: integer
-          title: Serviceid
-        serviceName:
-          type: string
-          title: Servicename
-        protocol:
-          type: string
-          title: Protocol
-          default: unknown
-      type: object
-      required:
-      - serviceId
-      - serviceName
-      title: TopologyServiceDependencyDto
+      - name
+      - service
+      title: TopologyApplicationServiceDto
   securitySchemes:
     API_Key:
       type: apiKey

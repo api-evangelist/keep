@@ -177,15 +177,16 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
-    HTTPValidationError:
+    DashboardUpdateDTO:
       properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
+        dashboard_config:
+          type: object
+          title: Dashboard Config
+        dashboard_name:
+          type: string
+          title: Dashboard Name
       type: object
-      title: HTTPValidationError
+      title: DashboardUpdateDTO
     DashboardCreateDTO:
       properties:
         dashboard_name:
@@ -199,6 +200,15 @@ components:
       - dashboard_name
       - dashboard_config
       title: DashboardCreateDTO
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -220,16 +230,6 @@ components:
       - msg
       - type
       title: ValidationError
-    DashboardUpdateDTO:
-      properties:
-        dashboard_config:
-          type: object
-          title: Dashboard Config
-        dashboard_name:
-          type: string
-          title: Dashboard Name
-      type: object
-      title: DashboardUpdateDTO
     DashboardResponseDTO:
       properties:
         id:

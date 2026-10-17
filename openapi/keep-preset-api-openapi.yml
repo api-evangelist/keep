@@ -242,28 +242,18 @@ paths:
       - OAuth2PasswordBearer: []
 components:
   schemas:
-    HTTPValidationError:
+    TagDto:
       properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    CreatePresetTab:
-      properties:
+        id:
+          type: string
+          title: Id
         name:
           type: string
           title: Name
-        filter:
-          type: string
-          title: Filter
       type: object
       required:
       - name
-      - filter
-      title: CreatePresetTab
+      title: TagDto
     CreateOrUpdatePresetDto:
       properties:
         name:
@@ -292,6 +282,64 @@ components:
       required:
       - options
       title: CreateOrUpdatePresetDto
+    PresetOption:
+      properties:
+        label:
+          type: string
+          title: Label
+        value:
+          anyOf:
+          - type: string
+          - type: object
+          title: Value
+      type: object
+      required:
+      - label
+      - value
+      title: PresetOption
+    CreatePresetTab:
+      properties:
+        name:
+          type: string
+          title: Name
+        filter:
+          type: string
+          title: Filter
+      type: object
+      required:
+      - name
+      - filter
+      title: CreatePresetTab
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     PresetDto:
       properties:
         id:
@@ -340,54 +388,6 @@ components:
       - id
       - name
       title: PresetDto
-    PresetOption:
-      properties:
-        label:
-          type: string
-          title: Label
-        value:
-          anyOf:
-          - type: string
-          - type: object
-          title: Value
-      type: object
-      required:
-      - label
-      - value
-      title: PresetOption
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    TagDto:
-      properties:
-        id:
-          type: string
-          title: Id
-        name:
-          type: string
-          title: Name
-      type: object
-      required:
-      - name
-      title: TagDto
   securitySchemes:
     API_Key:
       type: apiKey

@@ -145,7 +145,7 @@ apis:
   humanURL: https://docs.keephq.dev
   baseURL: https://api.keephq.dev
   tags:
-  - Enrichment
+  - Data Enrichment
   tags_raw:
   - enrichment
   properties:

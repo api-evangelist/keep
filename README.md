@@ -1,4 +1,4 @@
-# Keep (keep)
+# Keep
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,63 +66,154 @@
 
 Keep is an open-source AIOps and alert management platform that unifies alerts from any monitoring tool, providing deduplication, correlation, enrichment, and workflow automation across observability, incident response, ticketing, and CMDB systems. The Keep REST API enables programmatic access to alerts, incidents, workflows, providers, and integrations with FastAPI-generated OpenAPI documentation.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/keep/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/keep/refs/heads/main/apis.yml)
+**Areas:** AIOps · Alerting · Incident Management · Observability · Open Source · SRE · Workflow Automation
 
-## Scope
+## Keep on APIs.io
 
-- **Type:** Index
+Everything profiled for Keep is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/keep/](https://apis.io/providers/keep/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (27)
 
-- AIOps
-- Alerting
-- Incident Management
-- Observability
-- Open Source
-- SRE
-- Workflow Automation
+- [Keep Actions API](https://apis.io/apis/keep/keep-actions-api/) — The actions API from Keep — 2 operation(s) for actions.
+- [Keep Alerts API](https://apis.io/apis/keep/keep-alerts-api/) — The alerts API from Keep — 24 operation(s) for alerts.
+- [Keep Auth API](https://apis.io/apis/keep/keep-auth-api/) — The auth API from Keep — 8 operation(s) for auth.
+- [Keep Dashboard API](https://apis.io/apis/keep/keep-dashboard-api/) — The dashboard API from Keep — 3 operation(s) for dashboard.
+- [Keep Deduplications API](https://apis.io/apis/keep/keep-deduplications-api/) — The deduplications API from Keep — 3 operation(s) for deduplications.
+- [Keep Enrichment API](https://apis.io/apis/keep/keep-enrichment-api/) — The enrichment API from Keep — 4 operation(s) for enrichment.
+- [Keep Extraction API](https://apis.io/apis/keep/keep-extraction-api/) — The extraction API from Keep — 2 operation(s) for extraction.
+- [Keep Groups API](https://apis.io/apis/keep/keep-groups-api/) — The groups API from Keep — 2 operation(s) for groups.
+- [Keep Incidents API](https://apis.io/apis/keep/keep-incidents-api/) — The incidents API from Keep — 13 operation(s) for incidents.
+- [Keep API](https://apis.io/apis/keep/keep-keep-api-api/) — The Keep API API from Keep — 1 operation(s) for keep api.
+- [Keep Maintenance API](https://apis.io/apis/keep/keep-maintenance-api/) — The maintenance API from Keep — 2 operation(s) for maintenance.
+- [Keep Mapping API](https://apis.io/apis/keep/keep-mapping-api/) — The mapping API from Keep — 2 operation(s) for mapping.
+- [Keep Metrics API](https://apis.io/apis/keep/keep-metrics-api/) — The metrics API from Keep — 1 operation(s) for metrics.
+- [Keep Permissions API](https://apis.io/apis/keep/keep-permissions-api/) — The permissions API from Keep — 2 operation(s) for permissions.
+- [Keep Preset API](https://apis.io/apis/keep/keep-preset-api/) — The preset API from Keep — 5 operation(s) for preset.
+- [Keep Providers API](https://apis.io/apis/keep/keep-providers-api/) — The providers API from Keep — 16 operation(s) for providers.
+- [Keep Pusher API](https://apis.io/apis/keep/keep-pusher-api/) — The pusher API from Keep — 1 operation(s) for pusher.
+- [Keep Roles API](https://apis.io/apis/keep/keep-roles-api/) — The roles API from Keep — 2 operation(s) for roles.
+- [Keep Rules API](https://apis.io/apis/keep/keep-rules-api/) — The rules API from Keep — 2 operation(s) for rules.
+- [Keep Settings API](https://apis.io/apis/keep/keep-settings-api/) — The settings API from Keep — 7 operation(s) for settings.
+- [Keep Status API](https://apis.io/apis/keep/keep-status-api/) — The status API from Keep — 1 operation(s) for status.
+- [Keep Tags API](https://apis.io/apis/keep/keep-tags-api/) — The tags API from Keep — 1 operation(s) for tags.
+- [Keep Topology API](https://apis.io/apis/keep/keep-topology-api/) — The topology API from Keep — 3 operation(s) for topology.
+- [Keep Users API](https://apis.io/apis/keep/keep-users-api/) — The users API from Keep — 2 operation(s) for users.
+- [Keep Whoami API](https://apis.io/apis/keep/keep-whoami-api/) — The whoami API from Keep — 1 operation(s) for whoami.
+- [Keep Workflows API](https://apis.io/apis/keep/keep-workflows-api/) — The workflows API from Keep — 11 operation(s) for workflows.
+- [Keep Health Check API](https://apis.io/apis/keep/keep-health-check-api/) — The Health Check API from Keep — 1 operation(s) for health check.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-11
-- **Modified:** 2026-05-11
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Keep REST API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-REST API for managing alerts, incidents, workflows, providers, and integrations within the Keep AIOps platform. Authentication uses API keys or Bearer tokens with auto-generated OpenAPI documentation.
+- [Keep Agentic Access](https://apis.io/agentic-access/keep/keep-agentic-access/)
 
-- **Human URL:** [https://docs.keephq.dev](https://docs.keephq.dev)
-- **Base URL:** `https://api.keephq.dev`
+#### Collections (28)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- AIOps
-- Alerts
-- Incidents
-- Workflows
-- Providers
+- [Keep API](https://apis.io/collections/keep/open-keep/)
+- [Keep actions API](https://apis.io/collections/keep/open-keep-actions-api/)
+- [Keep actions alerts API](https://apis.io/collections/keep/open-keep-alerts-api/)
+- [Keep actions auth API](https://apis.io/collections/keep/open-keep-auth-api/)
+- [Keep actions dashboard API](https://apis.io/collections/keep/open-keep-dashboard-api/)
+- [Keep actions deduplications API](https://apis.io/collections/keep/open-keep-deduplications-api/)
+- [Keep actions enrichment API](https://apis.io/collections/keep/open-keep-enrichment-api/)
+- [Keep actions extraction API](https://apis.io/collections/keep/open-keep-extraction-api/)
+- [Keep actions groups API](https://apis.io/collections/keep/open-keep-groups-api/)
+- [Keep actions healthcheck API](https://apis.io/collections/keep/open-keep-healthcheck-api/)
+- [Keep actions incidents API](https://apis.io/collections/keep/open-keep-incidents-api/)
+- [Keep actions Keep API API](https://apis.io/collections/keep/open-keep-keep-api-api/)
+- [Keep actions maintenance API](https://apis.io/collections/keep/open-keep-maintenance-api/)
+- [Keep actions mapping API](https://apis.io/collections/keep/open-keep-mapping-api/)
+- [Keep actions metrics API](https://apis.io/collections/keep/open-keep-metrics-api/)
+- [Keep actions permissions API](https://apis.io/collections/keep/open-keep-permissions-api/)
+- [Keep actions preset API](https://apis.io/collections/keep/open-keep-preset-api/)
+- [Keep actions providers API](https://apis.io/collections/keep/open-keep-providers-api/)
+- [Keep actions pusher API](https://apis.io/collections/keep/open-keep-pusher-api/)
+- [Keep actions roles API](https://apis.io/collections/keep/open-keep-roles-api/)
+- [Keep actions rules API](https://apis.io/collections/keep/open-keep-rules-api/)
+- [Keep actions settings API](https://apis.io/collections/keep/open-keep-settings-api/)
+- [Keep actions status API](https://apis.io/collections/keep/open-keep-status-api/)
+- [Keep actions tags API](https://apis.io/collections/keep/open-keep-tags-api/)
+- [Keep actions topology API](https://apis.io/collections/keep/open-keep-topology-api/)
+- …and 3 more published on APIs.io
 
-#### Properties
+#### Security (2)
 
-- [Documentation](https://docs.keephq.dev/overview/introduction)
-- [API Reference](https://api.keephq.dev/docs)
-- [OpenAPI](https://api.keephq.dev/openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/keep.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/keep.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-## Common Properties
+- [Keep Authentication](https://apis.io/security/keep/keep-authentication/)
+- [Keep Domain Security](https://apis.io/security/keep/keep-domain-security/)
 
-- [LinkedIn](https://www.linkedin.com/company/keepalerting)
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Keep Scopes](https://apis.io/scopes/keep/keep-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.keephq.dev)
 - [Documentation](https://docs.keephq.dev)
-- [GitHub Organization](https://github.com/keephq)
-- [Git Hub  Repo](https://github.com/keephq/keep)
-- [Sign Up](https://platform.keephq.dev)
-- [L L Ms Txt](https://docs.keephq.dev/llms.txt)
+- [Blog](https://www.keephq.dev/blog)
+- [GitHub](https://github.com/keephq)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 28.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 40.7 |
+| Contract governance | 0.0 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 27.4 |
+| Access clarity | 13.2 |
+
+**Agent readiness 23.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 21.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/keep/](https://apis.io/providers/keep/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Keep: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/keep/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
